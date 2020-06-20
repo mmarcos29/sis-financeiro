@@ -1,0 +1,4 @@
+#NavPerfil{min-height: 30px; margin-left: 1px; display: flex; }
+#NavPerfil a{background: #054f75; color: white; font-size: 28px; min-height: 30px; }
+#NavPerfil span{background: #054f75; color: white; 
+    font-size: 11px; padding: 7px; width: -webkit-fill-available; text-align: center;}

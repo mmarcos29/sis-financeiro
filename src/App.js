@@ -1,25 +1,41 @@
-import React from 'react';
-import NavTempo from './componentes/NavTempo';
-import NavPerfil from './componentes/NavPerfil';
-import NavFuncionalidades from './componentes/NavFuncionalidades';
-import Conteudo from './componentes/Conteudo';
-import NavIcones from './componentes/NavIcones';
+import React from 'react'
+import BarraFuncionalidades from './componentes/barra-lateral/BarraFuncionalidades'
 
-function App() {
-  return (
-    <div id="container">
-      <NavFuncionalidades />
-      <div className="esqueletoTempo">
-        <NavTempo />
-        <Conteudo />
+import Styles from './Styles.css'
+import NavsEConteudo from './componentes/navs-e-conteudo/NavsEConteudo'
+import BarraFuncionalidadesLess from './componentes/barraless/BarraFuncionalidadesLess'
+
+
+
+
+class App extends React.Component{
+  state={
+    menu:<BarraFuncionalidades trocar={this.troca.bind(this)}/>
+  }
+  troca(menu, modulo){    
+    switch (menu) {
+      case "full":
+        this.setState({menu:<BarraFuncionalidadesLess trocar={this.troca.bind(this)} />})
+        break;
+      case "less":
+        this.setState({menu:<BarraFuncionalidades trocar={this.troca.bind(this)} modulo={modulo} />})
+        break;
+    
+      default:
+        this.setState({menu:<BarraFuncionalidadesLess trocar={this.troca.bind(this)} modulo={modulo}/>})
+        break;
+    }
+  }
+  render(){
+    return (
+      <div id="App">
+        {/* <BarraFuncionalidades /> */}
+        {this.state.menu}              
+        {/* <BarraFuncionalidadesLess /> */}
+        <NavsEConteudo />
       </div>
-      <div className="esqueletoPerfil">
-        <NavPerfil />
-        <NavIcones />
-      </div>    
-          
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

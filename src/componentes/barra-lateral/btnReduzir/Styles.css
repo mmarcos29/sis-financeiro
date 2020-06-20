@@ -1,0 +1,4 @@
+#BtnReduzir{background-color: #fff212; color: #095273; margin-top: 5px;}
+#BtnReduzir:hover{background-color: #d6cc0d !important;}
+#BtnReduzir a{color: #095273;}
+#BtnReduzir .material-icons{vertical-align: middle; height: 27px;}
