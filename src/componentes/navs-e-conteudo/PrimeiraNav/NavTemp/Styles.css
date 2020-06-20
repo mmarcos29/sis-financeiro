@@ -2,10 +2,12 @@
     max-height: 20px; flex: 1; display: flex; justify-content: space-between;
     margin-left: 1px; min-width: 298px;
 }
+#NavTemp div span:first-child{margin-right: 5px;}
 
 @media only screen and (max-width: 600px) {
-    #NavTemp{ font-size: x-small;}
+    #NavTemp{ font-size: x-small;}        
 }
 @media only screen and (max-width: 1080px) {
     #NavTemp{ font-size: x-small;}
+    #NavTemp p{padding-right: 6px;}
 }
