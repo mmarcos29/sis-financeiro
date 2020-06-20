@@ -1,4 +1,5 @@
 #NavPesquisa{flex: 1; background: #0176a1; color: white; padding: 1px; height: 26px}
-#NavPesquisa input{height: -webkit-fill-available; width: 35%; float: right; text-align: center; font-size: 7pt;}
-#NavPesquisa button{height: -webkit-fill-available; width: 10%; background: #fff212; margin-left: 1px; float: right; color: #0176a1; font-size: 7pt;}
+#NavPesquisa input{height: -webkit-fill-available; width: 35%; float: right; text-align: center; font-size: 7pt; min-width: 217px; max-width: 529px;}
+#NavPesquisa button{height: -webkit-fill-available; width: 10%; background: #fff212; margin-left: 1px; float: right; color: #0176a1; font-size: 7pt; min-width: 87px;
+    max-width: 87px;}
 #NavPesquisa button:hover{background: #ece215; color: white;}

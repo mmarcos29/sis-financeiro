@@ -1,18 +1,18 @@
 #BarraFuncionalidades{display: flex; flex-direction: column; background: #35bae8; color: #095273; 
-    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; }
+    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; min-width: 180px;}
 #BarraFuncionalidades a{color: #095273;}
-#BarraFuncionalidades ul li{border-bottom: solid 1px #095273;}
+#BarraFuncionalidades ul li{border-bottom: solid 1px #095273; cursor: pointer;}
 #BarraFuncionalidades li:hover{background-color: #11a6da;}
 .material-icons{vertical-align: middle; height: 27px;}
-#CaixaAzul{background-color: #054f75; height: 93px;}
-#BarraFuncionalidades img{width: 153px; margin: 5px;}
+#CaixaAzul{background-color: #054f75; max-height: 96px; min-height: 96px;}
+#BarraFuncionalidades img{width: 170px; margin: 5px;}
 #azul{background-color: #3f8bb7; margin: 0 3px; display: flex; justify-content: flex-end;
     padding: 1px; border-radius: 5px;}
 #PesquisaFuncionalidades{background-color: #3f8bb7; border-radius: 25px; border: solid 1px #044f76}
 /* border: solid 2px #044f76; */
 #PesquisaFuncionalidades input{border-radius: 25px; width: 2vw; background-color: transparent; 
     outline: none; text-align: center; color: white; transition: 1s;}
-#PesquisaFuncionalidades input:focus{width: 9vw; transition: 1s;}
+#PesquisaFuncionalidades input:focus{width: 6vw; transition: 1s; max-width: 127px;}
 #PesquisaFuncionalidades .material-icons{height: 22px;}
 
 #DASH, #telemarketing, #configuracoes, #operacional, #financeiro{display: none; background-color: #054f75; font-size: small;}
@@ -25,7 +25,4 @@
 
 @media only screen and (max-width: 600px) {
     #BarraFuncionalidades{ width: 32vw;}
-    #BarraFuncionalidades img { width: 150px;
-        margin: 4px;}
-    #CaixaAzul { height: 16vh; }
   }

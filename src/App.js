@@ -29,9 +29,7 @@ class App extends React.Component{
   render(){
     return (
       <div id="App">
-        {/* <BarraFuncionalidades /> */}
-        {this.state.menu}              
-        {/* <BarraFuncionalidadesLess /> */}
+        {this.state.menu}
         <NavsEConteudo />
       </div>
     );

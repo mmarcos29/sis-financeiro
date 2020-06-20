@@ -5,12 +5,12 @@ import BtnReduzir from './btnReduzir/BtnReduzir'
 
 class BarraFuncionalidades extends React.Component {
   state={
-    visivel:"financeiro",
+    visivel:"DASH",
   }
   oculta(id){
-    if(this.state.visivel !== "financeiro"){
+    if(this.state.visivel !== "DASH"){
       this.state.visivel.style.display = "none"
-    }else{
+    }else{      
       document.getElementById(id).style.display = "none";
     }    
   }
@@ -26,6 +26,21 @@ class BarraFuncionalidades extends React.Component {
       }      
     }
   }
+  componentDidUpdate(){
+    if(this.state.visivel === this.refs.DASH){
+      this.state.visivel.style.display = 'block'
+    }else if(this.state.visivel === this.refs.operacional){
+      this.state.visivel.style.display = 'block'
+    }else if(this.state.visivel === this.refs.financeiro){
+      this.state.visivel.style.display = 'block'
+    }else if(this.state.visivel === this.refs.telemarketing){
+      this.state.visivel.style.display = 'block'
+    }else if(this.state.visivel === this.refs.configuracoes){
+      this.state.visivel.style.display = 'block'
+    }else{
+      alert("sinto muito")
+    }
+  } 
   limpaCampo(id){
     document.getElementById(id).value = "";
   }
@@ -38,19 +53,13 @@ class BarraFuncionalidades extends React.Component {
         this.setState({visivel:this.refs.operacional})
       }else if(this.props.modulo === "financeiro"){
         this.setState({visivel:this.refs.financeiro})
+      }else if(this.props.modulo === "telemarketing"){
+        this.setState({visivel:this.refs.telemarketing})
+      }else if(this.props.modulo === "configuracoes"){
+        this.setState({visivel:this.refs.configuracoes})
       }
     } 
   }
-  componentDidUpdate(){
-    if(this.state.visivel === this.refs.operacional)
-    {
-      this.state.visivel.style.display = 'block'      
-    }else if(this.state.visivel === this.refs.financeiro){
-      this.refs.financeiro.style.display = 'block'
-    }else{
-      alert("sinto muito")
-    }
-  } 
   render(){          
     return (
         <div id="BarraFuncionalidades">
@@ -60,16 +69,13 @@ class BarraFuncionalidades extends React.Component {
           </div>
           <ul>          
             <BtnReduzir trocaMenu={this.states.bind(this)} />
-            <li>
-              <a href="#" onClick={()=> this.states("full") }><i class="material-icons branco">home</i> DESHEBORD</a>              
-              <ul id="DASH" ref="DASH">            
-                {/* <li><a href="#"><i class="material-icons branco">check_box</i> DESHEBORD</a></li>
-                <li><a href="#"><i class="material-icons branco">check_box</i> DESHEBORD</a></li>
-                <li><a href="#"><i class="material-icons branco">check_box</i> DESHEBORD</a></li> */}
+            <li onClick={()=> this.exibe(this.refs.DASH)}>
+              <a href="#"><i class="material-icons branco">home</i> DESHEBORD</a>              
+              <ul id="DASH" ref="DASH">
               </ul>
             </li>
-            <li>
-              <a href="#" onClick={()=> this.exibe(this.refs.operacional) }><i class="material-icons branco">supervisor_account</i> Operacional</a>              
+            <li onClick={()=> this.exibe(this.refs.operacional) }>
+              <a href="#"><i class="material-icons branco">supervisor_account</i> OPERACIONAL</a>              
               <ul id="operacional" ref="operacional">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> PROPOSTAS</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> ESTEIRA</a></li>
@@ -79,8 +85,8 @@ class BarraFuncionalidades extends React.Component {
                 <li><a href="#"><i class="material-icons branco">check_box</i> RELATÓRIOS</a></li>
               </ul>
             </li>
-            <li>
-              <a href="#" onClick={()=> this.exibe(this.refs.financeiro) }><i class="material-icons branco">attach_money</i> Financeiro</a>
+            <li onClick={()=> this.exibe(this.refs.financeiro) }>
+              <a href="#"><i class="material-icons branco">attach_money</i> FINANCEIRO</a>
               <ul id="financeiro" ref="financeiro">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> BALANÇO</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> RECEBER COMISSÕES</a></li>
@@ -93,8 +99,8 @@ class BarraFuncionalidades extends React.Component {
                 <li><a href="#"><i class="material-icons branco">check_box</i> RELATÓRIOS</a></li>
               </ul>
             </li>
-            <li>
-              <a href="#" onClick={()=> this.exibe(this.refs.telemarketing) }><i class="material-icons branco">support_agent</i> Telemarketing</a>
+            <li onClick={()=> this.exibe(this.refs.telemarketing) }>
+              <a href="#"><i class="material-icons branco">support_agent</i> TELEMARKETING</a>
               <ul id="telemarketing" ref="telemarketing">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> RECEPTIVO</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> CENTRAL CLIENTES</a></li>
@@ -105,8 +111,8 @@ class BarraFuncionalidades extends React.Component {
                 <li><a href="#"><i class="material-icons branco">check_box</i> CAMPANHAS</a></li>
               </ul>
             </li>
-            <li>
-              <a href="#" onClick={()=> this.exibe(this.refs.configuracoes) }><i class="material-icons branco">build</i> Configurações</a>
+            <li onClick={()=> this.exibe(this.refs.configuracoes) }>
+              <a href="#"><i class="material-icons branco">build</i> CONFIGURAÇÕES</a>
               <ul id="configuracoes" ref="configuracoes">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> MEU PERFIL</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> MINHA CONTA</a></li>

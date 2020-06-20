@@ -1,5 +1,5 @@
 #BarraFuncionalidadesLess{display: flex; flex-direction: column; background: #35bae8; color: #095273; 
-    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; }
+    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; min-width: 73px;}
 #BarraFuncionalidadesLess a{color: #095273; margin-left: 20px;}
 #BarraFuncionalidadesLess ul li{border-bottom: solid 1px #095273;}
 #BarraFuncionalidadesLess li:hover{background-color: #11a6da;}
@@ -20,12 +20,3 @@
 #DASH a, #telemarketing a, #configuracoes a, #financeiro a, #operacional a{color: #01bff3;}
 #operacional li, #telemarketing li, #configuracoes li, #financeiro li, #DASH li{border-top: solid 1px #01bff3;}
 #operacional li:hover, #telemarketing li:hover, #configuracoes li:hover, #financeiro li:hover, #DASH li:hover{background-color: #054f75;}
-
-
-
-@media only screen and (max-width: 600px) {
-    #BarraFuncionalidadesLess{ width: 32vw;}
-    #BarraFuncionalidadesLess img { width: 150px;
-        margin: 4px;}
-    #CaixaAzul { height: 16vh; }
-  }

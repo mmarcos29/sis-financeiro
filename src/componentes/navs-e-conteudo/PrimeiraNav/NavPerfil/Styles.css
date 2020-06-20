@@ -1,4 +1,11 @@
-#NavPerfil{min-height: 30px; margin-left: 1px; display: flex; }
+#NavPerfil{min-height: 30px; margin-left: 1px; display: flex; min-width: 210px;}
 #NavPerfil a{background: #054f75; color: white; font-size: 28px; min-height: 30px; }
 #NavPerfil span{background: #054f75; color: white; 
-    font-size: 11px; padding: 7px; width: -webkit-fill-available; text-align: center;}
+    font-size: 11px; padding: 7px; width: -webkit-fill-available; text-align: center; font-size: 70%;}
+
+@media only screen and (max-width: 600px) {
+    #NavPerfil{ font-size: x-small;}
+}
+@media only screen and (max-width: 1080px) {
+    #NavPerfil{ font-size: x-small;}
+}

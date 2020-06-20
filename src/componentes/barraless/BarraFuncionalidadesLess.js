@@ -70,7 +70,7 @@ class BarraFuncionalidadesLess extends React.Component {
               </ul>
             </li>
             <li>
-              <a href="#" onClick={()=> this.exibe('telemarketing') }><i class="material-icons branco">support_agent</i></a>
+              <a href="#" onClick={()=> this.states("less","telemarketing") }><i class="material-icons branco">support_agent</i></a>
               <ul id="telemarketing">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> RECEPTIVO</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> CENTRAL CLIENTES</a></li>
@@ -82,7 +82,7 @@ class BarraFuncionalidadesLess extends React.Component {
               </ul>
             </li>
             <li>
-              <a href="#" onClick={()=> this.exibe('configuracoes') }><i class="material-icons branco">build</i></a>
+              <a href="#" onClick={()=> this.states("less","configuracoes") }><i class="material-icons branco">build</i></a>
               <ul id="configuracoes">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> MEU PERFIL</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> MINHA CONTA</a></li>
