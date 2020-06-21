@@ -1,6 +1,6 @@
 #BarraFuncionalidades{display: flex; flex-direction: column; background: #35bae8; color: #095273; 
     margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; min-width: 180px;}
-#BarraFuncionalidades a{color: #095273;}
+#BarraFuncionalidades a{color: #095273; margin-left: 5px;}
 #BarraFuncionalidades ul li{border-bottom: solid 1px #095273; cursor: pointer;}
 #BarraFuncionalidades li:hover{background-color: #11a6da;}
 .material-icons{vertical-align: middle; height: 27px;}
@@ -26,3 +26,7 @@
 @media only screen and (max-width: 600px) {
     #BarraFuncionalidades{ width: 32vw;}
   }
+
+.suave{
+    transition: 50000000s;
+}

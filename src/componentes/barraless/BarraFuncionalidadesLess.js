@@ -35,7 +35,7 @@ class BarraFuncionalidadesLess extends React.Component {
         <div id="BarraFuncionalidadesLess">
           <div id='CaixaAzulLess'>
             <img src={image}></img>
-            <div id="azul"><div id="PesquisaFuncionalidadesLess"><input id="inputPesquisaFuncionalidadesLess" onBlur={() => this.limpaCampo("inputPesquisaFuncionalidadesLess")}/><span id="pesquisaItens" class="material-icons">search</span></div></div>
+            <div id="azulLess"><div id="PesquisaFuncionalidadesLess"><input id="inputPesquisaFuncionalidadesLess" onBlur={() => this.limpaCampo("inputPesquisaFuncionalidadesLess")}/><span id="pesquisaItens" class="material-icons">search</span></div></div>
           </div>
           <ul>          
             <BtnReduzirLess trocaMenu={this.states.bind(this)} />

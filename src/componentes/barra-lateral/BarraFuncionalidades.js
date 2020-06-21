@@ -7,39 +7,43 @@ class BarraFuncionalidades extends React.Component {
   state={
     visivel:"DASH",
   }
-  oculta(id){
-    if(this.state.visivel !== "DASH"){
-      this.state.visivel.style.display = "none"
-    }else{      
-      document.getElementById(id).style.display = "none";
-    }    
+  oculta(id){    
+      this.state.visivel.style.transition = "2ms"
+      this.state.visivel.style.opacity = 0
+      setTimeout(()=>{
+        this.state.visivel.style.display = 'none'
+      },1)      
   }
   exibe(id){
     if(this.state.visivel != id){
-      this.oculta(this.state.visivel)
-      this.setState({visivel:id})
+      if(this.state.visivel != "DASH"){
+        this.oculta(this.state.visivel)
+      }            
+      setTimeout(()=>{
+        this.setState({visivel:id})
+      },1)
     }else{
       if(this.state.visivel.style.display === 'none'){
         this.state.visivel.style.display = 'block'
+        this.state.visivel.style.transition = "100ms"
+        setTimeout(
+          ()=> {this.state.visivel.style.opacity = 1},100
+        )                        
       }else{
-        this.state.visivel.style.display = 'none'
+        this.state.visivel.style.transition = "352ms"
+        this.state.visivel.style.opacity = 0
+        setTimeout(()=>{
+          this.state.visivel.style.display = 'none'
+        },352)
       }      
     }
   }
   componentDidUpdate(){
-    if(this.state.visivel === this.refs.DASH){
-      this.state.visivel.style.display = 'block'
-    }else if(this.state.visivel === this.refs.operacional){
-      this.state.visivel.style.display = 'block'
-    }else if(this.state.visivel === this.refs.financeiro){
-      this.state.visivel.style.display = 'block'
-    }else if(this.state.visivel === this.refs.telemarketing){
-      this.state.visivel.style.display = 'block'
-    }else if(this.state.visivel === this.refs.configuracoes){
-      this.state.visivel.style.display = 'block'
-    }else{
-      alert("sinto muito")
-    }
+    this.state.visivel.style.display = 'block'
+    this.state.visivel.style.transition = "150ms"
+    setTimeout(
+      ()=> {this.state.visivel.style.opacity = 1},180
+    )
   } 
   limpaCampo(id){
     document.getElementById(id).value = "";
