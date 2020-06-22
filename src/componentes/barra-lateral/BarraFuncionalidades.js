@@ -8,11 +8,11 @@ class BarraFuncionalidades extends React.Component {
     visivel:"DASH",
   }
   oculta(id){    
-      this.state.visivel.style.transition = "200ms"
+      this.state.visivel.style.transition = "opacity 200ms"
       this.state.visivel.style.opacity = 0
       setTimeout(()=>{
         this.state.visivel.style.display = 'none'
-      },300)      
+      },1)      
   }
   exibe(id){
     if(this.state.visivel != id){
@@ -23,7 +23,7 @@ class BarraFuncionalidades extends React.Component {
       }            
       setTimeout(()=>{
         this.setState({visivel:id})
-      },350)
+      },1)
     }else{
       if(this.state.visivel.style.display === 'none'){
         this.state.visivel.style.display = 'block'
