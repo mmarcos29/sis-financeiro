@@ -8,26 +8,28 @@ class BarraFuncionalidades extends React.Component {
     visivel:"DASH",
   }
   oculta(id){    
-      this.state.visivel.style.transition = "2ms"
+      this.state.visivel.style.transition = "200ms"
       this.state.visivel.style.opacity = 0
       setTimeout(()=>{
         this.state.visivel.style.display = 'none'
-      },1)      
+      },300)      
   }
   exibe(id){
     if(this.state.visivel != id){
       if(this.state.visivel != "DASH"){
         this.oculta(this.state.visivel)
+      }else{
+        this.setState({visivel:id})
       }            
       setTimeout(()=>{
         this.setState({visivel:id})
-      },1)
+      },350)
     }else{
       if(this.state.visivel.style.display === 'none'){
         this.state.visivel.style.display = 'block'
-        this.state.visivel.style.transition = "100ms"
+        this.state.visivel.style.transition = "200ms"
         setTimeout(
-          ()=> {this.state.visivel.style.opacity = 1},100
+          ()=> {this.state.visivel.style.opacity = 1},300
         )                        
       }else{
         this.state.visivel.style.transition = "352ms"
@@ -40,9 +42,9 @@ class BarraFuncionalidades extends React.Component {
   }
   componentDidUpdate(){
     this.state.visivel.style.display = 'block'
-    this.state.visivel.style.transition = "150ms"
+    this.state.visivel.style.transition = "200ms"
     setTimeout(
-      ()=> {this.state.visivel.style.opacity = 1},180
+      ()=> {this.state.visivel.style.opacity = 1},300
     )
   } 
   limpaCampo(id){

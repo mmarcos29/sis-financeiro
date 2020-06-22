@@ -1,11 +1,11 @@
 #BarraFuncionalidadesLess{display: flex; flex-direction: column; background: #35bae8; color: #095273; 
-    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; min-width: 37px;}
+    margin-left: 8px; height: 100vh; font-size: 90%; overflow: auto; max-width: 2vw; min-width: 37px;}
 #BarraFuncionalidadesLess a{color: #095273; margin-left: 5px;}
 #BarraFuncionalidadesLess ul li{border-bottom: solid 1px #095273;}
 #BarraFuncionalidadesLess li:hover{background-color: #11a6da;}
 .material-icons{vertical-align: middle; height: 27px;}
 #CaixaAzulLess{background-color: #054f75; height: 96px;}
-#BarraFuncionalidadesLess img{width: 50px; margin: 5px;}
+#BarraFuncionalidadesLess img{width: 35px; padding: 16px 1px 11px;}
 #azulLess{background-color: #3f8bb7; margin: 0 3px; display: flex; justify-content: flex-end;
     padding: 1px; border-radius: 5px; max-width: 50px;}
 #PesquisaFuncionalidadesLess{background-color: #3f8bb7; border-radius: 25px; border: solid 1px #044f76;}
