@@ -4,13 +4,15 @@ import Styles from './Styles.css'
 class NavTemp extends Component {
     render() {
         return (
-            <div id="NavTemp">                
-                <p>J.M.V. DE OLIVEIRA PROMOTORA DE NEGÓCIOS E SERVIÇOS</p>
+            <div id="NavTemp">
+                <span>J.M.V. DE OLIVEIRA PROMOTORA DE NEGÓCIOS E SERVIÇOS</span>
                 <div>
                     <span>Quarta,03/05/2020</span>
-                    {/* <span class="material-icons">alarm</span> */}
-                    <span>18h36</span>
-                </div>         
+                    <div>
+                        <p className="material-icons">alarm</p>
+                        <span>18h36</span>
+                    </div>
+                </div>
             </div>
         );
     }

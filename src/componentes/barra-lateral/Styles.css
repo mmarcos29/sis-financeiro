@@ -10,9 +10,9 @@
     padding: 1px; border-radius: 5px;}
 #PesquisaFuncionalidades{background-color: #3f8bb7; border-radius: 25px; border: solid 1px #044f76}
 /* border: solid 2px #044f76; */
-#PesquisaFuncionalidades input{border-radius: 25px; width: 2vw; background-color: transparent; 
+#PesquisaFuncionalidades input{border-radius: 25px; width: 3vw; background-color: transparent; 
     outline: none; text-align: center; color: white; transition: 1s;}
-#PesquisaFuncionalidades input:focus{width: 6vw; transition: 1s; max-width: 127px;}
+#PesquisaFuncionalidades input:focus{width: 10vw; transition: 1s; max-width: 127px;}
 #PesquisaFuncionalidades .material-icons{height: 22px;}
 
 #DASH, #telemarketing, #configuracoes, #operacional, #financeiro{display: none; background-color: #054f75; font-size: small;}

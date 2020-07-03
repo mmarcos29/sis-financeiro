@@ -1,5 +1,5 @@
 #NavIcones{background: #0176a1; max-height: 28px; display: flex; 
-    justify-content: space-between; margin-left: 1px; min-width: 211px;}
+    justify-content: space-between; margin-left: 1px; min-width: 211px; max-width: 210px;}
 #NavIcones a{background: #0176a1; color: white; font-size: 26px; 
     text-align: center; flex-grow: 1; margin:1px 1px 0 0; border: solid white; border-width: 0 1px 0 0;}
 #NavIcones a:last-child{border-width: 0;}
