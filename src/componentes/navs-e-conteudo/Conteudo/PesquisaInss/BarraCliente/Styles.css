@@ -1,0 +1,14 @@
+#BarraCliente{
+    color: white; 
+    
+    border: solid;
+    border-color: #3498c6;
+    border-width: 1px 0 0 0;
+    padding: 1px 0;
+}
+#BarraCliente div{
+    display: flex; 
+    justify-content: center;
+    background-color: #3498c6; 
+    padding: 5px;
+}

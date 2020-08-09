@@ -1,0 +1,13 @@
+#ResultadoText{
+    margin: 16px;
+}/*  background-color: #095273; */
+#ResultadoText div{
+    display: inline-block;
+}
+#ResultadoText div:last-child{
+    margin-left: 16px;
+}
+#ResultadoText p{
+    margin-top: 5px;
+    font-size: 12px;
+}

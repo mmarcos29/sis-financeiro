@@ -1,0 +1,33 @@
+#Beneficio{
+    margin: 20px;
+    background-color: #008ec2;
+    width: 25%;
+    height: 25%;
+    padding: 10px;
+    color: #fdfdfd;
+    font-family: Arial;
+    font-weight: bold;
+    border-radius: 10px;
+}
+#Nome{
+    display: flex;
+    justify-content: center;
+    border: solid;
+    border-width: 0 0 1px 0;
+    padding: 0 0 5px 0;
+}
+#Nb{
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+}
+.Item{
+    display: flex;
+    justify-content: space-between;
+}
+.Titulo{
+    
+}
+.Detalhe{
+    font-weight: normal;
+}
