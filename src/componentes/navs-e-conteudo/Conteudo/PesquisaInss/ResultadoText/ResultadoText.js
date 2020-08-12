@@ -5,9 +5,16 @@ class ResultadoText extends Component {
     render() {
         return (
             <div id="ResultadoText">
-                <div>Encontramos 2 benefícios para o CPF:</div>
-                <div>868.362.423-49</div>
-                <p>para visualizar mais detalhes clique em um deles</p>                
+                <div>Encontramos 1 benefícios para o CPF:</div>
+                <div id="cpfText">
+                    {this.props.dados.map(
+                        cliente => cliente.cpf
+                    )}
+                </div>
+                {this.props.dados.map(
+                    cliente => console.log(cliente)
+                )}
+                <p>para visualizar mais detalhes clique em um deles</p>
             </div>
         );
     }

@@ -3,3 +3,4 @@
 #NavPesquisa button{height: -webkit-fill-available; width: 10%; background: #fff212; margin-left: 1px; float: right; color: #0176a1; font-size: 7pt; min-width: 87px;
     max-width: 87px;}
 #NavPesquisa button:hover{background: #ece215; color: white;}
+#NavPesquisa button:active, #NavPesquisa button:focus{outline: none;}

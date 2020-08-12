@@ -3,10 +3,11 @@ import Styles from './Styles.css'
 
 class NavPesquisa extends Component {
     render() {
+
         return (
-            <div id="NavPesquisa">
-                <button>CONSULTAR</button>
-                <input placeholder="DIGITE NOME, CPF, NB OU MATÍCULA"></input>
+            <div id="NavPesquisa">                
+                <button onClick={() => this.props.alterarPesquisa(document.getElementById("valorPesquisa").value)}>CONSULTAR</button>
+                <input id="valorPesquisa" placeholder="DIGITE NOME, CPF, NB OU MATÍCULA"></input>                
             </div>
         );
     }

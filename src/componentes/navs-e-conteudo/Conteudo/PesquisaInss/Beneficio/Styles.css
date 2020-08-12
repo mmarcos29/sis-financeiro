@@ -1,5 +1,6 @@
 #Beneficio{
     margin: 20px;
+    margin-top: 0;
     background-color: #008ec2;
     width: 25%;
     height: 25%;
@@ -15,6 +16,7 @@
     border: solid;
     border-width: 0 0 1px 0;
     padding: 0 0 5px 0;
+    font-size: 90%;
 }
 #Nb{
     display: flex;

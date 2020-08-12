@@ -4,15 +4,17 @@ import BarraCliente from './BarraCliente/BarraCliente'
 import ResultadoText from './ResultadoText/ResultadoText'
 import Beneficio from './Beneficio/Beneficio'
 
-class PesquisaInss extends Component {
+
+
+class PesquisaInss extends Component {    
     render() {
+        
         return (
-            <div id="PesquisaInss">
-                <BarraCliente />
-                <ResultadoText />
+            <div id="PesquisaInss">                
+                <BarraCliente dados={this.props.dados}/>
+                <ResultadoText dados={this.props.dados} />
                 <div id="Beneficios">
-                    <Beneficio />
-                    <Beneficio />
+                    <Beneficio dados={this.props.dados}/>
                 </div>
 
             </div>

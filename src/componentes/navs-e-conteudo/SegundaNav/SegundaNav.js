@@ -7,7 +7,7 @@ class SegundaNav extends Component {
     render() {
         return (
             <div id="SegundaNav">
-                <NavPesquisa />
+                <NavPesquisa alterarPesquisa={this.props.alterarPesquisa}/>
                 <NavIcones />
             </div>
         )
