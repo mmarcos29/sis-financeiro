@@ -5,7 +5,11 @@ class BarraCliente extends Component {
     render() {
         return (
             <div id="BarraCliente">
-                <div>ADONIAS INACIO DA SILVA</div>                
+                <div>
+                    {this.props.dados.map(
+                        cliente => (cliente.nome)
+                    )}
+                </div>
             </div>
         );
     }

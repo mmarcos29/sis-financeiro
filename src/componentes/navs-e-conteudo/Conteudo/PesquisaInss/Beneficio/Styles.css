@@ -1,5 +1,7 @@
 #Beneficio{
+    min-height: 120px;
     margin: 20px;
+    margin-top: 0;
     background-color: #008ec2;
     width: 25%;
     height: 25%;
@@ -8,6 +10,10 @@
     font-family: Arial;
     font-weight: bold;
     border-radius: 10px;
+    cursor: pointer;
+}
+#Beneficio:hover{
+    color: #fdfdfd9e;
 }
 #Nome{
     display: flex;
@@ -15,6 +21,7 @@
     border: solid;
     border-width: 0 0 1px 0;
     padding: 0 0 5px 0;
+    font-size: 90%;
 }
 #Nb{
     display: flex;

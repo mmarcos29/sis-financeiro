@@ -1,0 +1,14 @@
+#ExibirDetahes{
+    color: white;
+    background: #054f75fc;
+    display: flex;
+    justify-content: center;
+    margin-top: -24px;
+    font-family: Arial;
+    padding: 1%;
+    font-weight: bold;
+    position: relative;
+    top: 76px;
+    left: -10px;
+    width: 105%;    
+}

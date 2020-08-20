@@ -1,30 +1,48 @@
 import React, { Component } from 'react';
 import Styles from './Styles.css'
+import ExibirDetahes from './ExibirDetahes/ExibirDetahes'
 
 class Beneficio extends Component {
+    state = {
+        Component:null
+    }
+    exibirDetalhes = () =>{
+        
+        this.setState({ Component: <ExibirDetahes /> })
+        
+    }
+    ocultaDetalhes = () =>{
+        
+        this.setState({ Component: null })
+        
+    }
     render() {
         return (
-            <div id="Beneficio">
-                <div id="Nome">ADONIAS INACIO DA SILVA</div>
-                <div id="Nb">NB:  12345678910</div>
-                <div className="Item">
-                    <div className="Titulo">Espécie</div>
-                    <div className="Detalhe">21 - Pensão por Morte</div>
-                </div>
-                <div className="Item">
-                    <div className="Titulo">Situação</div>
-                    <div className="Detalhe">ATIVO</div>
-                </div>
-                <div className="Item">
-                    <div className="Titulo">DIB</div>
-                    <div className="Detalhe">07/05/2013</div>
-                </div>
-                <div className="Item">
-                    <div className="Titulo">Idade</div>
-                    <div className="Detalhe">89 Anos</div>
-                </div>
-
-            </div>
+            this.props.dados.map(
+                cliente =>
+                    <div id="Beneficio" onMouseOver={this.exibirDetalhes}  onMouseLeave={ this.ocultaDetalhes } onClick={() =>  this.props.clickei() } >                     
+                        {this.state.Component}
+                        {/*                          */}
+                        <div id="Nome">{cliente.nome}</div>
+                        <div id="Nb">NB: {cliente.nb}</div>
+                        <div className="Item">
+                            <div className="Titulo">Espécie</div>
+                            <div className="Detalhe">{cliente.esp} - Pensão por Morte</div>
+                        </div>
+                        <div className="Item">
+                            <div className="Titulo">Situação</div>
+                            <div className="Detalhe">ATIVO</div>
+                        </div>
+                        <div className="Item">
+                            <div className="Titulo">DIB</div>
+                            <div className="Detalhe">{cliente.dib}</div>
+                        </div>
+                        <div className="Item">
+                            <div className="Titulo">Idade</div>
+                            <div className="Detalhe">{cliente.dtNascimento}</div> 
+                        </div>
+                    </div>
+            )
         );
     }
 }

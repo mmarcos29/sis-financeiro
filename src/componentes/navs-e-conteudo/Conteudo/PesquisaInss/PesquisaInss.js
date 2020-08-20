@@ -3,16 +3,20 @@ import Styles from './Styles.css'
 import BarraCliente from './BarraCliente/BarraCliente'
 import ResultadoText from './ResultadoText/ResultadoText'
 import Beneficio from './Beneficio/Beneficio'
+import BarraLocationPage from '../../Conteudo/PesquisaInss/BarraLocationPage/BarraLocationPage';
 
-class PesquisaInss extends Component {
+
+
+class PesquisaInss extends Component {    
     render() {
+        
         return (
-            <div id="PesquisaInss">
-                <BarraCliente />
-                <ResultadoText />
+            <div id="PesquisaInss">                
+                <BarraLocationPage />
+                <BarraCliente dados={this.props.dados}/>
+                <ResultadoText dados={this.props.dados} />
                 <div id="Beneficios">
-                    <Beneficio />
-                    <Beneficio />
+                    <Beneficio dados={this.props.dados} clickei={this.props.clickei}/>
                 </div>
 
             </div>
