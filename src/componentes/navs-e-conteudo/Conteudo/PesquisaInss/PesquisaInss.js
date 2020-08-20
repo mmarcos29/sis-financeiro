@@ -16,7 +16,7 @@ class PesquisaInss extends Component {
                 <BarraCliente dados={this.props.dados}/>
                 <ResultadoText dados={this.props.dados} />
                 <div id="Beneficios">
-                    <Beneficio dados={this.props.dados}/>
+                    <Beneficio dados={this.props.dados} clickei={this.props.clickei}/>
                 </div>
 
             </div>
