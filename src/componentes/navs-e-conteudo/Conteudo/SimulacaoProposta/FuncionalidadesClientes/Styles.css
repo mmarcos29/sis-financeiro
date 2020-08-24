@@ -1,15 +1,24 @@
 #BordaSuperior {border-style: solid;
-     border-bottom-width: 1px;
+     /* border-bottom-width: 1px;
      border-top-width: 0;
      border-right-width: 0;
-     border-left-width: 0;
-     width: 89%;
+     border-left-width: 0; */
+     border-width: 0 0 1px 0;
+     width: 100%;
      margin-bottom: 5px;
      color: #c0c0c0;
      }
- #Funcionalidades {width: 50%; height: 50%; padding: 9px; display: inline-block;}
+ #Funcionalidades {
+     width: 50%; 
+     height: 50%; 
+     padding: 9px;
+     display: inline-block;
+}
  
- #Beneficiario {justify-content: space-between; }
+#Beneficiario {
+    display: flex;
+    justify-content: space-between; 
+}
  #Beneficiario p { display: inline-block;
      font-family: 'Arial';
      font-size: 32px;
@@ -19,36 +28,69 @@
  
  
  
- .caixa { display: inline-block;
-      margin-left: -3px;
-      margin-bottom: 3px;
+ .caixa { 
+      display: inline-block;
+      margin: 0 0 3px 3px;
       padding: 2px;
       text-align: left;
-      border: #c0c0c0 solid 1px; border-top-width: 0px;
-      width: 17%; height: 49px;
-      text-align: center;font-family: 'Arial';
+      border: #c0c0c0 solid 1px; 
+      border-top-width: 0px;
+      width: 86px; 
+      height: 55px;
+      text-align: center;
+      font-family: 'Arial';
       font-size: 13px;
       font-weight: normal;
       color:#C0C0C0;
       border-radius: 0px 0px 4px 4px;
      }
+.caixa:nth-child(1){
+    margin: 0 0 3px 0;
+}
+.caixa:nth-child(7) {
+    font-size: 1em;
+    margin: 0 0 3px 0;
+}
+.caixa:nth-child(7) p.Respostas{
+    font-size: 0.6em;
+}
+.especificacoes{
+    display: flex;
+    flex-wrap: wrap;
+}
  
  .caixa p {text-align: left; margin-left: 5px;}  
  
- .Respostas {color:#5c5c5c; margin-top: 11px;}
+.Respostas {
+    color:#5c5c5c; 
+    margin-top: 11px;
+    /* display: flex;
+    flex-direction: column; */
+}
  #SIM { margin-top: 11px; color: #52c256;}
  
- #MargemEmprestimo {display: flex; width: 47%;}
+ #MargemEmprestimo {
+     display: flex; 
+     background-color: #54c358;
+     border-radius: 4px;
+}
+.MargemSimulacao{
+    display: flex;    
+}
  #MargemCartão {display: flex; width: 47%;}
  
  #Margem1 {
+    padding: 4px;
+     background-color: white;
      border: 1px; 
      border-style: solid; 
      border-color: #54c358; 
      border-top-left-radius: 3px; 
      border-bottom-left-radius: 3px;
-     width: 72%; height: 45px;
      text-align: left;   
+ }
+ #Margem1 p{
+    font-size: 0.8em;        
  }
  
  #Margem2 {border: 1px; 
@@ -58,7 +100,7 @@
      border-bottom-left-radius: 3px;
      width: 72%; height: 45px;
      text-align: left; }
- #Margem1, #Margem2 p { font-family: 'Verdana'; font-size: 15px; font-weight: normal; color: #adadad;}
+ #Margem1, #Margem2 p { font-family: 'Verdana'; font-size: 0.9em; font-weight: normal; color: #adadad;}
  
  .ValorLiberado {font-family: 'Arial';
      font-size: 15px;
@@ -67,12 +109,14 @@
  .Liberado {margin-bottom: 7px;}
  
  
- #Liberado1 {display: inline-block;
+ #Liberado1 {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
      border-style: solid; 
      border-color: #54c358; background-color: #54c358;
      border-top-right-radius: 3px; 
-     border-bottom-right-radius: 3px;
-     width: 26%; height: -1%;
+     border-bottom-right-radius: 3px;     
      font-size: 13px
  }
  #Liberado1 p {text-align: center; font-family: 'Arial'; color: white; margin: 2px 2px 2px 2px;}
