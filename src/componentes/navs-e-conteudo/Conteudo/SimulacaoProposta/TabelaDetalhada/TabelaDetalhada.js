@@ -5,6 +5,12 @@ class TabelaDetalhada extends Component {
     render() {
         return (
             <div id="TabelaDetalhada">
+                <div id="titulo">
+                    <div>HISTÓRICO DE PROPOSTAS</div>
+                    <div>DADOS CADASTRAIS</div>
+                    <div>DADOS BANCARIOS</div>
+                </div>
+
                 <table>
                     <thead>
                         <tr>
