@@ -1,4 +1,10 @@
-#CaixasCliente {  width: 99%; 
+.CaixasProcedimentos img{
+    width: 92px; 
+    
+}
+
+
+#CaixasCliente {  width: 100%; 
     display: flex; 
     border: solid #c0c0c0;
     border-width: 0px 0px 1px 0px;  
@@ -20,6 +26,9 @@
      border-radius: 4px 4px 4px 4px;
      height: 44px;
      margin: 2px 4px 0px 0px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
 }
 
 .CaixasProcedimentos:nth-child(1) { background-color:#1eb082;}
@@ -55,9 +64,6 @@
      font-size: 32px;
      font-weight: normal;
      color: #0176a1;}
- 
- 
- 
  
  .caixa { 
       display: inline-block;
@@ -100,8 +106,7 @@
 }
  #SIM { margin-top: 11px; color: #52c256;}
 
-#CaixasMargens {} 
- 
+
  #MargemEmprestimo {
      display: flex; 
      background-color: #54c358;
@@ -129,8 +134,8 @@
     margin: 0px 0px 10px 0px;
  }
 
- #Margem1 p:nth-child(2){ color: #5c5c5c;}
- #Margem2 p:nth-child(2){ color: #5c5c5c;}
+ #Margem1 p:nth-child(2), #Margem2 p:nth-child(2) { color: #5c5c5c;}
+
 
  
  #Margem2 {padding: 4px;

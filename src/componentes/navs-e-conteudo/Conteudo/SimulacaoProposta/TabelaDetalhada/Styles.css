@@ -8,3 +8,9 @@
 #TabelaDetalhada thead {background: #35bae8; color: #054f75;
      }
 #TabelaDetalhada tbody{ }     
+
+#bordaTabela {
+     border: solid #c0c0c0;
+     border-width: 0px 1px 1px 1px;
+     border-radius: 3px;
+}

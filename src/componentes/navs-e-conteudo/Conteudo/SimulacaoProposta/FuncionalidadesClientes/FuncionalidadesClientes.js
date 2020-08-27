@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import Styles from './Styles.css'
+import ImgAgendar from '../../../../../img/agendar cliente.png'
+import ImgAtender from '../../../../../img/atender cliente.png'
+import ImgCadastrar from '../../../../../img/cadastrar clientes.png'
+import ImgEfetivar from '../../../../../img/efetivar proposta.png'
+
+
 
 class FuncionalidadesClientes
     extends Component {
@@ -39,10 +45,18 @@ class FuncionalidadesClientes
                     </div>
 
                     <div id="Procedimento">
-                        <div className="CaixasProcedimentos"></div>
-                        <div className="CaixasProcedimentos"></div>
-                        <div className="CaixasProcedimentos"></div>
-                        <div className="CaixasProcedimentos"></div>
+                        <div className="CaixasProcedimentos">
+                            <img src={ImgEfetivar}></img>
+                        </div>
+                        <div className="CaixasProcedimentos">
+                            <img src={ImgCadastrar}></img>
+                        </div>
+                        <div className="CaixasProcedimentos">
+                            <img src={ImgAgendar}></img>
+                        </div>
+                        <div className="CaixasProcedimentos">
+                            <img src={ImgAtender}></img>
+                        </div>
                     </div>
 
 
