@@ -12,7 +12,7 @@ class PesquisaInss extends Component {
         
         return (
             <div id="PesquisaInss">                
-                <BarraLocationPage />
+                <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
                 <BarraCliente dados={this.props.dados}/>
                 <ResultadoText dados={this.props.dados} />
                 <div id="Beneficios">

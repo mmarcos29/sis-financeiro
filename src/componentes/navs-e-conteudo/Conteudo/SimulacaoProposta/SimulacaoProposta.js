@@ -14,10 +14,10 @@ class SimulacaoProposta extends Component {
         
         return (
             <div id="SimulacaoProposta">                
-                <BarraLocationPage />
+                <BarraLocationPage>Simulação de crédito</BarraLocationPage>
                 <BarraBeneficios dados={this.props.dados}/>  
-                <FuncionalidadesClientes/>
-                <TabelaDetalhada/>
+                <FuncionalidadesClientes dados={this.props.dados}/>
+                {/* <TabelaDetalhada/> */}
                            
 
             </div>

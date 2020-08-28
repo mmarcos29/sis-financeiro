@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Styles from './Styles.css'
+import './Styles.css'
 
 class BtnReduzir extends Component {
     render() {

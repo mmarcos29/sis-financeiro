@@ -7,26 +7,26 @@ class Conteudo extends Component {
     constructor(props) {
         super(props);
         this.trocaComponente = this.trocaComponente.bind(this);
-        this.state = {
-            Componente: <PesquisaInss dados={this.props.dados} clickei={this.trocaComponente} />
+        if (this.props.dados) {
+            this.state = {
+                Componente: <PesquisaInss dados={this.props.dados} clickei={this.trocaComponente} >PESQUISA INSS</PesquisaInss>
+            }
+        } else {
+            this.state = {
+                Componente: this.props.children
+            }
         }
     }
-    // constructor(props) {
-    //     super(props);
-    //     this.trocaComponente = this.trocaComponente.bind(this);        
-    //   }
-    
 
+    // <PesquisaInss dados={this.props.dados} clickei={this.trocaComponente} >PESQUISA INSS</PesquisaInss>
     trocaComponente = () => {
-        this.setState({ Componente: <SimulacaoProposta dados={this.props.dados}/> });
-        // alert("josiane")
+        this.setState({ Componente: <SimulacaoProposta dados={this.props.dados} /> });
     }
+
     render() {
         return (
-            <div id="Conteudo"> {/* onClick={this.trocaComponente} */}
+            <div id="Conteudo">
                 {this.state.Componente}
-                {/* <SimulacaoProposta dados={this.props.dados}/> */}
-                {/* <PesquisaInss dados={this.props.dados}/> */}
             </div>
         );
     }

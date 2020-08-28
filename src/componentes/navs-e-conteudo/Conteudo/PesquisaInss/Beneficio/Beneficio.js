@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Styles from './Styles.css'
 import ExibirDetahes from './ExibirDetahes/ExibirDetahes'
 
+var hoje = new Date();
+
 class Beneficio extends Component {
     state = {
         Component:null
@@ -16,6 +18,7 @@ class Beneficio extends Component {
         this.setState({ Component: null })
         
     }
+
     render() {
         return (
             this.props.dados.map(
@@ -38,8 +41,8 @@ class Beneficio extends Component {
                             <div className="Detalhe">{cliente.dib}</div>
                         </div>
                         <div className="Item">
-                            <div className="Titulo">Idade</div>
-                            <div className="Detalhe">{cliente.dtNascimento}</div> 
+                            <div className="Titulo">Idade</div>{/* hoje.getFullYear() - 2019 */}
+                            <div className="Detalhe">{( hoje.getFullYear() ) - ( cliente.dtNascimento.substr(0, 4) )} ANOS</div> 
                         </div>
                     </div>
             )

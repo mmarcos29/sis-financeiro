@@ -31,6 +31,11 @@
      justify-content: center;
 }
 
+.CaixasProcedimentos:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
 .CaixasProcedimentos:nth-child(1) { background-color:#1eb082;}
 .CaixasProcedimentos:nth-child(2) {background-color: #ed3c44;}
 .CaixasProcedimentos:nth-child(3) {background-color: #f7ae69;}
@@ -38,11 +43,8 @@
 
 
 
-#BordaSuperior {border-style: solid;
-     /* border-bottom-width: 1px;
-     border-top-width: 0;
-     border-right-width: 0;
-     border-left-width: 0; */
+#BordaSuperior {
+     border-style: solid;    
      border-width: 0 0 1px 0;
      width: 99%;
      margin-bottom: 5px;
@@ -111,6 +113,7 @@
      display: flex; 
      background-color: #54c358;
      border-radius: 4px;
+     margin-right: 5%;
 }
 .MargemSimulacao{
     display: flex;    

@@ -9,11 +9,7 @@ class BarraLocationPage extends Component {
 
                 <div id="barraINSS">
                     <div id="caixaAmarela"><img src={image}></img> </div>
-                    <p>PESQUISA INSS</p>
-                    {/* <div id='CaixaAzul'>
-                        <img src={image}></img>
-                        <div id="azul"><div id="PesquisaFuncionalidades"><input id="inputPesquisaFuncionalidades" onBlur={() => this.limpaCampo("inputPesquisaFuncionalidades")} /><span id="pesquisaItens" class="material-icons">search</span></div></div>
-                    </div> */}
+                    <p>{this.props.children}</p>                   
                 </div>
             </div>
         );
