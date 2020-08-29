@@ -35,11 +35,10 @@ class App extends React.Component {
       <div id="App">
         <BrowserRouter>
         {this.state.menu}
-          <Switch>
-            
+          <Switch>            
             <Route exact path="/" component={NavsEConteudo} />
             <Route path="/propostas" component={() => <NavsEConteudo ><Conteudo><Propostas >PROPOSTAS</Propostas></Conteudo></NavsEConteudo>} />
-            <Route path="/clientes" component={() => <NavsEConteudo ><Conteudo><Propostas >CLIENTES</Propostas></Conteudo></NavsEConteudo>} />
+            <Route path="/clientes" component={() => <NavsEConteudo ><Conteudo><Clientes >CLIENTES</Clientes></Conteudo></NavsEConteudo>} />
             <Route path="/esteira" component={() => <NavsEConteudo ><Conteudo><Propostas >ESTEIRA</Propostas></Conteudo></NavsEConteudo>} />
             <Route path="/formalizacao" component={() => <NavsEConteudo ><Conteudo><Propostas >FORMALIZAÇÃO</Propostas></Conteudo></NavsEConteudo>} />
             <Route path="/bordero" component={() => <NavsEConteudo ><Conteudo><Propostas >BORDERÔ</Propostas></Conteudo></NavsEConteudo>} />

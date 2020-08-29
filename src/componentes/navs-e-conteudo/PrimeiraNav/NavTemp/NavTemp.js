@@ -7,7 +7,7 @@ class NavTemp extends Component {
         curTime: null
     }
     render() {
-        setInterval(function(){this.setState({curTime: new  Date().toLocaleString()});}.bind(this), 1000);
+        setInterval(function(){this.setState({curTime: new  Date().toLocaleString()});}.bind(this), 10000);
         return (
             <div id="NavTemp">
                 <span>J.M.V. DE OLIVEIRA PROMOTORA DE NEGÓCIOS E SERVIÇOS</span>
@@ -16,7 +16,7 @@ class NavTemp extends Component {
                     {/* <span>Quarta,03/05/2020</span> */}
                     <div>
                         <p className="material-icons">alarm</p>
-                        <span>{new Date().getHours() < 10 ? '0' + new Date().getHours() : '' + new Date().getHours()}:{ new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : '' + new Date().getMinutes()}:{new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : '' + new Date().getSeconds()}</span>
+                        <span>{new Date().getHours() < 10 ? '0' + new Date().getHours() : '' + new Date().getHours()}:{ new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : '' + new Date().getMinutes()}</span>
                         {/* :{new Date().getSeconds()} */}
                     </div>
                 </div>

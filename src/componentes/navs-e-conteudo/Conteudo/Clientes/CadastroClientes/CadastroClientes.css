@@ -1,0 +1,26 @@
+.CadastroClientes {
+  padding: 5px;
+}
+
+.CadastroClientes form label input {
+  border: solid 1px #00000054;
+  margin-top: 5px;
+  height: 100%;
+}
+.CadastroClientes form label {
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.CadastroClientes form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.CadastroClientes div {
+  margin: 16px 0;
+  width: 48%;
+  display: flex;
+  justify-content: space-between;
+}

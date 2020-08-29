@@ -9,7 +9,10 @@ class BarraLocationPage extends Component {
 
                 <div id="barraINSS">
                     <div id="caixaAmarela"><img src={image}></img> </div>
-                    <p>{this.props.children}</p>                   
+                    <div id="conteudoBarra">
+                        <p>{this.props.children}</p>
+                        {this.props.incluir}
+                    </div>
                 </div>
             </div>
         );
