@@ -9,15 +9,17 @@ import BarraLocationPage from '../../Conteudo/PesquisaInss/BarraLocationPage/Bar
 
 class PesquisaInss extends Component {    
     render() {
-        
+        // this.props.changeTypeContent("PesquisaInss")
         return (
             <div id="PesquisaInss">                
-                <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
-                <BarraCliente dados={this.props.dados}/>
+                {/* <BarraLocationPage>{[...this.props.children]}</BarraLocationPage> */}
+                {/* <BarraCliente dados={this.props.dados}/>
                 <ResultadoText dados={this.props.dados} />
                 <div id="Beneficios">
                     <Beneficio dados={this.props.dados} clickei={this.props.clickei}/>
-                </div>
+                </div> */}
+                {console.log(this.props)}
+                pesquisaaa
 
             </div>
         );

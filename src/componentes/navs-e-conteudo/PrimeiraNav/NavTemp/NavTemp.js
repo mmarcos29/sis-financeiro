@@ -4,10 +4,15 @@ let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
 
 class NavTemp extends Component {
     state ={
-        curTime: null
+        curTime: new  Date().getMinutes()
     }
     render() {
-        setInterval(function(){this.setState({curTime: new  Date().toLocaleString()});}.bind(this), 10000);
+        setInterval(function(){
+            if(new  Date().getMinutes() != this.state.curTime){
+                this.setState({curTime: new  Date().getMinutes()});
+            }
+            }.bind(this)
+            , 1000);
         return (
             <div id="NavTemp">
                 <span>J.M.V. DE OLIVEIRA PROMOTORA DE NEGÓCIOS E SERVIÇOS</span>

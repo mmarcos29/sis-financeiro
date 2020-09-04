@@ -6,29 +6,45 @@ import SimulacaoProposta from './SimulacaoProposta/SimulacaoProposta'
 class Conteudo extends Component {
     constructor(props) {
         super(props);
-        this.trocaComponente = this.trocaComponente.bind(this);
-        if (this.props.dados) {
-            this.state = {
-                Componente: <PesquisaInss dados={this.props.dados} clickei={this.trocaComponente} >PESQUISA INSS</PesquisaInss>
-            }
-        } else {
-            this.state = {
-                Componente: this.props.children
-            }
+        this.state = {
+            Componente: this.props.children,
+            reload: false
         }
     }
 
-    // <PesquisaInss dados={this.props.dados} clickei={this.trocaComponente} >PESQUISA INSS</PesquisaInss>
     trocaComponente = () => {
         this.setState({ Componente: <SimulacaoProposta dados={this.props.dados} /> });
     }
 
+    recarregar = (resposta) => {
+        alert("recarregar")
+        this.setState({ reload: resposta });
+    }
+
+
     render() {
         return (
             <div id="Conteudo">
-                {this.state.Componente}
+                {this.props.children}
             </div>
-        );
+        )
+        // this.props.reloadConteudo(this.recarregar)
+        // console.log("conteudo")
+        // if(this.props.dados){
+        //     return (
+        //         <div id="Conteudo">
+        //             {this.props.dados}
+        //             {console.log(this.props.children)}
+        //         </div>
+        //     );
+        // }else{
+        //     return (
+        //         <div id="Conteudo">
+        //             {this.props.children}
+        //             {console.log(this.props.children)}
+        //         </div>
+        //     );
+        // }
     }
 }
 
