@@ -23,7 +23,7 @@ class Beneficio extends Component {
         return (
             this.props.dados.map(
                 cliente =>
-                    <div id="Beneficio" onMouseOver={this.exibirDetalhes}  onMouseLeave={ this.ocultaDetalhes } onClick={() =>  this.props.clickei() } >                     
+                    <div id="Beneficio" onMouseOver={this.exibirDetalhes}  onMouseLeave={ this.ocultaDetalhes }  >     {/*onClick={() =>  this.props.clickei() } */}                
                         {this.state.Component}
                         {/*                          */}
                         <div id="Nome">{cliente.nome}</div>
