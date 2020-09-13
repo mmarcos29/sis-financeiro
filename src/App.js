@@ -10,6 +10,8 @@ import Propostas from './componentes/navs-e-conteudo/Conteudo/Propostas/Proposta
 import Clientes from './componentes/navs-e-conteudo/Conteudo/Clientes/Clientes'
 import PesquisaInss from './componentes/navs-e-conteudo/Conteudo/PesquisaInss/PesquisaInss'
 import SimulacaoProposta from './componentes/navs-e-conteudo/Conteudo/SimulacaoProposta/SimulacaoProposta'
+import CadastroClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/CadastroClientes/CadastroClientes'
+import BarraLocationPage from './componentes/navs-e-conteudo/Conteudo/PesquisaInss/BarraLocationPage/BarraLocationPage'
 import { Redirect } from 'react-router-dom';
 
 import { createBrowserHistory } from "history"
@@ -56,6 +58,7 @@ class App extends Component {
                 <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
                 <Route path="/propostas" component={() => <Propostas >PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
                 <Route path="/clientes" component={() => <Clientes >CLIENTES</Clientes>} />
+                <Route path="/CadastroClientes" component={()=> <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes dados={this.state.dadosClientes}/></>} />
                 <Route path="/esteira" component={() => <Propostas >ESTEIRA</Propostas>} />
                 <Route path="/formalizacao" component={() => <Propostas >FORMALIZAÇÃO</Propostas>} />
                 <Route path="/bordero" component={() => <Propostas >BORDERÔ</Propostas>} />

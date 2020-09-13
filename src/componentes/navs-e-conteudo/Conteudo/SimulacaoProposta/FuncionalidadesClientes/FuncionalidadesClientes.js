@@ -4,6 +4,7 @@ import ImgAgendar from '../../../../../img/agendar cliente.png'
 import ImgAtender from '../../../../../img/atender cliente.png'
 import ImgCadastrar from '../../../../../img/cadastrar clientes.png'
 import ImgEfetivar from '../../../../../img/efetivar proposta.png'
+import { Link } from "react-router-dom";
 
 
 
@@ -49,7 +50,9 @@ class FuncionalidadesClientes
 
                             <div id="Procedimento">
                                 <div className="CaixasProcedimentos">
-                                    <img src={ImgEfetivar}></img>
+                                    <Link to="/CadastroClientes">
+                                        <img src={ImgEfetivar}></img>
+                                    </Link>
                                 </div>
                                 <div className="CaixasProcedimentos">
                                     <img src={ImgCadastrar}></img>

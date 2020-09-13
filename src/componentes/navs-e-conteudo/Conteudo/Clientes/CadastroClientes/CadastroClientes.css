@@ -1,5 +1,6 @@
 .CadastroClientes {
   padding: 5px;
+  overflow: overlay;
 }
 
 .CadastroClientes form label input {
@@ -7,20 +8,36 @@
   margin-top: 5px;
   height: 100%;
 }
-.CadastroClientes form label {
+.dIdentificacao {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #fff;
+  display: none;
+  margin-bottom: 16px;
+}
+.dIdentificacao label {
+  margin-top: 16px;
   height: 48px;
   display: flex;
   flex-direction: column;
   width: 48%;
 }
-.CadastroClientes form {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.CadastroClientes div {
-  margin: 16px 0;
+.dIdentificacao div {
   width: 48%;
   display: flex;
   justify-content: space-between;
+}
+.CadastroClientes form ul {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+}
+
+/* .CadastroClientes li:first-child{margin-bottom: 0;} */
+.CadastroClientes li {
+  background-color: #dedede;
+  width: 100%;
+  border: solid 1px #a7a0a0de;
+  border-width: 0 0 1px 0;
+  padding: 5px 0;
 }
