@@ -4,34 +4,39 @@ import "./CadastroClientes.css";
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
   state = {
-    exibir: null
-  }  
-  componentDidMount=()=>{
-    this.setState({exibir: this.refs.dIdentificacao})
-  }
-  componentWillUpdate=()=>{
-    if(this.state.exibir!==null){
-      this.state.exibir.style.display = 'none';
+    exibir: null,
+  };
+  componentDidMount = () => {
+    this.setState({ exibir: this.refs.dIdentificacao });
+  };
+  componentWillUpdate = () => {
+    if (this.state.exibir !== null) {
+      this.state.exibir.style.display = "none";
     }
-  }
-  componentDidUpdate=()=>{
-      this.state.exibir.style.display = 'flex';
-  }
-  render(){
-    let dados = []
-    let nome = ''
-    if(this.props.dados){
-      this.props.dados.map(dado =>
-        dados = dado
-        )
+  };
+  componentDidUpdate = () => {
+    this.state.exibir.style.display = "flex";
+  };
+  render() {
+    let dados = [];
+    let nome = "";
+    if (this.props.dados) {
+      this.props.dados.map((dado) => (dados = dado));
     }
     return (
       <div className="CadastroClientes">
         <form>
           {/* onSubmit={this.handleSubmit} */}
           <ul>
-            <li onClick={()=> this.setState({exibir: this.refs.dIdentificacao})}>DADOS DE IDENTIFICAÇÃO DO CLIENTE</li>
-            <div className="dIdentificacao" ref='dIdentificacao'>
+            <li
+              onClick={() =>
+                this.setState({ exibir: this.refs.dIdentificacao })
+              }
+            >
+              <div className="simbolo">+</div>
+              DADOS DE IDENTIFICAÇÃO DO CLIENTE
+            </li>
+            <div className="dIdentificacao" ref="dIdentificacao">
               <label>
                 CPF*
                 <input
@@ -198,9 +203,80 @@ export default class CadastroClientes extends React.Component {
                   //   onChange={this.handleChange}
                 />
               </label>
+              <label className="umTerco">
+                Rua
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label className="umTerco">
+                Bairro
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label className="umTerco">
+                Número
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label className="umTerco">
+                Cep
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label className="umTerco">
+                Cidade
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label className="umTerco">
+                Estado
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Nome do Pai
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Nome da Mãe
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
             </div>
-            <li  onClick={()=> this.setState({exibir: this.refs.dProfissionais})}>DADOS PROFISSIONAIS</li>
-            <div className="dIdentificacao" ref='dProfissionais'>
+            <li
+              onClick={() =>
+                this.setState({ exibir: this.refs.dProfissionais })
+              }
+            >
+              <div className="simbolo">+</div>
+              DADOS PROFISSIONAIS
+            </li>
+            <div className="dIdentificacao" ref="dProfissionais">
               <label>
                 CPF*
                 <input
@@ -368,8 +444,11 @@ export default class CadastroClientes extends React.Component {
                 />
               </label>
             </div>
-            <li onClick={()=> this.setState({exibir: this.refs.rPessoais})}>REFERÊNCIAS PESSOAIS</li>
-            <div className="dIdentificacao" ref='rPessoais'>
+            <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
+            <div className="simbolo">+</div>
+              REFERÊNCIAS PESSOAIS
+            </li>
+            <div className="dIdentificacao" ref="rPessoais">
               <label>
                 CPF*
                 <input
@@ -541,6 +620,6 @@ export default class CadastroClientes extends React.Component {
           {/* <input type="submit" value="Enviar" /> */}
         </form>
       </div>
-    );  
+    );
   }
 }

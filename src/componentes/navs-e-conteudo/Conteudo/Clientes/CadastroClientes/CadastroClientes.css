@@ -1,6 +1,9 @@
 .CadastroClientes {
   padding: 5px;
   overflow: overlay;
+  height: 36%;
+  max-height: 510px;
+  min-height: 419px;
 }
 
 .CadastroClientes form label input {
@@ -11,9 +14,16 @@
 .dIdentificacao {
   justify-content: space-between;
   flex-wrap: wrap;
-  background: #fff;
+  background: #35bae8fa;
   display: none;
-  margin-bottom: 16px;
+  padding: 0 16px 16px;
+}
+
+.dIdentificacao .umTerco {
+  width: 30%;
+}
+.dIdentificacao .umQuarto {
+  width: 25%;
 }
 .dIdentificacao label {
   margin-top: 16px;
@@ -35,9 +45,27 @@
 
 /* .CadastroClientes li:first-child{margin-bottom: 0;} */
 .CadastroClientes li {
-  background-color: #dedede;
+  display: flex;
+  background-color: #ffff00;
+  font-weight: bold;
+  color: #054f75;
   width: 100%;
-  border: solid 1px #a7a0a0de;
+  border: solid 5px black;
   border-width: 0 0 1px 0;
   padding: 5px 0;
+  cursor: pointer;
+}
+
+.simbolo {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: green;
+  color: white;
+  border-radius: 25px;
+  font-size: 15px;
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
 }
