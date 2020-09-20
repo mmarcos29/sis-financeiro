@@ -16,6 +16,7 @@ export default class Relatorios extends Component {
             !document.getElementById("operacional")
             .classList.contains("active")
           ) {
+            document.getElementById("operacional").classList.add("active")
             this.props.setListaAtiva(document.getElementById("operacional"));
           }
         }

@@ -23,6 +23,8 @@ export default class CadastroClientes extends React.Component {
         !document.getElementById("operacional")
         .classList.contains("active")
       ) {
+        // alert("era p ta dando certo")
+        document.getElementById("operacional").classList.add("active")
         this.props.setListaAtiva(document.getElementById("operacional"));
       }
     }

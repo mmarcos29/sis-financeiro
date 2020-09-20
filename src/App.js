@@ -65,17 +65,17 @@ class App extends Component {
     // }
   }
 
-  componentDidUpdate() {
-    // alert("atualizou")
-    if (this.state.activeMenu) {
-      if (!this.state.activeMenu.classList.contains("active")) {
-        this.state.activeMenu.classList.add("active")
-      }
-      // if(!this.state.activeItem.classList.contains("active")){
-      //   this.state.activeItem.classList.add("active")
-      // }
-    }
-  }
+  // componentDidUpdate() {
+  //   // alert("atualizou")
+  //   if (this.state.activeMenu) {
+  //     if (!this.state.activeMenu.classList.contains("active")) {
+  //       this.state.activeMenu.classList.add("active")
+  //     }
+  //     // if(!this.state.activeItem.classList.contains("active")){
+  //     //   this.state.activeItem.classList.add("active")
+  //     // }
+  //   }
+  // }
 
   render() {
     if (this.state.menu === null) {

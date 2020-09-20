@@ -18,6 +18,7 @@ export default class Clientes extends Component {
       if (
         !document.getElementById("operacional").classList.contains("active")
       ) {
+        document.getElementById("operacional").classList.add("active")
         this.props.setListaAtiva(document.getElementById("operacional"));
       }
     }

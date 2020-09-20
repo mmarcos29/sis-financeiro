@@ -6,6 +6,7 @@ export default class ZeraMenu extends Component {
             this.props.activeMenu.classList.remove("active")
             this.props.activeMenu.style.display = "none"
         }
+        // dkldkdk
     }
     render() {
         return (
