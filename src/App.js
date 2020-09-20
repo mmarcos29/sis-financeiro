@@ -9,6 +9,10 @@ import Conteudo from './componentes/navs-e-conteudo/Conteudo/Conteudo'
 import Propostas from './componentes/navs-e-conteudo/Conteudo/Propostas/Propostas'
 import Esteira from './componentes/navs-e-conteudo/Conteudo/Esteira/Esteira'
 import Clientes from './componentes/navs-e-conteudo/Conteudo/Clientes/Clientes'
+import Formalizacao from './componentes/navs-e-conteudo/Conteudo/Formalizacao/Formalizacao'
+import Bordero from  './componentes/navs-e-conteudo/Conteudo/Bordero/Bordero'
+import Comissionamento from './componentes/navs-e-conteudo/Conteudo/Comissionamento/Comissionamento'
+import Relatorios from './componentes/navs-e-conteudo/Conteudo/Relatorios/Relatorios'
 import PesquisaInss from './componentes/navs-e-conteudo/Conteudo/PesquisaInss/PesquisaInss'
 import SimulacaoProposta from './componentes/navs-e-conteudo/Conteudo/SimulacaoProposta/SimulacaoProposta'
 import CadastroClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/CadastroClientes/CadastroClientes'
@@ -49,26 +53,26 @@ class App extends Component {
     this.setState({ dadosClientes: dados })
   }
 
-  setListaAtiva = (ul, li) => {
+  setListaAtiva = (ul) => {
     // alert("funcao")
     // console.log(ul, li)
     if(this.state.activeMenu !== ul){
       this.setState({ activeMenu: ul })
     }
-    if(this.state.activeItem !== li){
-      this.setState({ activeItem: li[0] })
-    }
+    // if(this.state.activeItem !== li){
+    //   this.setState({ activeItem: li[0] })
+    // }
   }
 
   componentDidUpdate() {
     // alert("atualizou")
-    if (this.state.activeMenu && this.state.activeItem) {
+    if (this.state.activeMenu) {
       if(!this.state.activeMenu.classList.contains("active")){
         this.state.activeMenu.classList.add("active")
       }
-      if(!this.state.activeItem.classList.contains("active")){
-        this.state.activeItem.classList.add("active")
-      }
+      // if(!this.state.activeItem.classList.contains("active")){
+      //   this.state.activeItem.classList.add("active")
+      // }
     }
   }
   
@@ -91,15 +95,15 @@ class App extends Component {
               <Conteudo dados={this.state.dadosClientes} > {/*reloadConteudo={alterarConteudo} data={reloadConteudo} */}
                 <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
                 <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
-                <Route path="/propostas" component={() => <Propostas >PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
+                <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
                 <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva}>CLIENTES</Clientes>} />
-                <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes dados={this.state.dadosClientes}
+                <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
                   setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} /></>} />
-                <Route path="/esteira" component={() => <Esteira activeItem={this.state.activeItem} setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
-                <Route path="/formalizacao" component={() => <Propostas >FORMALIZAÇÃO</Propostas>} />
-                <Route path="/bordero" component={() => <Propostas >BORDERÔ</Propostas>} />
-                <Route path="/comissionamento" component={() => <Propostas >COMISSIONAMENTO</Propostas>} />
-                <Route path="/relatorios" component={() => <Propostas >RELATÓRIOS</Propostas>} />
+                <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
+                <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
+                <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />
+                <Route path="/comissionamento" component={() => <Comissionamento setListaAtiva={this.setListaAtiva}>COMISSIONAMENTO</Comissionamento>} />
+                <Route path="/relatorios" component={() => <Relatorios setListaAtiva={this.setListaAtiva}>RELATÓRIOS</Relatorios>} />
               </Conteudo>
             </NavsEConteudo>
           </Switch>

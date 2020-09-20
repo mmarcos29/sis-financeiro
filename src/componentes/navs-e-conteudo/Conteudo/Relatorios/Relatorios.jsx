@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import './Propostas.css'
+import './Relatorios.css'
 import BarraLocationPage from '../PesquisaInss/BarraLocationPage/BarraLocationPage'
 
-export default class Propostas extends Component {
+export default class Relatorios extends Component {
     componentWillMount() {
         if (document.querySelectorAll("#operacional li.active")[0]) {
           document
@@ -19,13 +19,13 @@ export default class Propostas extends Component {
             this.props.setListaAtiva(document.getElementById("operacional"));
           }
         }
-        if(document.getElementsByClassName("li-propostas")[0]){
-            document.getElementsByClassName("li-propostas")[0].classList.add("active")
+        if(document.getElementsByClassName("li-relatorios")[0]){
+            document.getElementsByClassName("li-relatorios")[0].classList.add("active")
         }
       }
     render() {
         return (
-            <div id="Propostas">
+            <div id="Relatorios">
                 <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
             </div>
         )

@@ -101,13 +101,13 @@ class BarraFuncionalidades extends React.Component {
           <li onClick={() => this.exibe(this.refs.operacional)}>
             <i class="material-icons branco">supervisor_account</i> OPERACIONAL
             <ul className="ul-operacional" id="operacional" ref="operacional">
-              <li><Link to="/propostas"><i class="material-icons branco">check_box</i> PROPOSTAS</Link></li>
+              <li className="li-propostas"><Link to="/propostas"><i class="material-icons branco">check_box</i> PROPOSTAS</Link></li>
               <li className="li-clientes"><Link to="/clientes"><i class="material-icons branco">check_box</i> CLIENTES</Link></li>
               <li className="li-esteira"><Link to="/esteira"><i class="material-icons branco">check_box</i> ESTEIRA</Link></li>
-              <li><Link to="/formalizacao"><i class="material-icons branco">check_box</i> FORMALIZACAO</Link></li>
-              <li><Link to="/bordero"><i class="material-icons branco">check_box</i>BORDERÔ</Link></li>
-              <li><Link to="/comissionamento"><i class="material-icons branco">check_box</i>COMISSIONAMENTO</Link></li>
-              <li><Link to="/relatorios"><i class="material-icons branco">check_box</i>RELATÓRIOS</Link></li>
+              <li className="li-formalizacao"><Link to="/formalizacao"><i class="material-icons branco">check_box</i> FORMALIZACAO</Link></li>
+              <li className="li-bordero"><Link to="/bordero"><i class="material-icons branco">check_box</i>BORDERÔ</Link></li>
+              <li className="li-comissionamento"><Link to="/comissionamento"><i class="material-icons branco">check_box</i>COMISSIONAMENTO</Link></li>
+              <li className="li-relatorios"><Link to="/relatorios"><i class="material-icons branco">check_box</i>RELATÓRIOS</Link></li>
             </ul>
           </li>
           <li onClick={() => this.exibe(this.refs.financeiro)}>

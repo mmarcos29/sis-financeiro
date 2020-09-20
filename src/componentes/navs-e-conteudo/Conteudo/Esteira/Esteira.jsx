@@ -4,31 +4,30 @@ import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPa
 
 export default class Esteira extends Component {
   componentWillMount() {
-    // alert("foi")
+    // alert("primeiro")
     if (document.querySelectorAll("#operacional li.active")[0]) {
       document
         .querySelectorAll("#operacional li.active")[0]
-        .classList.remove("active");     
+        .classList.remove("active");
     }
   }
-  componentDidMount() {    
+  componentDidMount() {
+    // alert("segundo")
     if (document.getElementById("operacional")) {
       if (
-        !document.getElementById("operacional").classList.contains("active")
+        !document.getElementById("operacional")
+        .classList.contains("active")
       ) {
-        this.props.setListaAtiva(
-          document.getElementById("operacional"),
-          document.getElementsByClassName("li-esteira")
-        );
+        this.props.setListaAtiva(document.getElementById("operacional"));
       }
+    }
+    if(document.getElementsByClassName("li-esteira")[0]){
+        document.getElementsByClassName("li-esteira")[0].classList.add("active")
     }
   }
   render() {
     return (
       <div id="Esteira">
-        <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
-        <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
-        <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
         <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
       </div>
     );

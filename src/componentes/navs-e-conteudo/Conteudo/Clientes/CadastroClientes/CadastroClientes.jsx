@@ -8,8 +8,27 @@ export default class CadastroClientes extends React.Component {
     exibir: null,
     dados: null,
   };
+  componentWillMount() {
+    if (document.querySelectorAll("#operacional li.active")[0]) {
+      document
+        .querySelectorAll("#operacional li.active")[0]
+        .classList.remove("active");
+    }
+  }
   componentDidMount = () => {
     this.setState({ exibir: this.refs.dIdentificacao });
+
+    if (document.getElementById("operacional")) {
+      if (
+        !document.getElementById("operacional")
+        .classList.contains("active")
+      ) {
+        this.props.setListaAtiva(document.getElementById("operacional"));
+      }
+    }
+    if(document.getElementsByClassName("li-clientes")[0]){
+        document.getElementsByClassName("li-clientes")[0].classList.add("active")
+    }
   };
   componentWillUpdate = () => {
     if (this.state.exibir !== null) {

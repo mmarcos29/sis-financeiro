@@ -6,12 +6,24 @@ import CadastroClientes from "./CadastroClientes/CadastroClientes";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 export default class Clientes extends Component {
-  componentDidMount(){
-    if(document.getElementById("operacional")){
-      if(!document.getElementById("operacional").classList.contains("active")){
-        this.props.setListaAtiva(document.getElementById("operacional"), document.getElementsByClassName("li-clientes") )
+  componentWillMount() {
+    if (document.querySelectorAll("#operacional li.active")[0]) {
+      document
+        .querySelectorAll("#operacional li.active")[0]
+        .classList.remove("active");
+    }
+  }
+  componentDidMount() {
+    if (document.getElementById("operacional")) {
+      if (
+        !document.getElementById("operacional").classList.contains("active")
+      ) {
+        this.props.setListaAtiva(document.getElementById("operacional"));
       }
-    }    
+    }
+    if(document.getElementsByClassName("li-clientes")[0]){
+      document.getElementsByClassName("li-clientes")[0].classList.add("active")
+  }
   }
   render() {
     return (
@@ -19,7 +31,6 @@ export default class Clientes extends Component {
         <BarraLocationPage incluir={<IconeIncluir />}>
           {[...this.props.children]}
         </BarraLocationPage>
-        {/* <button style={{backgroundColor:"red", color:"white", padding: "5%"}} onClick={()=>this.props.setListaAtiva(document.getElementById("operacional"))}>testar</button> */}
       </div>
     );
   }
