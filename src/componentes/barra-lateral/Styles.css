@@ -5,7 +5,7 @@
 #BarraFuncionalidades li:hover{background-color: #11a6da;}
 .material-icons{vertical-align: middle; height: 27px;}
 #CaixaAzul{background-color: #054f75; max-height: 96px; min-height: 96px;}
-#BarraFuncionalidades img{width: 170px; margin: 5px;}
+#BarraFuncionalidades img{width: 170px; margin: 5px; margin: 5% 1%;}
 #azul{background-color: #3f8bb7; margin: 0 3px; display: flex; justify-content: flex-end;
     padding: 1px; border-radius: 5px;}
 #PesquisaFuncionalidades{background-color: #3f8bb7; border-radius: 25px; border: solid 1px #044f76}

@@ -46,7 +46,7 @@ class BarraFuncionalidadesLess extends React.Component {
             </li>
             <li>
               <a href="#" onClick={()=> this.states("less","operacional") }><i class="material-icons branco">supervisor_account</i></a>              
-              <ul id="operacional">            
+              <ul className="ul-operacional" id="operacional">            
                 <li><a href="#"><i class="material-icons branco">check_box</i> PROPOSTAS</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> ESTEIRA</a></li>
                 <li><a href="#"><i class="material-icons branco">check_box</i> FORMALIZAÇÃO</a></li>
