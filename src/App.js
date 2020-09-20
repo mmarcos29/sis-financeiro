@@ -10,9 +10,10 @@ import Propostas from './componentes/navs-e-conteudo/Conteudo/Propostas/Proposta
 import Esteira from './componentes/navs-e-conteudo/Conteudo/Esteira/Esteira'
 import Clientes from './componentes/navs-e-conteudo/Conteudo/Clientes/Clientes'
 import Formalizacao from './componentes/navs-e-conteudo/Conteudo/Formalizacao/Formalizacao'
-import Bordero from  './componentes/navs-e-conteudo/Conteudo/Bordero/Bordero'
+import Bordero from './componentes/navs-e-conteudo/Conteudo/Bordero/Bordero'
 import Comissionamento from './componentes/navs-e-conteudo/Conteudo/Comissionamento/Comissionamento'
 import Relatorios from './componentes/navs-e-conteudo/Conteudo/Relatorios/Relatorios'
+import ZeraMenu from './Services/ZeraMenu'
 import PesquisaInss from './componentes/navs-e-conteudo/Conteudo/PesquisaInss/PesquisaInss'
 import SimulacaoProposta from './componentes/navs-e-conteudo/Conteudo/SimulacaoProposta/SimulacaoProposta'
 import CadastroClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/CadastroClientes/CadastroClientes'
@@ -27,7 +28,7 @@ const history = createBrowserHistory();
 
 class App extends Component {
   state = {
-    activeMenu: "",
+    activeMenu: null,
     activeItem: null,
     menu: null,
     dadosClientes: null,
@@ -56,7 +57,7 @@ class App extends Component {
   setListaAtiva = (ul) => {
     // alert("funcao")
     // console.log(ul, li)
-    if(this.state.activeMenu !== ul){
+    if (this.state.activeMenu !== ul) {
       this.setState({ activeMenu: ul })
     }
     // if(this.state.activeItem !== li){
@@ -67,7 +68,7 @@ class App extends Component {
   componentDidUpdate() {
     // alert("atualizou")
     if (this.state.activeMenu) {
-      if(!this.state.activeMenu.classList.contains("active")){
+      if (!this.state.activeMenu.classList.contains("active")) {
         this.state.activeMenu.classList.add("active")
       }
       // if(!this.state.activeItem.classList.contains("active")){
@@ -75,8 +76,8 @@ class App extends Component {
       // }
     }
   }
-  
-  render() {    
+
+  render() {
     if (this.state.menu === null) {
       this.setState({
         menu:
@@ -93,6 +94,7 @@ class App extends Component {
           <Switch>
             <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
               <Conteudo dados={this.state.dadosClientes} > {/*reloadConteudo={alterarConteudo} data={reloadConteudo} */}
+                <Route exact path="/" component={ () => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />}/>
                 <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
                 <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
                 <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
