@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import Styles from './Styles.css'
+import MascaraCpf from "../../../../mascaraCpf"
 
 class ResultadoText extends Component {
     render() {
         return (
-            <div id="ResultadoText">
-                <div>Encontramos 1 benefícios para o CPF:</div>
-                <div id="cpfText">
+            <div id="ResultadoText">                
+                <div>Encontramos <span className="cpfText">{this.props.dados.length}</span> benefícios para o CPF:</div>
+                <div className="cpfText">
                     {this.props.dados.map(
-                        cliente => cliente.cpf
+                        cliente => MascaraCpf(cliente.cpf)
                     )}
                 </div>
-                {this.props.dados.map(
-                    cliente => console.log(cliente)
-                )}
                 <p>para visualizar mais detalhes clique em um deles</p>
             </div>
         );

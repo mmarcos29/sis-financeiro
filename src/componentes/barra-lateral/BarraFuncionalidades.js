@@ -18,27 +18,36 @@ class BarraFuncionalidades extends React.Component {
   exibe(id) {
     if (this.state.visivel != id) {
       if (this.state.visivel != "DASH") {
-        this.oculta(this.state.visivel)
-      } else {
-        this.setState({ visivel: id })
+        if(this.state.visivel.classList.contains("active")){
+          // nao fez nada pq essa sessão está aberta pelo usuário
+        }else{
+          this.oculta(this.state.visivel)
+        }
       }
       setTimeout(() => {
         this.setState({ visivel: id })
       }, 1)
     } else {
-      if (this.state.visivel.style.display === 'none') {
-        this.state.visivel.style.display = 'block'
-        this.state.visivel.style.transition = "200ms"
-        setTimeout(
-          () => { this.state.visivel.style.opacity = 1 }, 300
-        )
-      } else {
-        this.state.visivel.style.transition = "352ms"
-        this.state.visivel.style.opacity = 0
-        setTimeout(() => {
-          this.state.visivel.style.display = 'none'
-        }, 352)
-      }
+      setTimeout(() => {
+        if (id.classList.contains("active")) {
+          //make nothing here
+          //becouse this id was the select by the costumer
+        } else {
+          if (this.state.visivel.style.display === 'none') {
+            this.state.visivel.style.display = 'block'
+            this.state.visivel.style.transition = "200ms"
+            setTimeout(
+              () => { this.state.visivel.style.opacity = 1 }, 300
+            )
+          } else {
+            this.state.visivel.style.transition = "352ms"
+            this.state.visivel.style.opacity = 0
+            setTimeout(() => {
+              this.state.visivel.style.display = 'none'
+            }, 352)
+          }
+        }
+      }, 0)
     }
   }
   componentDidUpdate() {
@@ -54,22 +63,28 @@ class BarraFuncionalidades extends React.Component {
   states(id) {
     this.props.trocar(id)
   }
-  componentDidMount() {
-    if (this.props.modulo != null) {
-      if (this.props.modulo === "operacional") {
-        this.setState({ visivel: this.refs.operacional })
-      } else if (this.props.modulo === "financeiro") {
-        this.setState({ visivel: this.refs.financeiro })
-      } else if (this.props.modulo === "telemarketing") {
-        this.setState({ visivel: this.refs.telemarketing })
-      } else if (this.props.modulo === "configuracoes") {
-        this.setState({ visivel: this.refs.configuracoes })
-      }
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.listaAtiva) {
+  //     // document.getElementById(`${this.props.listaAtiva}`).style.display = "block"
+  //     this.setState({ visivel: document.getElementById(`${this.props.listaAtiva}`) })
+  //   }
+  //   if (this.props.modulo != null) {
+  //     if (this.props.modulo === "operacional") {
+  //       this.setState({ visivel: this.refs.operacional })
+  //     } else if (this.props.modulo === "financeiro") {
+  //       this.setState({ visivel: this.refs.financeiro })
+  //     } else if (this.props.modulo === "telemarketing") {
+  //       this.setState({ visivel: this.refs.telemarketing })
+  //     } else if (this.props.modulo === "configuracoes") {
+  //       this.setState({ visivel: this.refs.configuracoes })
+  //     }
+  //   }
+  // }
+
   render() {
+    // alert("barra lateral renderizada")
     return (
-      <div id="BarraFuncionalidades">
+      <div className="BarraFuncionalidades" id="BarraFuncionalidades">
         <div id='CaixaAzul'>
           <Link to="/">
             <img src={image}></img>
@@ -84,12 +99,12 @@ class BarraFuncionalidades extends React.Component {
             </ul>
           </li>
           <li onClick={() => this.exibe(this.refs.operacional)}>
-            <a href="#"><i class="material-icons branco">supervisor_account</i> OPERACIONAL</a>
-            <ul id="operacional" ref="operacional">
+            <i class="material-icons branco">supervisor_account</i> OPERACIONAL
+            <ul className="ul-operacional" id="operacional" ref="operacional">
               <li><Link to="/propostas"><i class="material-icons branco">check_box</i> PROPOSTAS</Link></li>
-              <li><Link to="/clientes"><i class="material-icons branco">check_box</i> CLIENTES</Link></li>
-              <li><Link to="/esteira"><i class="material-icons branco">check_box</i> ESTEIRA</Link></li>              
-              <li><Link to="/formalizacao"><i class="material-icons branco">check_box</i> FORMALIZACAO</Link></li>              
+              <li className="li-clientes"><Link to="/clientes"><i class="material-icons branco">check_box</i> CLIENTES</Link></li>
+              <li className="li-esteira"><Link to="/esteira"><i class="material-icons branco">check_box</i> ESTEIRA</Link></li>
+              <li><Link to="/formalizacao"><i class="material-icons branco">check_box</i> FORMALIZACAO</Link></li>
               <li><Link to="/bordero"><i class="material-icons branco">check_box</i>BORDERÔ</Link></li>
               <li><Link to="/comissionamento"><i class="material-icons branco">check_box</i>COMISSIONAMENTO</Link></li>
               <li><Link to="/relatorios"><i class="material-icons branco">check_box</i>RELATÓRIOS</Link></li>

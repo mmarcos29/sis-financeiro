@@ -1,6 +1,6 @@
 #BarraFuncionalidades{display: flex; flex-direction: column; background: #35bae8; color: #095273; 
     margin-left: 1px; height: 100vh; font-size: 90%; overflow: auto; min-width: 180px;}
-#BarraFuncionalidades a{color: #095273; margin-left: 5px;}
+.BarraFuncionalidades a{color: #095273; margin-left: 5px;}
 #BarraFuncionalidades ul li{border-bottom: solid 1px #095273; cursor: pointer;}
 #BarraFuncionalidades li:hover{background-color: #11a6da;}
 .material-icons{vertical-align: middle; height: 27px;}
@@ -15,10 +15,10 @@
 #PesquisaFuncionalidades input:focus{width: 10vw; transition: 1s; max-width: 127px;}
 #PesquisaFuncionalidades .material-icons{height: 22px;}
 
-#DASH, #telemarketing, #configuracoes, #operacional, #financeiro{display: none; background-color: #054f75; font-size: small;}
-#DASH a:hover, #telemarketing a:hover, #configuracoes a:hover, #financeiro a:hover, #operacional a:hover{color: white;}
-#DASH a, #telemarketing a, #configuracoes a, #financeiro a, #operacional a{color: #01bff3;}
-#operacional li, #telemarketing li, #configuracoes li, #financeiro li, #DASH li{border-top: solid 1px #01bff3;}
+#DASH, #telemarketing, #configuracoes, .ul-operacional, #financeiro{display: none; background-color: #fff212; font-size: small;}
+#DASH a:hover, #telemarketing a:hover, #configuracoes a:hover, #financeiro a:hover, .ul-operacional a:hover{color: white;}
+#DASH a, #telemarketing a, #configuracoes a, #financeiro a, .ul-operacional a{color: #01bff3;}
+.ul-operacional li, #telemarketing li, #configuracoes li, #financeiro li, #DASH li{border-top: solid 1px #01bff3; background-color: #054f75;}
 #operacional li:hover, #telemarketing li:hover, #configuracoes li:hover, #financeiro li:hover, #DASH li:hover{background-color: #054f75;}
 
 

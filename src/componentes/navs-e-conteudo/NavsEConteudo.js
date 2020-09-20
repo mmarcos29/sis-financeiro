@@ -35,6 +35,9 @@ class NavsEConteudo extends Component {
                 // return <Redirect to="/login/" />
                 // this.setState({ encontrado: pesquisado })
             } else {
+                console.log("valor")
+                console.log(valor)
+                console.log("valor")
                 alert("Cliente não encontrado")
             }
         } else {

@@ -1,5 +1,4 @@
 .CadastroClientes {
-  padding: 5px;
   overflow: overlay;
   height: 36%;
   max-height: 510px;
@@ -10,6 +9,8 @@
   border: solid 1px #00000054;
   margin-top: 5px;
   height: 100%;
+  text-align: center;
+  font-weight: bold;
 }
 .dIdentificacao {
   justify-content: space-between;

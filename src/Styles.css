@@ -1,1 +1,4 @@
 #App{display: flex; font-family: Arial;}
+.active{display: block; opacity: 1;}
+.active .active{width: 97%;}
+.active .active a{color: yellow;}

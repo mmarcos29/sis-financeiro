@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./CadastroClientes.css";
+import mascaraCpf from "../../../.././mascaraCpf.js";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
   state = {
     exibir: null,
+    dados: null,
   };
   componentDidMount = () => {
     this.setState({ exibir: this.refs.dIdentificacao });
@@ -17,11 +19,16 @@ export default class CadastroClientes extends React.Component {
   componentDidUpdate = () => {
     this.state.exibir.style.display = "flex";
   };
+
   render() {
-    let dados = [];
+    // let dados = [];
     let nome = "";
     if (this.props.dados) {
-      this.props.dados.map((dado) => (dados = dado));
+      let dadosh;
+      this.props.dados.map((dado) => (dadosh = dado));
+      if (this.state.dados === null) {
+        this.setState({ dados: dadosh });
+      }
     }
     return (
       <div className="CadastroClientes">
@@ -41,15 +48,17 @@ export default class CadastroClientes extends React.Component {
                 CPF*
                 <input
                   type="text"
-                  value={dados.cpf}
-                  //   onChange={this.handleChange}
+                  value={
+                    this.state.dados ? mascaraCpf(this.state.dados.cpf) : ""
+                  }
+                  // onChange={this.setState({cpf:this.handleChange})}
                 />
               </label>
               <label>
                 Nome Completo*
                 <input
                   type="text"
-                  value={dados.nome}
+                  value={this.state.dados ? this.state.dados.nome : ""}
                   //   onChange={this.handleChange}
                 />
               </label>
@@ -267,6 +276,74 @@ export default class CadastroClientes extends React.Component {
                   //   onChange={this.handleChange}
                 />
               </label>
+              <div>
+                <label>
+                  Grau de Instrução
+                  <input
+                    type="text"
+                    //   value={this.state.value}
+                    //   onChange={this.handleChange}
+                  />
+                </label>
+                <label>
+                  Estado Civil
+                  <input
+                    type="text"
+                    //   value={this.state.value}
+                    //   onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <div>
+                <label>
+                  End. p/Correspondência
+                  <input
+                    type="text"
+                    //   value={this.state.value}
+                    //   onChange={this.handleChange}
+                  />
+                </label>
+                <label>
+                  Nº Dependentes
+                  <input
+                    type="text"
+                    //   value={this.state.value}
+                    //   onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <label>
+                Nome do Cônjuge
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Doc. Identidade (Tipo / Nº / Data Emissão)
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Naturalidade (cidade e estado)
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                Data Nascimento
+                <input
+                  type="text"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />
+              </label>
             </div>
             <li
               onClick={() =>
@@ -445,7 +522,7 @@ export default class CadastroClientes extends React.Component {
               </label>
             </div>
             <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
-            <div className="simbolo">+</div>
+              <div className="simbolo">+</div>
               REFERÊNCIAS PESSOAIS
             </li>
             <div className="dIdentificacao" ref="rPessoais">
