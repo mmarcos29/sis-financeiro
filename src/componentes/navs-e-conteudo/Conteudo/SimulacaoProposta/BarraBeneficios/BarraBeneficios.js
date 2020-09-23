@@ -10,7 +10,7 @@ class BarraBeneficios extends Component {
                     
                         {this.props.dados.map(
                             cliente => 
-                            <span id="Nbeneficios">{(cliente.nb)}</span>
+                            <span id="Nbeneficios">{(cliente.nb)}</span>                            
                         )}                    
                 </div>
             </div>

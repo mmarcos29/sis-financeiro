@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CadastroClientes.css";
 import mascaraCpf from "../../../.././mascaraCpf.js";
 

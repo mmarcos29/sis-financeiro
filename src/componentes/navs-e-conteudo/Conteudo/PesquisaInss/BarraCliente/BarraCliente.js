@@ -6,9 +6,10 @@ class BarraCliente extends Component {
         return (
             <div id="BarraCliente">
                 <div>
-                    {this.props.dados.map(
+                    {this.props.dados[0].nome}
+                    {/* {this.props.dados.map(
                         cliente => (cliente.nome)
-                    )}
+                    )} */}
                 </div>
             </div>
         );

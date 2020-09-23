@@ -94,7 +94,7 @@ class BarraFuncionalidades extends React.Component {
         <ul>
           <BtnReduzir trocaMenu={this.states.bind(this)} />
           <li onClick={() => this.exibe(this.refs.DASH)}>
-            <Link to="/"><i class="material-icons branco">home</i> DESHEBORD</Link>
+            <Link to="/"><i className="material-icons branco">home</i> DESHEBORD</Link>
             <ul id="DASH" ref="DASH">
             </ul>
           </li>
@@ -111,39 +111,39 @@ class BarraFuncionalidades extends React.Component {
             </ul>
           </li>
           <li onClick={() => this.exibe(this.refs.financeiro)}>
-            <a href="#"><i class="material-icons branco">attach_money</i> FINANCEIRO</a>
+            <a href="#"><i className="material-icons branco">attach_money</i> FINANCEIRO</a>
             <ul id="financeiro" ref="financeiro">
-              <li><a href="#"><i class="material-icons branco">check_box</i> BALANÇO</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> RECEBER COMISSÕES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> PAGAR COMISSÕES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> BONUS/DESCONTOS</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> RECEITAS</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> DESPESAS</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> CONTA GERENCIAL</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> GRUPO DE COMISSÕES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> RELATÓRIOS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> BALANÇO</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> RECEBER COMISSÕES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> PAGAR COMISSÕES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> BONUS/DESCONTOS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> RECEITAS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> DESPESAS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> CONTA GERENCIAL</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> GRUPO DE COMISSÕES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> RELATÓRIOS</a></li>
             </ul>
           </li>
           <li onClick={() => this.exibe(this.refs.telemarketing)}>
-            <a href="#"><i class="material-icons branco">support_agent</i> TELEMARKETING</a>
+            <a href="#"><i className="material-icons branco">support_agent</i> TELEMARKETING</a>
             <ul id="telemarketing" ref="telemarketing">
-              <li><a href="#"><i class="material-icons branco">check_box</i> RECEPTIVO</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> CENTRAL CLIENTES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> LIGAÇÕES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> PÓS VENDA</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> ENFILEIRAMENTO</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> OPORTUNIDADES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> CAMPANHAS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> RECEPTIVO</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> CENTRAL CLIENTES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> LIGAÇÕES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> PÓS VENDA</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> ENFILEIRAMENTO</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> OPORTUNIDADES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> CAMPANHAS</a></li>
             </ul>
           </li>
           <li onClick={() => this.exibe(this.refs.configuracoes)}>
-            <a href="#"><i class="material-icons branco">build</i> CONFIGURAÇÕES</a>
+            <a href="#"><i className="material-icons branco">build</i> CONFIGURAÇÕES</a>
             <ul id="configuracoes" ref="configuracoes">
-              <li><a href="#"><i class="material-icons branco">check_box</i> MEU PERFIL</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> MINHA CONTA</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> PAINEL DA EMPRESA</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> RESTRIÇÕES</a></li>
-              <li><a href="#"><i class="material-icons branco">check_box</i> USUÁRIOS</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> MEU PERFIL</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> MINHA CONTA</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> PAINEL DA EMPRESA</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> RESTRIÇÕES</a></li>
+              <li><a href="#"><i className="material-icons branco">check_box</i> USUÁRIOS</a></li>
             </ul>
           </li>
         </ul>

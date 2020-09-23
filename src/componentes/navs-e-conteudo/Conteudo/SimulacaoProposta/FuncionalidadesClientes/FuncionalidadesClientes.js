@@ -18,9 +18,8 @@ class FuncionalidadesClientes
                         <div id="CaixasCliente">
                             <div id="Funcionalidades">
                                 <div id="Beneficiario">
-                                    <p> {cliente.nome}</p>
-                                    {console.log(cliente)}
-                                    <p> {(new Date().getFullYear()) - (cliente.dtNascimento.substr(0, 4))} ANOS </p>
+                                    <p> {cliente.nome}</p>                                   
+                                    <p> {(new Date().getFullYear()) - ( cliente.dtNascimento.replace("/", "").replace("/", "").substr(4, 4) )} ANOS </p>
                                 </div>
                                 <div id="BordaSuperior"></div>
                                 <div className="especificacoes">

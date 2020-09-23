@@ -20,7 +20,8 @@ class NavsEConteudo extends Component {
     }
 
     async componentWillMount() {
-        const request = await api.get("");
+        const request = await api.get("")
+        console.log(request.data)
         this.setState({ Clientes: request.data });
     }
 
@@ -49,9 +50,6 @@ class NavsEConteudo extends Component {
     render() {
         return (
             <div id="NavsEConteudo">
-                {console.log("********************")}
-                {console.log(this.props.tipoContent)}
-                {console.log("*******************")}
                 <PrimeiraNav />
                 <SegundaNav alterarPesquisa={this.alterarPesquisa} />
                 {this.props.children}

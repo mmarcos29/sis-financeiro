@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component} from 'react'
 import BarraFuncionalidades from './componentes/barra-lateral/BarraFuncionalidades'
 
 import './Styles.css'
@@ -32,7 +32,8 @@ class App extends Component {
     activeItem: null,
     menu: null,
     dadosClientes: null,
-    tipoConteudo: null
+    tipoConteudo: null,
+    beneficio: null
   }
   troca(menu, modulo) {
     switch (menu) {

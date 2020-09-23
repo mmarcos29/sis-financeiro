@@ -8,9 +8,10 @@ class ResultadoText extends Component {
             <div id="ResultadoText">                
                 <div>Encontramos <span className="cpfText">{this.props.dados.length}</span> benefícios para o CPF:</div>
                 <div className="cpfText">
-                    {this.props.dados.map(
+                    {MascaraCpf(this.props.dados[0].cpf)}
+                    {/* {this.props.dados.map(
                         cliente => MascaraCpf(cliente.cpf)
-                    )}
+                    )} */}
                 </div>
                 <p>para visualizar mais detalhes clique em um deles</p>
             </div>
