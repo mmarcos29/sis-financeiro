@@ -5,6 +5,7 @@ import ImgAtender from '../../../../../img/atender cliente.png'
 import ImgCadastrar from '../../../../../img/cadastrar clientes.png'
 import ImgEfetivar from '../../../../../img/efetivar proposta.png'
 import { Link } from "react-router-dom";
+import IdadePorAnoNascimento from '../../../../../Services/IdadePorAnoNascimento';
 
 
 
@@ -19,7 +20,7 @@ class FuncionalidadesClientes
                             <div id="Funcionalidades">
                                 <div id="Beneficiario">
                                     <p> {cliente.nome}</p>                                   
-                                    <p> {(new Date().getFullYear()) - ( cliente.dtNascimento.replace("/", "").replace("/", "").substr(4, 4) )} ANOS </p>
+                                    <p> {IdadePorAnoNascimento(cliente.dtNascimento)} </p>
                                 </div>
                                 <div id="BordaSuperior"></div>
                                 <div className="especificacoes">

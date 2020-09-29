@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Styles from './Styles.css'
 import ExibirDetahes from './ExibirDetahes/ExibirDetahes'
 import ListaTipoBeneficios from '../../../../../Services/ListaTipoBeneficios'
+import IdadePorAnoNascimento from '../../../../../Services/IdadePorAnoNascimento';
 
 var hoje = new Date();
 
@@ -72,7 +73,7 @@ class Beneficio extends Component {
                 </div>
                 <div className="Item">
                     <div className="Titulo">Idade</div>{/* hoje.getFullYear() - 2019 */}
-                    <div className="Detalhe">{(hoje.getFullYear()) - (this.props.dados.dtNascimento.replace("/", "").replace("/", "").substr(4, 4))} ANOS</div>
+                    <div className="Detalhe">{IdadePorAnoNascimento(this.props.dados.dtNascimento)} </div>
                     {/* <div className="Detalhe">{( hoje.getFullYear() ) - ( cliente.dtNascimento.substr(0, 4) )} ANOS</div>  */}
                 </div>
             </Link>

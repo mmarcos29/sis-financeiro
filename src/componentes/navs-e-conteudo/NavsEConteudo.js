@@ -4,7 +4,6 @@ import PrimeiraNav from './PrimeiraNav/PrimeiraNav'
 import SegundaNav from './SegundaNav/SegundaNav'
 import Conteudo from './Conteudo/Conteudo'
 import PesquisaInss from './Conteudo/PesquisaInss/PesquisaInss'
-
 import api from '../../Services/api'
 
 class NavsEConteudo extends Component {
@@ -20,7 +19,7 @@ class NavsEConteudo extends Component {
     }
 
     async componentWillMount() {
-        const request = await api.get("")
+        const request = await api.get('receivefile')
         console.log(request.data)
         this.setState({ Clientes: request.data });
     }

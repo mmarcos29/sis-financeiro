@@ -1,14 +1,60 @@
-#Clientes{
-    width: 100%;
+#Clientes {
+  width: 100%;
+  overflow: overlay;
 }
 
+#alunos {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 16px 8px 16px 0;
+}
+#acoes {
+  width: 118px;
+}
+#acoes button {
+  margin-left: 5px;
+}
+#alunos th,
+#alunos td {
+  letter-spacing: 1.1px;
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+#alunos tr:nth-child(odd) {
+  background-color: #054f75cc;
+}
+#alunos tr {
+  background-color: #054f75;
+  color: white;
 
-#alunos{border-collapse: collapse; width: 100%; margin: 16px 8px 16px 0;}
-#acoes{width: 118px;}
-#acoes button{margin-left: 5px;}
-#alunos th, #alunos td{border: 1px solid black; padding: 8px; text-align: center; }
-#alunos tr:nth-child(even){background-color: #f2f2f2;}
-#alunos tr {background-color: #054f75; color: white;}
-#alunos tr:hover { color: #fff212;}
-#alunos th, #alunos td{ background-color: transparent; color: inherit; }
-#alunos th {color: white}
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#alunos tr:hover {
+  color: #fff212;
+  cursor: pointer;
+}
+#alunos tr:active {
+  color: black;
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+#alunos th,
+#alunos td {
+  background-color: transparent;
+  color: inherit;
+}
+#alunos th {
+  color: white;
+  background-color: #054f75;
+  cursor: auto;
+}
+#alunos td {
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+}
