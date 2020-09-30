@@ -5,7 +5,8 @@
   min-height: 419px;
 }
 
-.atributoForm input {
+.atributoForm input,
+.tipoConta input {
   border: solid 1px #00000054;
   margin-top: 5px;
   height: 100%;
@@ -21,26 +22,32 @@
 }
 .atributoForm label {
   align-items: center;
-  margin-top: 5px;
-  height: 4vh;
-  width: 4vw;
+  height: 95%;
+  width: 33%;
   text-align: center;
   font-weight: bold;
   display: flex;
   justify-content: center;
+  background-color: #c1b9b9f5;
+  border: solid 1px #00000054;
+  color: white;
 }
 
-.dIdentificacao .tipoConta{
+.dIdentificacao .tipoConta {
   display: flex;
-  justify-content: start;
+  align-items: flex-end;
+  height: 100%;
+  margin-top: 5px;
+  width: 100%;
 }
-.tipoConta input{
+.tipoConta input[type="radio"] {
   display: none;
 }
 
 .atributoForm input:checked + label {
   /* outline: 2px dotted #21b4d0; */
-  background-color: #0176a1;
+  background-color: #CDDC39;
+  color: white;
 }
 .dIdentificacao {
   justify-content: space-between;

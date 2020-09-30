@@ -14,7 +14,11 @@ export default class CadastroClientes extends React.Component {
       telefone: "",
       benefício: "",
       convenio: "INSS",
+      margem:"",
       BANCO: "",
+      agencia: "",
+      tipoConta: "CC",
+      conta: "",
     },
   };
   componentWillMount() {
@@ -128,8 +132,9 @@ export default class CadastroClientes extends React.Component {
                   Benefício*
                   <input
                     type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
+                    name="benefício"
+                    value={this.state.formulario.benefício}
+                    onChange={this.onchange}
                   />
                 </div>
               </div>
@@ -150,8 +155,9 @@ export default class CadastroClientes extends React.Component {
                   Margem*
                   <input
                     type="number"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
+                    name="margem"
+                    value={this.state.formulario.margem}
+                    onChange={this.onchange}
                   />
                 </div>
               </div>
@@ -171,28 +177,41 @@ export default class CadastroClientes extends React.Component {
                 <div className="atributoForm">
                   AGENCIA*
                   <input
-                    type="number"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
+                    type="text"
+                    name="agencia"
+                    value={this.state.formulario.agencia}
+                    onChange={this.onchange}
                   />
                 </div>
                 <div className="atributoForm">
                   CONTA*
                   <div className="tipoConta">
-                    <input type="radio" id="cc" name="tipoConta" value="cc" checked/>
+                    <input
+                      type="radio"
+                      id="cc"
+                      name="tipoConta"
+                      value="cc"
+                      checked={this.state.formulario.tipoConta === "CC"}
+                      onChange={this.onchange}
+                    />
                     <label for="cc">CC</label>
-                    <input type="radio" id="cp" name="tipoConta" value="cp" />
+                    <input
+                      type="radio"
+                      id="cp"
+                      name="tipoConta"
+                      value="cp"
+                      checked={this.state.formulario.tipoConta === "CP"}
+                      onChange={this.onchange}
+                    />
                     <label for="cp">CP</label>
+                    <input
+                      type="text"
+                      name="conta"
+                      value={this.state.formulario.conta}
+                      onChange={this.onchange}
+                    />
                   </div>
                 </div>
-                {/* <input type="radio" id="female" name="gender" value="female" />
-                <label for="female">Female</label>
-                Conta*
-                <input
-                  type="number"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />  */}
               </div>
             </div>
             <li
@@ -204,6 +223,11 @@ export default class CadastroClientes extends React.Component {
               DADOS PROFISSIONAIS
             </li>
             <div className="dIdentificacao" ref="dProfissionais"></div>
+            <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
+              <div className="simbolo">+</div>
+              REFERÊNCIAS PESSOAIS
+            </li>
+            <div className="dIdentificacao" ref="rPessoais"></div>
           </ul>
         </form>
         {/* <label>
