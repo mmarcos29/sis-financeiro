@@ -5,12 +5,42 @@
   min-height: 419px;
 }
 
-.CadastroClientes form label input {
+.atributoForm input {
   border: solid 1px #00000054;
   margin-top: 5px;
   height: 100%;
   text-align: center;
   font-weight: bold;
+}
+.atributoForm select {
+  border: solid 1px #00000054;
+  margin-top: 5px;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.atributoForm label {
+  align-items: center;
+  margin-top: 5px;
+  height: 4vh;
+  width: 4vw;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.dIdentificacao .tipoConta{
+  display: flex;
+  justify-content: start;
+}
+.tipoConta input{
+  display: none;
+}
+
+.atributoForm input:checked + label {
+  /* outline: 2px dotted #21b4d0; */
+  background-color: #0176a1;
 }
 .dIdentificacao {
   justify-content: space-between;
@@ -26,7 +56,7 @@
 .dIdentificacao .umQuarto {
   width: 25%;
 }
-.dIdentificacao label {
+.atributoForm {
   margin-top: 16px;
   height: 48px;
   display: flex;

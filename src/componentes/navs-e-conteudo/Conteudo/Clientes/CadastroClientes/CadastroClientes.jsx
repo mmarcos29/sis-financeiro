@@ -1,12 +1,21 @@
 import React from "react";
 import "./CadastroClientes.css";
 import mascaraCpf from "../../../.././mascaraCpf.js";
+import mascaraTelefone from "../../../../../Services/mascaraTelefone";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
   state = {
     exibir: null,
     dados: null,
+    formulario: {
+      nome: "",
+      cpf: "",
+      telefone: "",
+      benefício: "",
+      convenio: "INSS",
+      BANCO: "",
+    },
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -20,16 +29,15 @@ export default class CadastroClientes extends React.Component {
 
     if (document.getElementById("operacional")) {
       if (
-        !document.getElementById("operacional")
-        .classList.contains("active")
+        !document.getElementById("operacional").classList.contains("active")
       ) {
         // alert("era p ta dando certo")
-        document.getElementById("operacional").classList.add("active")
+        document.getElementById("operacional").classList.add("active");
         this.props.setListaAtiva(document.getElementById("operacional"));
       }
     }
-    if(document.getElementsByClassName("li-clientes")[0]){
-        document.getElementsByClassName("li-clientes")[0].classList.add("active")
+    if (document.getElementsByClassName("li-clientes")[0]) {
+      document.getElementsByClassName("li-clientes")[0].classList.add("active");
     }
   };
   componentWillUpdate = () => {
@@ -41,9 +49,25 @@ export default class CadastroClientes extends React.Component {
     this.state.exibir.style.display = "flex";
   };
 
+  onchange = (evento) => {
+    const campo = evento.target.name;
+    const formulario = { ...this.state.formulario };
+    const valor = evento.target.value.toUpperCase();
+
+    if (campo === "cpf") {
+      formulario[campo] = mascaraCpf(evento.target.value);
+    } else if (campo === "telefone") {
+      formulario[campo] = mascaraTelefone(evento.target.value);
+    } else {
+      formulario[campo] = valor;
+    }
+    this.setState({ formulario: formulario });
+    // console.log(formulario);
+  };
+
   render() {
-    // let dados = [];
-    let nome = "";
+    console.log(this.state);
+    // let nome = "";
     if (this.props.dados) {
       let dadosh;
       this.props.dados.map((dado) => (dadosh = dado));
@@ -54,7 +78,6 @@ export default class CadastroClientes extends React.Component {
     return (
       <div className="CadastroClientes">
         <form>
-          {/* onSubmit={this.handleSubmit} */}
           <ul>
             <li
               onClick={() =>
@@ -65,61 +88,125 @@ export default class CadastroClientes extends React.Component {
               DADOS DE IDENTIFICAÇÃO DO CLIENTE
             </li>
             <div className="dIdentificacao" ref="dIdentificacao">
-              <label>
+              <div className="atributoForm">
                 CPF*
                 <input
                   type="text"
+                  name="cpf"
                   value={
-                    this.state.dados ? mascaraCpf(this.state.dados.cpf) : ""
+                    this.state.dados
+                      ? mascaraCpf(this.state.dados.cpf)
+                      : this.state.formulario.cpf
                   }
-                  // onChange={this.setState({cpf:this.handleChange})}
+                  onChange={this.onchange}
                 />
-              </label>
-              <label>
+              </div>
+              <div className="atributoForm">
                 Nome Completo*
                 <input
                   type="text"
-                  value={this.state.dados ? this.state.dados.nome : ""}
-                  //   onChange={this.handleChange}
+                  name="nome"
+                  value={
+                    this.state.dados
+                      ? this.state.dados.nome
+                      : this.state.formulario.nome
+                  }
+                  onChange={this.onchange}
                 />
-              </label>
+              </div>
               <div>
-                <label>
+                <div className="atributoForm">
                   Telefone
                   <input
                     type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
+                    name="telefone"
+                    value={this.state.formulario.telefone}
+                    onChange={this.onchange}
                   />
-                </label>
-                <label>
+                </div>
+                <div className="atributoForm">
                   Benefício*
                   <input
                     type="text"
                     //   value={this.state.value}
                     //   onChange={this.handleChange}
                   />
-                </label>
+                </div>
               </div>
               <div>
-                <label>
+                <div className="atributoForm">
                   Convênio*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
+                  <select
+                    name="convenio"
+                    onChange={this.onchange}
+                    value={this.state.formulario.convenio}
+                  >
+                    <option value="INSS">INSS</option>
+                    <option value="FEDERAL CIVIL">FEDERAL CIVIL</option>
+                    <option value="AERONÁUTICA">AERONÁUTICA</option>
+                  </select>
+                </div>
+                <div className="atributoForm">
                   Margem*
                   <input
-                    type="text"
+                    type="number"
                     //   value={this.state.value}
                     //   onChange={this.handleChange}
                   />
-                </label>
+                </div>
               </div>
-              <label>
+              <div className="atributoForm">
+                BANCO*
+                <select
+                  name="BANCO"
+                  onChange={this.onchange}
+                  value={this.state.formulario.BANCO}
+                >
+                  <option value="INSS">INSS</option>
+                  <option value="FEDERAL CIVIL">FEDERAL CIVIL</option>
+                  <option value="AERONÁUTICA">AERONÁUTICA</option>
+                </select>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  AGENCIA*
+                  <input
+                    type="number"
+                    //   value={this.state.value}
+                    //   onChange={this.handleChange}
+                  />
+                </div>
+                <div className="atributoForm">
+                  CONTA*
+                  <div className="tipoConta">
+                    <input type="radio" id="cc" name="tipoConta" value="cc" checked/>
+                    <label for="cc">CC</label>
+                    <input type="radio" id="cp" name="tipoConta" value="cp" />
+                    <label for="cp">CP</label>
+                  </div>
+                </div>
+                {/* <input type="radio" id="female" name="gender" value="female" />
+                <label for="female">Female</label>
+                Conta*
+                <input
+                  type="number"
+                  //   value={this.state.value}
+                  //   onChange={this.handleChange}
+                />  */}
+              </div>
+            </div>
+            <li
+              onClick={() =>
+                this.setState({ exibir: this.refs.dProfissionais })
+              }
+            >
+              <div className="simbolo">+</div>
+              DADOS PROFISSIONAIS
+            </li>
+            <div className="dIdentificacao" ref="dProfissionais"></div>
+          </ul>
+        </form>
+        {/* <label>
                 BANCO
                 <input
                   type="text"
@@ -712,11 +799,11 @@ export default class CadastroClientes extends React.Component {
                   //   value={this.state.value}
                   //   onChange={this.handleChange}
                 />
-              </label>
-            </div>
-          </ul>
-          {/* <input type="submit" value="Enviar" /> */}
-        </form>
+              </label> */}
+        {/* </div> */}
+        {/* </ul> */}
+        {/* <input type="submit" value="Enviar" /> */}
+        {/* </form> */}
       </div>
     );
   }
