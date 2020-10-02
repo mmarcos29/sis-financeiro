@@ -2,6 +2,7 @@ import React from "react";
 import "./CadastroClientes.css";
 import mascaraCpf from "../../../.././mascaraCpf.js";
 import mascaraTelefone from "../../../../../Services/mascaraTelefone";
+import mascaradata from "../../../../../Services/mascaraData";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
@@ -11,14 +12,41 @@ export default class CadastroClientes extends React.Component {
     formulario: {
       nome: "",
       cpf: "",
+      sexo: "",
+      dtNascimento: "",
+      naturalidade: "",
+      nacionalidade: "",
+      rg: "",
+      dtEmissao: "",
+      orgaoEmissor: "",
+      ufEmissor: "",
       telefone: "",
       benefício: "",
       convenio: "INSS",
-      margem:"",
+      margem: "",
       BANCO: "",
       agencia: "",
       tipoConta: "CC",
+      tipoEndereco: "",
       conta: "",
+      observacoes: "",
+      nomeMae: "",
+      nomePai: "",
+      grauInstrucao: "",
+      estadoCivil: "",
+      bairro: "",
+      cep: "",
+      cidade: "",
+      estado: "",
+      rua: "",
+      numero: "",
+      dependentes: "",
+      cpfConjugue: "",
+      nomeConjugue: "",
+      rgConjugue: "",
+      naturalidadeConjugue: "",
+      nacionalidadeConjugue: "",
+      dtNascimentoConjugue: "",
     },
   };
   componentWillMount() {
@@ -58,10 +86,16 @@ export default class CadastroClientes extends React.Component {
     const formulario = { ...this.state.formulario };
     const valor = evento.target.value.toUpperCase();
 
-    if (campo === "cpf") {
+    if (campo === "cpf" || campo === "cpfConjugue") {
       formulario[campo] = mascaraCpf(evento.target.value);
     } else if (campo === "telefone") {
       formulario[campo] = mascaraTelefone(evento.target.value);
+    } else if (
+      campo === "dtNascimento" ||
+      campo === "dtEmissao" ||
+      campo === "dtNascimentoConjugue"
+    ) {
+      formulario[campo] = mascaradata(evento.target.value);
     } else {
       formulario[campo] = valor;
     }
@@ -78,6 +112,10 @@ export default class CadastroClientes extends React.Component {
       if (this.state.dados === null) {
         this.setState({ dados: dadosh });
       }
+    }
+    let visivelConjugue = "";
+    if (this.state.formulario.estadoCivil === "CASADO(A)") {
+      visivelConjugue = "visivel";
     }
     return (
       <div className="CadastroClientes">
@@ -212,6 +250,322 @@ export default class CadastroClientes extends React.Component {
                     />
                   </div>
                 </div>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  SEXO*
+                  <select
+                    name="sexo"
+                    onChange={this.onchange}
+                    value={this.state.formulario.sexo}
+                  >
+                    <option value="" disabled selected hidden>
+                      SELECIONE
+                    </option>
+                    <option value="M">MASCULINO</option>
+                    <option value="F">FEMININO</option>
+                  </select>
+                </div>
+                <div className="atributoForm">
+                  DATA NASCIMENTO*
+                  <input
+                    placeholder="dd/mm/aaaa"
+                    type="text"
+                    name="dtNascimento"
+                    value={this.state.formulario.dtNascimento}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  NATURALIDADE (CIDADE)*
+                  <input
+                    placeholder="Cidade"
+                    type="text"
+                    name="naturalidade"
+                    value={this.state.formulario.naturalidade}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm">
+                  NACIONALIDADE*
+                  <input
+                    type="text"
+                    name="nacionalidade"
+                    value={this.state.formulario.nacionalidade}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  RG Nº *
+                  <input
+                    type="text"
+                    name="rg"
+                    value={this.state.formulario.rg}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm">
+                  DATA EMISSÃO*
+                  <input
+                    placeholder="dd/mm/aaaa"
+                    type="text"
+                    name="dtEmissao"
+                    value={this.state.formulario.dtEmissao}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  ÓRGÃO EMISSOR *
+                  <input
+                    type="text"
+                    name="orgaoEmissor"
+                    value={this.state.formulario.orgaoEmissor}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm">
+                  UF*
+                  <input
+                    type="text"
+                    name="ufEmissor"
+                    value={this.state.formulario.ufEmissor}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+              <div className="atributoForm">
+                E-MAIL*
+                <input
+                  type="email"
+                  name="email"
+                  value={this.state.formulario.email}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm">
+                OBSERVAÇÕES*
+                <textarea
+                  name="observacoes"
+                  // id=""
+                  cols="60"
+                  rows="60"
+                  value={this.state.formulario.observacoes}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm">
+                NOME DO PAI*
+                <input
+                  type="text"
+                  name="nomePai"
+                  value={this.state.formulario.nomePai}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm">
+                NOME DA MÃE*
+                <input
+                  type="text"
+                  name="nomeMae"
+                  value={this.state.formulario.nomeMae}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div>
+                <div className="atributoForm">
+                  GRAU DE INSTRUÇÃO*
+                  <select
+                    name="grauInstrucao"
+                    onChange={this.onchange}
+                    value={this.state.formulario.grauInstrucao}
+                  >
+                    <option value="" disabled selected hidden>
+                      SELECIONE
+                    </option>
+                    <option value="ANALFABETO">ANALFABETO</option>
+                    <option value="LÊ E ESCREVE">LÊ E ESCREVE</option>
+                    <option value="PRIMEIRO GRAU INCOMPLETO">
+                      PRIMEIRO GRAU INCOMPLETO
+                    </option>
+                    <option value="PRIMEIRO GRAU COMPLETO">
+                      PRIMEIRO GRAU COMPLETO
+                    </option>
+                    <option value="SEGUNDO GRAU INCOMPLETO">
+                      SEGUNDO GRAU INCOMPLETO
+                    </option>
+                    <option value="SEGUNDO GRAU COMPLETO">
+                      SEGUNDO GRAU COMPLETO
+                    </option>
+                    <option value="SUPERIOR INCOMPLETO">
+                      SUPERIOR INCOMPLETO
+                    </option>
+                    <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
+                  </select>
+                </div>
+                <div className="atributoForm">
+                  ESTADO CIVIL*
+                  <select
+                    name="estadoCivil"
+                    onChange={this.onchange}
+                    value={this.state.formulario.estadoCivil}
+                  >
+                    <option value="" disabled selected hidden>
+                      SELECIONE
+                    </option>
+                    <option value="SOLTEIRO(A)">SOLTEIRO(A)</option>
+                    <option value="CASADO(A)">CASADO(A)</option>
+                    <option value="DIVORCIADO(A)">DIVORCIADO(A)</option>
+                    <option value="VIUVO(A)">VIUVO(A)</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <div className="atributoForm">
+                  END. P/CORRESPONDÊNCIA*
+                  <select
+                    name="tipoEndereco"
+                    onChange={this.onchange}
+                    value={this.state.formulario.tipoEndereco}
+                  >
+                    <option value="" disabled selected hidden>
+                      SELECIONE
+                    </option>
+                    <option value="RESIDENCIAL">RESIDENCIAL</option>
+                    <option value="COMERCIAL">COMERCIAL</option>
+                  </select>
+                </div>
+                <div className="atributoForm">
+                  Nº DEPENDENTES*
+                  <input
+                    type="number"
+                    name="dependentes"
+                    value={this.state.formulario.dependentes}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+              <div className={`conjugue ` + visivelConjugue}>
+                <div className="atributoForm umTerco">
+                  CPF DO CÔNJUGE*
+                  <input
+                    type="text"
+                    name="cpfConjugue"
+                    value={this.state.formulario.cpfConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm umTerco">
+                  NOME DO CÔNJUGE*
+                  <input
+                    type="text"
+                    name="nomeConjugue"
+                    value={this.state.formulario.nomeConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm umTerco">
+                  DATA DE NASCIMENTO*
+                  <input
+                    placeholder="dd/mm/aaaa"
+                    type="text"
+                    name="dtNascimentoConjugue"
+                    value={this.state.formulario.dtNascimentoConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm umTerco">
+                  RG Nº*
+                  <input
+                    type="text"
+                    name="rgConjugue"
+                    value={this.state.formulario.rgConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm umTerco">
+                  NATURALIDADE (CIDADE E ESTADO)*
+                  <input
+                    type="text"
+                    name="naturalidadeConjugue"
+                    value={this.state.formulario.naturalidadeConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+                <div className="atributoForm umTerco">
+                  NACIONALIDADE*
+                  <input
+                    type="text"
+                    name="nacionalidadeConjugue"
+                    value={this.state.formulario.nacionalidadeConjugue}
+                    onChange={this.onchange}
+                  />
+                </div>
+              </div>
+            </div>
+            <li onClick={() => this.setState({ exibir: this.refs.endereco })}>
+              <div className="simbolo">+</div>
+              ENDEREÇO CLIENTE
+            </li>
+            <div className="dIdentificacao" ref="endereco">
+              <div className="atributoForm metade">
+                RUA*
+                <input
+                  type="text"
+                  name="rua"
+                  value={this.state.formulario.rua}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                BAIRRO*
+                <input
+                  type="text"
+                  name="bairro"
+                  value={this.state.formulario.bairro}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umOitavo">
+                NÚMERO*
+                <input
+                  type="text"
+                  name="numero"
+                  value={this.state.formulario.numero}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CIDADE*
+                <input
+                  type="text"
+                  name="cidade"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                ESTADO*
+                <input
+                  type="text"
+                  name="estado"
+                  value={this.state.formulario.estado}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CEP*
+                <input
+                  type="text"
+                  name="cep"
+                  value={this.state.formulario.cep}
+                  onChange={this.onchange}
+                />
               </div>
             </div>
             <li
