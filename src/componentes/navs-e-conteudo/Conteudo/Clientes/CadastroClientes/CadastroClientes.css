@@ -39,7 +39,7 @@
   align-items: flex-end;
   height: 100%;
   margin-top: 5px;
-  width: 100%;  
+  width: 100%;
 }
 .tipoConta input[type="radio"] {
   display: none;
@@ -47,7 +47,7 @@
 
 .atributoForm input:checked + label {
   /* outline: 2px dotted #21b4d0; */
-  background-color: #CDDC39;
+  background-color: #cddc39;
   color: white;
 }
 .dIdentificacao {
@@ -83,6 +83,11 @@
   width: 100%;
   flex-wrap: wrap;
   display: none;
+  background-color: #0176a1;
+  padding: 16px;
+  margin: 10px 0;
+  color: yellow;
+  font-weight: bolder;
 }
 .dIdentificacao .visivel {
   display: flex !important;

@@ -3,6 +3,8 @@ import "./CadastroClientes.css";
 import mascaraCpf from "../../../.././mascaraCpf.js";
 import mascaraTelefone from "../../../../../Services/mascaraTelefone";
 import mascaradata from "../../../../../Services/mascaraData";
+import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
+import BtnSalvar from "./BtnSalvar/BtnSalvar";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
@@ -10,6 +12,31 @@ export default class CadastroClientes extends React.Component {
     exibir: null,
     dados: null,
     formulario: {
+      enderecoCliente: {
+        bairro: "",
+        cep: "",
+        cidade: "",
+        estado: "",
+        rua: "",
+        numero: "",
+      },
+      dadosProfissionais: {
+        empresa: "",
+        cnpj: "",
+        rendaMensal: "",
+        profissao: "",
+        cargo: "",
+        ramal: "",
+        catprofissional: "",
+        dtAdmissao: "",
+        especieAposentadoria: "",
+        cidade: "",
+        estado: "",
+        cep: "",
+        rua: "",
+        bairro: "",
+        numero: "",
+      },
       nome: "",
       cpf: "",
       sexo: "",
@@ -34,12 +61,6 @@ export default class CadastroClientes extends React.Component {
       nomePai: "",
       grauInstrucao: "",
       estadoCivil: "",
-      bairro: "",
-      cep: "",
-      cidade: "",
-      estado: "",
-      rua: "",
-      numero: "",
       dependentes: "",
       cpfConjugue: "",
       nomeConjugue: "",
@@ -83,23 +104,41 @@ export default class CadastroClientes extends React.Component {
 
   onchange = (evento) => {
     const campo = evento.target.name;
+    const listaCorreta = evento.target.getAttribute("objeto");
+    const listaValue = { ...this.state.formulario[listaCorreta] };
     const formulario = { ...this.state.formulario };
-    const valor = evento.target.value.toUpperCase();
+    let valor = evento.target.value
+    if( !evento.target.getAttribute("tipo") ){
+      valor = evento.target.value.toUpperCase();
+    }
+    if (campo === "email") {
+      valor = valor.toLowerCase();
+    }
 
     if (campo === "cpf" || campo === "cpfConjugue") {
-      formulario[campo] = mascaraCpf(evento.target.value);
+      formulario[campo] = mascaraCpf(valor);
     } else if (campo === "telefone") {
-      formulario[campo] = mascaraTelefone(evento.target.value);
+      formulario[campo] = mascaraTelefone(valor);
     } else if (
       campo === "dtNascimento" ||
       campo === "dtEmissao" ||
-      campo === "dtNascimentoConjugue"
+      campo === "dtNascimentoConjugue"      
     ) {
-      formulario[campo] = mascaradata(evento.target.value);
+      formulario[campo] = mascaradata(valor);
+      // exite uma lista determinada a ser salva dentro de formulario
+    } else if (listaCorreta) {
+      if(campo === "dtAdmissao"){
+        listaValue[campo] = mascaradata(valor)
+      }else if( campo === "rendaMensal"){
+        listaValue[campo] = mascaraDinheiro(valor)
+      }else{
+        listaValue[campo] = valor;
+      }
+      formulario[listaCorreta] = listaValue;
     } else {
       formulario[campo] = valor;
     }
-    this.setState({ formulario: formulario });
+    this.setState({ ...this.state, formulario: formulario });
     // console.log(formulario);
   };
 
@@ -118,6 +157,7 @@ export default class CadastroClientes extends React.Component {
       visivelConjugue = "visivel";
     }
     return (
+      <>
       <div className="CadastroClientes">
         <form>
           <ul>
@@ -489,7 +529,7 @@ export default class CadastroClientes extends React.Component {
                   />
                 </div>
                 <div className="atributoForm umTerco">
-                  NATURALIDADE (CIDADE E ESTADO)*
+                  NATURALIDADE*
                   <input
                     type="text"
                     name="naturalidadeConjugue"
@@ -518,6 +558,7 @@ export default class CadastroClientes extends React.Component {
                 <input
                   type="text"
                   name="rua"
+                  objeto="enderecoCliente"
                   value={this.state.formulario.rua}
                   onChange={this.onchange}
                 />
@@ -527,6 +568,7 @@ export default class CadastroClientes extends React.Component {
                 <input
                   type="text"
                   name="bairro"
+                  objeto="enderecoCliente"
                   value={this.state.formulario.bairro}
                   onChange={this.onchange}
                 />
@@ -536,7 +578,244 @@ export default class CadastroClientes extends React.Component {
                 <input
                   type="text"
                   name="numero"
+                  objeto="enderecoCliente"
                   value={this.state.formulario.numero}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CIDADE*
+                <input
+                  type="text"
+                  name="cidade"
+                  objeto="enderecoCliente"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                ESTADO*
+                <input
+                  type="text"
+                  name="estado"
+                  objeto="enderecoCliente"
+                  value={this.state.formulario.estado}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CEP*
+                <input
+                  type="text"
+                  name="cep"
+                  objeto="enderecoCliente"
+                  value={this.state.formulario.cep}
+                  onChange={this.onchange}
+                />
+              </div>
+            </div>
+            <li
+              onClick={() =>
+                this.setState({ exibir: this.refs.dProfissionais })
+              }
+            >
+              <div className="simbolo">+</div>
+              DADOS PROFISSIONAIS
+            </li>
+            <div className="dIdentificacao" ref="dProfissionais">
+              <div className="atributoForm umTerco">
+                EMPRESA QUE TRABALHA
+                <input
+                  type="text"
+                  name="empresa"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.empresa}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CNPJ
+                <input
+                  type="text"
+                  name="cnpj"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.cnpj}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                RENDA MENSAL (R$)
+                <input
+                  type="text"
+                  name="rendaMensal"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.rendaMensal}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                PROFISSÃO
+                <input
+                  type="text"
+                  name="profissao"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.profissao}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CARGO
+                <input
+                  type="text"
+                  name="cargo"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.cargo}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                RAMAL
+                <input
+                  type="text"
+                  name="ramal"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.ramal}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CATEGORIA PROFISSIONAL
+                <select
+                  name="catprofissional"
+                  objeto="dadosProfissionais"
+                  tipo="select"
+                  onChange={this.onchange}
+                  value={
+                    this.state.formulario.dadosProfissionais.catprofissional
+                  }
+                >
+                  <option value="" disabled selected hidden>
+                    SELECIONE
+                  </option>
+                  <option value="Assalariado">Assalariado</option>
+                  <option value="Autônomo/Liberal">Autônomo/Liberal</option>
+                  <option value="Aposentado(a)">Aposentado(a)</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+              <div className="atributoForm umTerco">
+                DT. ADMISSÃO/APOSENTADORIA
+                <input
+                  placeholder="dd/mm/aaaa"
+                  type="text"
+                  name="dtAdmissao"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.dtAdmissao}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                ESPÉCIE DE APOSENTADORIA
+                <select
+                  name="especieAposentadoria"
+                  objeto="dadosProfissionais"
+                  tipo="select"
+                  onChange={this.onchange}
+                  value={
+                    this.state.formulario.dadosProfissionais
+                      .especieAposentadoria
+                  }
+                >
+                  <option value="" disabled selected hidden>
+                    SELECIONE
+                  </option>
+                  <option value="Tempo de Serviço">Tempo de Serviço</option>
+                  <option value="Invalidez Permanente">Invalidez Permanente</option>
+                  <option value="Pensionista">Pensionista</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+              <div className="atributoForm umTerco">
+                CIDADE*
+                <input
+                  type="text"
+                  name="cidade"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                ESTADO*
+                <input
+                  type="text"
+                  name="estado"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.estado}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CEP*
+                <input
+                  type="text"
+                  name="cep"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.cep}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm metade">
+                RUA*
+                <input
+                  type="text"
+                  name="rua"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.rua}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                BAIRRO*
+                <input
+                  type="text"
+                  name="bairro"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.bairro}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umOitavo">
+                NÚMERO*
+                <input
+                  type="text"
+                  name="numero"
+                  objeto="dadosProfissionais"
+                  value={this.state.formulario.dadosProfissionais.numero}
+                  onChange={this.onchange}
+                />
+              </div>
+            </div>
+            <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
+              <div className="simbolo">+</div>
+              REFERÊNCIAS PESSOAIS
+            </li>
+            <div className="dIdentificacao" ref="rPessoais">
+              <div className="atributoForm metade">
+                NOME COMPLETO
+                <input
+                  type="text"
+                  name="rua"
+                  value={this.state.formulario.rua}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm metade">
+                TELEFONE
+                <input
+                  type="text"
+                  name="rua"
+                  value={this.state.formulario.rua}
                   onChange={this.onchange}
                 />
               </div>
@@ -567,622 +846,39 @@ export default class CadastroClientes extends React.Component {
                   onChange={this.onchange}
                 />
               </div>
+              <div className="atributoForm metade">
+                RUA*
+                <input
+                  type="text"
+                  name="rua"
+                  value={this.state.formulario.rua}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                BAIRRO*
+                <input
+                  type="text"
+                  name="bairro"
+                  value={this.state.formulario.bairro}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umOitavo">
+                NÚMERO*
+                <input
+                  type="text"
+                  name="numero"
+                  value={this.state.formulario.numero}
+                  onChange={this.onchange}
+                />
+              </div>
             </div>
-            <li
-              onClick={() =>
-                this.setState({ exibir: this.refs.dProfissionais })
-              }
-            >
-              <div className="simbolo">+</div>
-              DADOS PROFISSIONAIS
-            </li>
-            <div className="dIdentificacao" ref="dProfissionais"></div>
-            <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
-              <div className="simbolo">+</div>
-              REFERÊNCIAS PESSOAIS
-            </li>
-            <div className="dIdentificacao" ref="rPessoais"></div>
           </ul>
-        </form>
-        {/* <label>
-                BANCO
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Agência
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Conta
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Sexo
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Nascimento
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Naturalidade (cidade e estado)
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Nacionalidade
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  RG Nº
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Emissão
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Órgão Emissor
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  UF
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                Observações
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                E-mail
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Rua
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Bairro
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Número
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Cep
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Cidade
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label className="umTerco">
-                Estado
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Nome do Pai
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Nome da Mãe
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Grau de Instrução
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Estado Civil
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  End. p/Correspondência
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Nº Dependentes
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                Nome do Cônjuge
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Doc. Identidade (Tipo / Nº / Data Emissão)
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Naturalidade (cidade e estado)
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Data Nascimento
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <li
-              onClick={() =>
-                this.setState({ exibir: this.refs.dProfissionais })
-              }
-            >
-              <div className="simbolo">+</div>
-              DADOS PROFISSIONAIS
-            </li>
-            <div className="dIdentificacao" ref="dProfissionais">
-              <label>
-                CPF*
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Nome Completo*
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Telefone
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Benefício*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Convênio*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Margem*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                BANCO
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Agência
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Conta
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Sexo
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Nascimento
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Naturalidade (cidade e estado)
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Nacionalidade
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  RG Nº
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Emissão
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Órgão Emissor
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  UF
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                Observações
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                E-mail
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
-              <div className="simbolo">+</div>
-              REFERÊNCIAS PESSOAIS
-            </li>
-            <div className="dIdentificacao" ref="rPessoais">
-              <label>
-                CPF*
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                Nome Completo*
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Telefone
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Benefício*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Convênio*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Margem*
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                BANCO
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <div>
-                <label>
-                  Agência
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Conta
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Sexo
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Nascimento
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Naturalidade (cidade e estado)
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Nacionalidade
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  RG Nº
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  Data Emissão
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <div>
-                <label>
-                  Órgão Emissor
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-                <label>
-                  UF
-                  <input
-                    type="text"
-                    //   value={this.state.value}
-                    //   onChange={this.handleChange}
-                  />
-                </label>
-              </div>
-              <label>
-                Observações
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                E-mail
-                <input
-                  type="text"
-                  //   value={this.state.value}
-                  //   onChange={this.handleChange}
-                />
-              </label> */}
-        {/* </div> */}
-        {/* </ul> */}
-        {/* <input type="submit" value="Enviar" /> */}
-        {/* </form> */}
+        </form>        
       </div>
+      <BtnSalvar />
+      </>
     );
   }
 }
