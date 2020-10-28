@@ -6,6 +6,8 @@ import mascaraCnpj from "../../../../../Services/mascaraCnpj";
 import mascaradata from "../../../../../Services/mascaraData";
 import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
 import BtnSalvar from "./BtnSalvar/BtnSalvar";
+import SalvarInformacoesCliente from "./SalvarInformacoesCliente";
+import SalvaNoBanco from "./SalvaNoBanco";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
@@ -55,8 +57,8 @@ export default class CadastroClientes extends React.Component {
         grauInstrucao: "",
         estadoCivil: "",
         dependentes: "",
-        email:"",
-        tipoEndereco: ""
+        email: "",
+        tipoEndereco: "",
       },
       dadosComerciais: {
         benefício: "",
@@ -77,14 +79,14 @@ export default class CadastroClientes extends React.Component {
         dtNascimentoConjugue: "",
       },
       referenciasPessoais: {
-        nome: "",
-        telefone: "",
-        cidade: "",
-        estado: "",
-        cep: "",
-        rua: "",
-        bairro: "",
-        numero: "",
+        nomeRef: "",
+        telefoneRef: "",
+        cidadeRef: "",
+        estadoRef: "",
+        cepRef: "",
+        ruaRef: "",
+        bairroRef: "",
+        numeroRef: "",
       },
     },
   };
@@ -167,78 +169,13 @@ export default class CadastroClientes extends React.Component {
 
   onSubmit = () => {
     const dadosForm = this.state.formulario;
-    console.log(dadosForm);
-    if (!dadosForm.dadosPessoais.cpf) {
-      alert("CAMPO CPF É OBRIGATÓRIO");
-    } 
-    else if (!dadosForm.dadosPessoais.nome) {
-      alert("CAMPO NOME É OBRIGATÓRIO");
+
+    const dadosValidados = SalvarInformacoesCliente(dadosForm);
+
+    if (dadosValidados) {
+      SalvaNoBanco(dadosValidados)
     }
-    else if (!dadosForm.dadosPessoais.telefone) {
-      alert("CAMPO TELEFONE É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosComerciais.benefício) {
-      alert("CAMPO BENEFICIO É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosComerciais.margem) {
-      alert("CAMPO MARGEM É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosComerciais.BANCO) {
-      alert("CAMPO BANCO É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosComerciais.agencia) {
-      alert("CAMPO AGÊNCIA É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosComerciais.conta) {
-      alert("CAMPO CONTA É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.sexo) {
-      alert("CAMPO SEXO É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.dtNascimento) {
-      alert("CAMPO DATA DE NASCIMENTO É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.naturalidade) {
-      alert("CAMPO NATURALIDADE É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.nacionalidade) {
-      alert("CAMPO NACIONALIDADE É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.rg) {
-      alert("CAMPO NÚMERO RG É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.dtEmissao) {
-      alert("CAMPO DATA DE EMISSAO RG É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.orgaoEmissor) {
-      alert("CAMPO ORGÃO EMISSOR É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.ufEmissor) {
-      alert("CAMPO UF É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.email) {
-      alert("CAMPO E-MAIL É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.nomePai) {
-      alert("CAMPO NOME DO PAI É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.nomeMae) {
-      alert("CAMPO NOME DA MÃE É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.grauInstrucao) {
-      alert("CAMPO GRAU DE INSTRUÇÃO É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.estadoCivil) {
-      alert("CAMPO ESTADO CIVIL É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.tipoEndereco) {
-      alert("CAMPO END. P/CORRESPONDÊNCIA É OBRIGATÓRIO");
-    }
-    else if (!dadosForm.dadosPessoais.dependentes) {
-      alert("CAMPO Nº DEPENDENTES É OBRIGATÓRIO");
-    }else{
-      alert("todos os dados pessoais foram preenchidos!")
-    }
+    
   };
 
   render() {
