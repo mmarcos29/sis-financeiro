@@ -111,17 +111,17 @@ export default function SalvarInformacoesCliente(props) {
         //     alert("CAMPO DT. ADMISSÃO/APOSENTADORIA É OBRIGATÓRIO ( DADOS PROFISSIONAIS ) ");
         // } else if (!dadosForm.dadosProfissionais.especieAposentadoria) {
         //     alert("CAMPO ESPÉCIE DE APOSENTADORIA É OBRIGATÓRIO ( DADOS PROFISSIONAIS ) ");
-        // } else if (!dadosForm.dadosProfissionais.cidade) {
+        // } else if (!dadosForm.dadosProfissionais.cidadeProf) {
         //     alert("CAMPO CIDADE É OBRIGATÓRIO ( DADOS PROFISSIONAIS ) ");
-        // } else if (!dadosForm.dadosProfissionais.estado) {
+        // } else if (!dadosForm.dadosProfissionais.estadoProf) {
         //     alert("CAMPO ESTADO É OBRIGATÓRIO ( DADOS PROFISSIONAIS ) ");
-        // } else if (!dadosForm.dadosProfissionais.cep) {
+        // } else if (!dadosForm.dadosProfissionais.cepProf) {
         //     alert("CAMPO CEP É OBRIGATÓRIO ( DADOS PROFISSIONAIS ) ");
-        // } else if (!dadosForm.dadosProfissionais.rua) {
+        // } else if (!dadosForm.dadosProfissionais.ruaProf) {
         //     alert("CAMPOS DE ENDEREÇO DA EMPRESA SÃO OBRIGATÓRIOS (RUA)");
-        // } else if (!dadosForm.dadosProfissionais.bairro) {
+        // } else if (!dadosForm.dadosProfissionais.bairroProf) {
         //     alert("CAMPOS DE ENDEREÇO DA EMPRESA SÃO OBRIGATÓRIOS (BAIRRO)");
-        // } else if (!dadosForm.dadosProfissionais.numero) {
+        // } else if (!dadosForm.dadosProfissionais.numeroProf) {
         //     alert("CAMPOS DE ENDEREÇO DA EMPRESA SÃO OBRIGATÓRIOS (NÚMERO)");
         // } else {
             validacaoReferenciasPessoais()
@@ -129,31 +129,28 @@ export default function SalvarInformacoesCliente(props) {
     };
 
     const validacaoReferenciasPessoais = () => {
-        // if (!dadosForm.referenciasPessoais.nome) {
+        // if (!dadosForm.referenciasPessoais.nomeRef) {
         //     alert("CAMPO NOME COMPLETO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
-        // }
-        // else if (!dadosForm.referenciasPessoais.nome) {
-        //     alert("CAMPO NOME COMPLETO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
-        // }
-        // else if (!dadosForm.referenciasPessoais.telefone) {
+        // }        
+        // else if (!dadosForm.referenciasPessoais.telefoneRef) {
         //     alert("CAMPO TELEFONE É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.cidade) {
+        // else if (!dadosForm.referenciasPessoais.cidadeRef) {
         //     alert("CAMPO CIDADE É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.estado) {
+        // else if (!dadosForm.referenciasPessoais.estadoRef) {
         //     alert("CAMPO ESTADO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.cep) {
+        // else if (!dadosForm.referenciasPessoais.cepRef) {
         //     alert("CAMPO CEP É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.rua) {
+        // else if (!dadosForm.referenciasPessoais.ruaRef) {
         //     alert("CAMPO RUA É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.bairro) {
+        // else if (!dadosForm.referenciasPessoais.bairroRef) {
         //     alert("CAMPO BAIRRO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // }
-        // else if (!dadosForm.referenciasPessoais.numero) {
+        // else if (!dadosForm.referenciasPessoais.numeroRef) {
         //     alert("CAMPO NÚMERO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         // } else {
             // alert("TUDO PRONTO MEU FI")

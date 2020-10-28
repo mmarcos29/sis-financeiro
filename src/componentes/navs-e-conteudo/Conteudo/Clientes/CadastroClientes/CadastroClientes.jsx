@@ -33,12 +33,12 @@ export default class CadastroClientes extends React.Component {
         catprofissional: "",
         dtAdmissao: "",
         especieAposentadoria: "",
-        cidade: "",
-        estado: "",
-        cep: "",
-        rua: "",
-        bairro: "",
-        numero: "",
+        cidadeProf: "",
+        estadoProf: "",
+        cepProf: "",
+        ruaProf: "",
+        bairroProf: "",
+        numeroProf: "",
       },
       dadosPessoais: {
         nome: "",
@@ -828,9 +828,9 @@ export default class CadastroClientes extends React.Component {
                   CIDADE*
                   <input
                     type="text"
-                    name="cidade"
+                    name="cidadeProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.cidade}
+                    value={this.state.formulario.dadosProfissionais.cidadeProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -838,9 +838,9 @@ export default class CadastroClientes extends React.Component {
                   ESTADO*
                   <input
                     type="text"
-                    name="estado"
+                    name="estadoProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.estado}
+                    value={this.state.formulario.dadosProfissionais.estadoProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -848,9 +848,9 @@ export default class CadastroClientes extends React.Component {
                   CEP*
                   <input
                     type="text"
-                    name="cep"
+                    name="cepProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.cep}
+                    value={this.state.formulario.dadosProfissionais.cepProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -858,9 +858,9 @@ export default class CadastroClientes extends React.Component {
                   RUA*
                   <input
                     type="text"
-                    name="rua"
+                    name="ruaProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.rua}
+                    value={this.state.formulario.dadosProfissionais.ruaProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -868,9 +868,9 @@ export default class CadastroClientes extends React.Component {
                   BAIRRO*
                   <input
                     type="text"
-                    name="bairro"
+                    name="bairroProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.bairro}
+                    value={this.state.formulario.dadosProfissionais.bairroProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -878,9 +878,9 @@ export default class CadastroClientes extends React.Component {
                   NÚMERO*
                   <input
                     type="text"
-                    name="numero"
+                    name="numeroProf"
                     objeto="dadosProfissionais"
-                    value={this.state.formulario.dadosProfissionais.numero}
+                    value={this.state.formulario.dadosProfissionais.numeroProf}
                     onChange={this.onchange}
                   />
                 </div>
@@ -896,9 +896,9 @@ export default class CadastroClientes extends React.Component {
                   NOME COMPLETO
                   <input
                     type="text"
-                    name="nome"
+                    name="nomeRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.nome}
+                    value={this.state.formulario.referenciasPessoais.nomeRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -906,9 +906,9 @@ export default class CadastroClientes extends React.Component {
                   TELEFONE
                   <input
                     type="text"
-                    name="telefone"
+                    name="telefoneRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.telefone}
+                    value={this.state.formulario.referenciasPessoais.telefoneRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -916,9 +916,9 @@ export default class CadastroClientes extends React.Component {
                   CIDADE*
                   <input
                     type="text"
-                    name="cidade"
+                    name="cidadeRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.cidade}
+                    value={this.state.formulario.referenciasPessoais.cidadeRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -926,9 +926,9 @@ export default class CadastroClientes extends React.Component {
                   ESTADO*
                   <input
                     type="text"
-                    name="estado"
+                    name="estadoRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.estado}
+                    value={this.state.formulario.referenciasPessoais.estadoRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -936,9 +936,9 @@ export default class CadastroClientes extends React.Component {
                   CEP*
                   <input
                     type="text"
-                    name="cep"
+                    name="cepRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.cep}
+                    value={this.state.formulario.referenciasPessoais.cepRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -946,9 +946,9 @@ export default class CadastroClientes extends React.Component {
                   RUA*
                   <input
                     type="text"
-                    name="rua"
+                    name="ruaRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.rua}
+                    value={this.state.formulario.referenciasPessoais.ruaRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -956,9 +956,9 @@ export default class CadastroClientes extends React.Component {
                   BAIRRO*
                   <input
                     type="text"
-                    name="bairro"
+                    name="bairroRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.bairro}
+                    value={this.state.formulario.referenciasPessoais.bairroRef}
                     onChange={this.onchange}
                   />
                 </div>
@@ -966,9 +966,9 @@ export default class CadastroClientes extends React.Component {
                   NÚMERO*
                   <input
                     type="text"
-                    name="numero"
+                    name="numeroRef"
                     objeto="referenciasPessoais"
-                    value={this.state.formulario.referenciasPessoais.numero}
+                    value={this.state.formulario.referenciasPessoais.numeroRefs}
                     onChange={this.onchange}
                   />
                 </div>

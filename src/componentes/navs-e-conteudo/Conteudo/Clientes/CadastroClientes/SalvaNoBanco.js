@@ -4,6 +4,6 @@ export default function SalvaNoBanco(dados){
     let prontoEnviar = false
 
     prontoEnviar = Object.assign(dados.dadosPessoais, dados.enderecoCliente, dados.dadosProfissionais, dados.referenciasPessoais, dados.dadosConjugue, dados.dadosComerciais )
-    api.post("Clientes", dados.dadosPessoais).then(response => console.log(response))
+    // api.post("Clientes", dados.dadosPessoais).then(response => console.log(response))
     console.log(prontoEnviar)
 }
