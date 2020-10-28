@@ -352,7 +352,7 @@ export default class CadastroClientes extends React.Component {
                   <div className="atributoForm">
                     DATA NASCIMENTO*
                     <input
-                      placeholder="dd/mm/aaaa"
+                      placeholder="DD/MM/AAAA"
                       type="text"
                       name="dtNascimento"
                       objeto="dadosPessoais"
@@ -398,7 +398,7 @@ export default class CadastroClientes extends React.Component {
                   <div className="atributoForm">
                     DATA EMISSÃO*
                     <input
-                      placeholder="dd/mm/aaaa"
+                      placeholder="DD/MM/AAAA"
                       type="text"
                       name="dtEmissao"
                       objeto="dadosPessoais"
@@ -574,7 +574,7 @@ export default class CadastroClientes extends React.Component {
                   <div className="atributoForm umTerco">
                     DATA DE NASCIMENTO*
                     <input
-                      placeholder="dd/mm/aaaa"
+                      placeholder="DD/MM/AAAA"
                       type="text"
                       name="dtNascimentoConjugue"
                       objeto="dadosConjugue"
@@ -779,7 +779,7 @@ export default class CadastroClientes extends React.Component {
                 <div className="atributoForm umTerco">
                   DT. ADMISSÃO/APOSENTADORIA
                   <input
-                    placeholder="dd/mm/aaaa"
+                    placeholder="DD/MM/AAAA"
                     type="text"
                     name="dtAdmissao"
                     objeto="dadosProfissionais"
