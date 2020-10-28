@@ -55,6 +55,8 @@ export default class CadastroClientes extends React.Component {
         grauInstrucao: "",
         estadoCivil: "",
         dependentes: "",
+        email:"",
+        tipoEndereco: ""
       },
       dadosComerciais: {
         benefício: "",
@@ -63,7 +65,6 @@ export default class CadastroClientes extends React.Component {
         BANCO: "",
         agencia: "",
         tipoConta: "CC",
-        tipoEndereco: "",
         conta: "",
         observacoes: "",
       },
@@ -75,15 +76,15 @@ export default class CadastroClientes extends React.Component {
         nacionalidadeConjugue: "",
         dtNascimentoConjugue: "",
       },
-      referenciasPessoais:{
-        nome:"",
-        telefone:"",
-        cidade:"",
-        estado:"",
-        cep:"",
-        rua:"",
-        bairro:"",
-        numero:""
+      referenciasPessoais: {
+        nome: "",
+        telefone: "",
+        cidade: "",
+        estado: "",
+        cep: "",
+        rua: "",
+        bairro: "",
+        numero: "",
       },
     },
   };
@@ -141,7 +142,7 @@ export default class CadastroClientes extends React.Component {
         listaValue[campo] = mascaradata(valor);
       } else if (campo === "rendaMensal" || campo === "margem") {
         listaValue[campo] = mascaraDinheiro(valor);
-      } else if (campo === "cnpj" ) {
+      } else if (campo === "cnpj") {
         listaValue[campo] = mascaraCnpj(valor);
       } else if (campo === "cpf" || campo === "cpfConjugue") {
         listaValue[campo] = mascaraCpf(valor);
@@ -162,6 +163,82 @@ export default class CadastroClientes extends React.Component {
     }
     this.setState({ ...this.state, formulario: formulario });
     // console.log(formulario);
+  };
+
+  onSubmit = () => {
+    const dadosForm = this.state.formulario;
+    console.log(dadosForm);
+    if (!dadosForm.dadosPessoais.cpf) {
+      alert("CAMPO CPF É OBRIGATÓRIO");
+    } 
+    else if (!dadosForm.dadosPessoais.nome) {
+      alert("CAMPO NOME É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.telefone) {
+      alert("CAMPO TELEFONE É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosComerciais.benefício) {
+      alert("CAMPO BENEFICIO É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosComerciais.margem) {
+      alert("CAMPO MARGEM É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosComerciais.BANCO) {
+      alert("CAMPO BANCO É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosComerciais.agencia) {
+      alert("CAMPO AGÊNCIA É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosComerciais.conta) {
+      alert("CAMPO CONTA É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.sexo) {
+      alert("CAMPO SEXO É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.dtNascimento) {
+      alert("CAMPO DATA DE NASCIMENTO É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.naturalidade) {
+      alert("CAMPO NATURALIDADE É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.nacionalidade) {
+      alert("CAMPO NACIONALIDADE É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.rg) {
+      alert("CAMPO NÚMERO RG É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.dtEmissao) {
+      alert("CAMPO DATA DE EMISSAO RG É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.orgaoEmissor) {
+      alert("CAMPO ORGÃO EMISSOR É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.ufEmissor) {
+      alert("CAMPO UF É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.email) {
+      alert("CAMPO E-MAIL É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.nomePai) {
+      alert("CAMPO NOME DO PAI É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.nomeMae) {
+      alert("CAMPO NOME DA MÃE É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.grauInstrucao) {
+      alert("CAMPO GRAU DE INSTRUÇÃO É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.estadoCivil) {
+      alert("CAMPO ESTADO CIVIL É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.tipoEndereco) {
+      alert("CAMPO END. P/CORRESPONDÊNCIA É OBRIGATÓRIO");
+    }
+    else if (!dadosForm.dadosPessoais.dependentes) {
+      alert("CAMPO Nº DEPENDENTES É OBRIGATÓRIO");
+    }else{
+      alert("todos os dados pessoais foram preenchidos!")
+    }
   };
 
   render() {
@@ -865,7 +942,7 @@ export default class CadastroClientes extends React.Component {
                   <input
                     type="text"
                     name="numero"
-                    objeto="dadosProfissionais"                    
+                    objeto="dadosProfissionais"
                     value={this.state.formulario.dadosProfissionais.numero}
                     onChange={this.onchange}
                   />
@@ -962,7 +1039,7 @@ export default class CadastroClientes extends React.Component {
             </ul>
           </form>
         </div>
-        <BtnSalvar />
+        <BtnSalvar onClick={this.onSubmit} />
       </>
     );
   }
