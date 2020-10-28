@@ -84,22 +84,25 @@ export default class CadastroClientes extends React.Component {
   onchange = (evento) => {
     const campo = evento.target.name;
     const formulario = { ...this.state.formulario };
-    const valor = evento.target.value.toUpperCase();
+    let valor = evento.target.value.toUpperCase();
+    if (campo === "email") {
+      valor = valor.toLowerCase();
+    }
 
     if (campo === "cpf" || campo === "cpfConjugue") {
-      formulario[campo] = mascaraCpf(evento.target.value);
+      formulario[campo] = mascaraCpf(valor);
     } else if (campo === "telefone") {
-      formulario[campo] = mascaraTelefone(evento.target.value);
+      formulario[campo] = mascaraTelefone(valor);
     } else if (
       campo === "dtNascimento" ||
       campo === "dtEmissao" ||
       campo === "dtNascimentoConjugue"
     ) {
-      formulario[campo] = mascaradata(evento.target.value);
+      formulario[campo] = mascaradata(valor);
     } else {
       formulario[campo] = valor;
     }
-    this.setState({ formulario: formulario });
+    this.setState({ ...this.state, formulario: formulario });
     // console.log(formulario);
   };
 
@@ -489,7 +492,7 @@ export default class CadastroClientes extends React.Component {
                   />
                 </div>
                 <div className="atributoForm umTerco">
-                  NATURALIDADE (CIDADE E ESTADO)*
+                  NATURALIDADE*
                   <input
                     type="text"
                     name="naturalidadeConjugue"
@@ -576,7 +579,62 @@ export default class CadastroClientes extends React.Component {
               <div className="simbolo">+</div>
               DADOS PROFISSIONAIS
             </li>
-            <div className="dIdentificacao" ref="dProfissionais"></div>
+            <div className="dIdentificacao" ref="dProfissionais">
+              <div className="atributoForm umTerco">
+                EMPRESA QUE TRABALHA
+                <input
+                  type="text"
+                  name="cidade"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CNPJ
+                <input
+                  type="text"
+                  name="estado"
+                  value={this.state.formulario.estado}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                RENDA MENSAL (R$)
+                <input
+                  type="text"
+                  name="cep"
+                  value={this.state.formulario.cep}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                PROFISSÃO
+                <input
+                  type="text"
+                  name="cidade"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                CARGO
+                <input
+                  type="text"
+                  name="cidade"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                RAMAL
+                <input
+                  type="text"
+                  name="cidade"
+                  value={this.state.formulario.cidade}
+                  onChange={this.onchange}
+                />
+              </div>
+            </div>
             <li onClick={() => this.setState({ exibir: this.refs.rPessoais })}>
               <div className="simbolo">+</div>
               REFERÊNCIAS PESSOAIS
