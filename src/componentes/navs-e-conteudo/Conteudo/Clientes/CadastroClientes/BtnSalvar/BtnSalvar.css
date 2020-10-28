@@ -1,0 +1,26 @@
+.BtnSalvar{
+    display: flex;
+    margin: 5px 1.5vw;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 3vw;
+}
+.BtnSalvar button{
+    padding: 5px;
+    margin: 5px;
+    background: #008000;
+    color: white;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 18px;
+    outline: none;
+}
+.BtnSalvar button:hover{    
+    background: #008000cc;
+    color: white;
+    cursor: pointer;
+}
+.BtnSalvar button:active{    
+    background: #06f706bb;
+    cursor: pointer;
+}
