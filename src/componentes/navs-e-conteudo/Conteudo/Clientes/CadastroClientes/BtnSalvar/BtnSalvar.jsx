@@ -4,7 +4,7 @@ import "./BtnSalvar.css"
 export default props => {
     return (
         <div className="BtnSalvar">
-            <button type="submit">Salvar</button>
+            <button type="submit" onClick={props.onClick}>Salvar</button>
         </div>
     )
 }

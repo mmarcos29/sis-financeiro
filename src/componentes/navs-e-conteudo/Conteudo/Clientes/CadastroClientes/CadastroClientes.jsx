@@ -6,6 +6,8 @@ import mascaraCnpj from "../../../../../Services/mascaraCnpj";
 import mascaradata from "../../../../../Services/mascaraData";
 import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
 import BtnSalvar from "./BtnSalvar/BtnSalvar";
+import SalvarInformacoesCliente from "./SalvarInformacoesCliente";
+import SalvaNoBanco from "./SalvaNoBanco";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
@@ -55,6 +57,8 @@ export default class CadastroClientes extends React.Component {
         grauInstrucao: "",
         estadoCivil: "",
         dependentes: "",
+        email: "",
+        tipoEndereco: "",
       },
       dadosComerciais: {
         benefício: "",
@@ -63,7 +67,6 @@ export default class CadastroClientes extends React.Component {
         BANCO: "",
         agencia: "",
         tipoConta: "CC",
-        tipoEndereco: "",
         conta: "",
         observacoes: "",
       },
@@ -75,15 +78,15 @@ export default class CadastroClientes extends React.Component {
         nacionalidadeConjugue: "",
         dtNascimentoConjugue: "",
       },
-      referenciasPessoais:{
-        nome:"",
-        telefone:"",
-        cidade:"",
-        estado:"",
-        cep:"",
-        rua:"",
-        bairro:"",
-        numero:""
+      referenciasPessoais: {
+        nomeRef: "",
+        telefoneRef: "",
+        cidadeRef: "",
+        estadoRef: "",
+        cepRef: "",
+        ruaRef: "",
+        bairroRef: "",
+        numeroRef: "",
       },
     },
   };
@@ -141,7 +144,7 @@ export default class CadastroClientes extends React.Component {
         listaValue[campo] = mascaradata(valor);
       } else if (campo === "rendaMensal" || campo === "margem") {
         listaValue[campo] = mascaraDinheiro(valor);
-      } else if (campo === "cnpj" ) {
+      } else if (campo === "cnpj") {
         listaValue[campo] = mascaraCnpj(valor);
       } else if (campo === "cpf" || campo === "cpfConjugue") {
         listaValue[campo] = mascaraCpf(valor);
@@ -162,6 +165,17 @@ export default class CadastroClientes extends React.Component {
     }
     this.setState({ ...this.state, formulario: formulario });
     // console.log(formulario);
+  };
+
+  onSubmit = () => {
+    const dadosForm = this.state.formulario;
+
+    const dadosValidados = SalvarInformacoesCliente(dadosForm);
+
+    if (dadosValidados) {
+      SalvaNoBanco(dadosValidados)
+    }
+    
   };
 
   render() {
@@ -865,7 +879,7 @@ export default class CadastroClientes extends React.Component {
                   <input
                     type="text"
                     name="numero"
-                    objeto="dadosProfissionais"                    
+                    objeto="dadosProfissionais"
                     value={this.state.formulario.dadosProfissionais.numero}
                     onChange={this.onchange}
                   />
@@ -962,7 +976,7 @@ export default class CadastroClientes extends React.Component {
             </ul>
           </form>
         </div>
-        <BtnSalvar />
+        <BtnSalvar onClick={this.onSubmit} />
       </>
     );
   }

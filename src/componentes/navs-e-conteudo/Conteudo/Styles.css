@@ -1,11 +1,9 @@
 #Conteudo{
-    display: flex; 
-    margin: 16px 20px; 
+    display: flex;
+    margin: 16px 20px;
     height: 86vh;
-    flex-direction: column; 
-    overflow: hidden; 
+    flex-direction: column;
+    overflow: hidden;
     /* background: red; */
-    max-height: 568px;
-    /* max-height: 580px;
-    min-height: 500px; */
+    max-height: 86vh;
 }
