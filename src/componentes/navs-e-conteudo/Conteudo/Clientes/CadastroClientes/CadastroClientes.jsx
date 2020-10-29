@@ -46,7 +46,7 @@ export default class CadastroClientes extends React.Component {
         sexo: "",
         dtNascimento: "",
         naturalidade: "",
-        nacionalidade: "",
+        nacionalidade: "BRASILEIRO (A)",
         rg: "",
         dtEmissao: "",
         orgaoEmissor: "",
@@ -389,13 +389,15 @@ export default class CadastroClientes extends React.Component {
                   </div>
                   <div className="atributoForm">
                     NACIONALIDADE*
-                    <input
-                      type="text"
+                    <select
                       name="nacionalidade"
                       objeto="dadosPessoais"
-                      value={this.state.formulario.dadosPessoais.nacionalidade}
                       onChange={this.onchange}
-                    />
+                      value={this.state.formulario.dadosPessoais.nacionalidade}
+                    >
+                      <option value="BRASILEIRO (A)" selected>BRASILEIRO (A)</option>
+                      <option value="ESTRANGEIRO (A)">ESTRANGEIRO (A)</option>
+                    </select>                    
                   </div>
                 </div>
                 <div>
