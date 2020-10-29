@@ -154,7 +154,7 @@ export default class CadastroClientes extends React.Component {
         campo === "dtNascimentoConjugue"
       ) {
         listaValue[campo] = mascaradata(valor);
-      } else if (campo === "telefone") {
+      } else if (campo === "telefone" ||campo === "telefoneRef") {
         listaValue[campo] = mascaraTelefone(valor);
       } else {
         listaValue[campo] = valor;
@@ -173,7 +173,7 @@ export default class CadastroClientes extends React.Component {
     const dadosValidados = SalvarInformacoesCliente(dadosForm);
 
     if (dadosValidados) {
-      SalvaNoBanco(dadosValidados)
+      SalvaNoBanco(dadosValidados, this.props.history)
     }
     
   };

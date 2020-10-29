@@ -1,9 +1,13 @@
 import api from '../../../../../Services/api'
-export default function SalvaNoBanco(dados){
-    alert("abriu salvar no banco")
+
+export default function SalvaNoBanco(dados, history) {
+    alert("DADOS SALVOS COM SUCESSO! EM INSTANTES VOCÊ SERÁ REDIRECIONADO!")
     let prontoEnviar = false
 
-    prontoEnviar = Object.assign(dados.dadosPessoais, dados.enderecoCliente, dados.dadosProfissionais, dados.referenciasPessoais, dados.dadosConjugue, dados.dadosComerciais )
-    // api.post("Clientes", dados.dadosPessoais).then(response => console.log(response))
-    console.log(prontoEnviar)
+    prontoEnviar = Object.assign(dados.dadosPessoais, dados.enderecoCliente, dados.dadosProfissionais, dados.referenciasPessoais, dados.dadosConjugue, dados.dadosComerciais)
+    api.post("Clientes", prontoEnviar).then(response => {
+        console.log(response)
+        history.push("/clientes")
+    })
+
 }
