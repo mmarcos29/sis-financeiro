@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import BarraFuncionalidades from './componentes/barra-lateral/BarraFuncionalidades'
 
 import './Styles.css'
@@ -21,6 +21,8 @@ import BarraLocationPage from './componentes/navs-e-conteudo/Conteudo/PesquisaIn
 import { Redirect } from 'react-router-dom';
 
 import { createBrowserHistory } from "history"
+import api from './Services/api'
+import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/DetalheClientes/DetalheClientes'
 const history = createBrowserHistory();
 
 
@@ -33,7 +35,9 @@ class App extends Component {
     menu: null,
     dadosClientes: null,
     tipoConteudo: null,
-    beneficio: null
+    beneficio: null,
+    clientes: null,
+    nomeClienteDetalhe: ""
   }
   troca(menu, modulo) {
     switch (menu) {
@@ -78,6 +82,20 @@ class App extends Component {
   //   }
   // }
 
+  componentWillMount() {
+    if (!this.state.clientes) {
+      api
+        .get("Clientes")
+        .then((Response) => this.setState({ clientes: Response.data }));
+    }
+  }
+
+  mudaNomeClienteDetalhe = (nome) => {
+    if (this.state.nomeClienteDetalhe !== nome) {
+      this.setState({ nomeClienteDetalhe: nome })
+    }
+  }
+
   render() {
     if (this.state.menu === null) {
       this.setState({
@@ -95,13 +113,14 @@ class App extends Component {
           <Switch>
             <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
               <Conteudo dados={this.state.dadosClientes} > {/*reloadConteudo={alterarConteudo} data={reloadConteudo} */}
-                <Route exact path="/" component={ () => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />}/>
+                <Route exact path="/" component={() => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />} />
                 <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
                 <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
                 <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
-                <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva}>CLIENTES</Clientes>} />
+                <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
                 <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
-                  setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history}/></>} />
+                  setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
+                <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} /> </>} />
                 <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
                 <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
                 <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />

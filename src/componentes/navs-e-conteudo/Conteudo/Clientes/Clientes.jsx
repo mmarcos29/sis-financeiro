@@ -7,18 +7,19 @@ import ListaClientes from "./ListaClientes";
 
 export default class Clientes extends Component {
   state = {
-    clientes: [],
+    clientes: this.props.clientes || [],
   };
 
   componentWillMount() {
+    //faz menu abrir de maniera ativa
     if (document.querySelectorAll("#operacional li.active")[0]) {
       document
         .querySelectorAll("#operacional li.active")[0]
         .classList.remove("active");
     }
-    api
-      .get("Clientes")
-      .then((Response) => this.setState({ clientes: Response.data }));
+    // api
+    //   .get("Clientes")
+    //   .then((Response) => this.setState({ clientes: Response.data }));
   }
   componentDidMount() {
     if (document.getElementById("operacional")) {
@@ -42,7 +43,7 @@ export default class Clientes extends Component {
           {[...this.props.children]}
         </BarraLocationPage>
         {/* {this.state.clientes.length > 0 ?  */}
-        <ListaClientes clientes={this.state.clientes}/> 
+        <ListaClientes clientes={this.state.clientes} history={this.props.history}/> 
         {/* : false} */}
         
       </div>
