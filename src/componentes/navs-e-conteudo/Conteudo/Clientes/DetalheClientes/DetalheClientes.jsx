@@ -9,6 +9,8 @@ import BtnEditar from "./BtnEditar/BtnEditar";
 import SalvarInformacoesCliente from "../CadastroClientes/SalvarInformacoesCliente";
 import BtnSalvar from "../CadastroClientes/BtnSalvar/BtnSalvar";
 import EditaNoBanco from "./EditaNoBanco";
+
+import InputMask from "react-input-mask";
 // export default function CadastroClientes() {
 export default class DetalheClientes extends React.Component {
   constructor(props) {
@@ -250,18 +252,12 @@ export default class DetalheClientes extends React.Component {
         listaValue[campo] = mascaradata(valor);
       } else if (campo === "rendaMensal" || campo === "margem") {
         listaValue[campo] = mascaraDinheiro(valor);
-      } else if (campo === "cnpj") {
-        listaValue[campo] = mascaraCnpj(valor);
-      } else if (campo === "cpf" || campo === "cpfConjugue") {
-        listaValue[campo] = mascaraCpf(valor);
       } else if (
         campo === "dtNascimento" ||
         campo === "dtEmissao" ||
         campo === "dtNascimentoConjugue"
       ) {
         listaValue[campo] = mascaradata(valor);
-      } else if (campo === "telefone" || campo === "telefoneRef") {
-        listaValue[campo] = mascaraTelefone(valor);
       } else {
         listaValue[campo] = valor;
       }
@@ -322,9 +318,11 @@ export default class DetalheClientes extends React.Component {
               <div className="dIdentificacao" ref="dIdentificacao">
                 <div className="atributoForm">
                   CPF*
-                  <input
+                  <InputMask
+                    mask="999.999.999-99"
                     type="text"
                     name="cpf"
+                    disabled={this.state.readyOnly}
                     objeto="dadosPessoais"
                     disabled={this.state.readyOnly}
                     value={
@@ -342,7 +340,6 @@ export default class DetalheClientes extends React.Component {
                     name="nome"
                     objeto="dadosPessoais"
                     disabled={this.state.readyOnly}
-                    disabled={this.state.readyOnly}
                     value={
                       this.state.dados
                         ? this.state.dados.nome
@@ -354,7 +351,8 @@ export default class DetalheClientes extends React.Component {
                 <div>
                   <div className="atributoForm">
                     Telefone
-                    <input
+                    <InputMask
+                      mask="(999) 9 9999 - 9999"
                       type="text"
                       name="telefone"
                       objeto="dadosPessoais"
@@ -525,10 +523,7 @@ export default class DetalheClientes extends React.Component {
                       onChange={this.onchange}
                       value={this.state.formulario.dadosPessoais.nacionalidade}
                     >
-                      <option value="" disabled selected hidden>
-                        SELECIONE
-                      </option>
-                      <option value="BRASILEIRO (A)">
+                      <option value="BRASILEIRO (A)" selected>
                         BRASILEIRO (A)
                       </option>
                       <option value="ESTRANGEIRO (A)">ESTRANGEIRO (A)</option>
@@ -538,7 +533,8 @@ export default class DetalheClientes extends React.Component {
                 <div>
                   <div className="atributoForm">
                     RG Nº *
-                    <input
+                    <InputMask
+                      mask="9999999999-9"
                       type="text"
                       name="rg"
                       objeto="dadosPessoais"
@@ -716,7 +712,8 @@ export default class DetalheClientes extends React.Component {
                 <div className={`conjugue ` + visivelConjugue}>
                   <div className="atributoForm umTerco">
                     CPF DO CÔNJUGE*
-                    <input
+                    <InputMask
+                      mask="999.999.999-99"
                       type="text"
                       name="cpfConjugue"
                       objeto="dadosConjugue"
@@ -852,8 +849,8 @@ export default class DetalheClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CEP*
-                  <input
-                    type="text"
+                  <InputMask
+                    mask="99999-999"
                     name="cep"
                     objeto="enderecoCliente"
                     disabled={this.state.readyOnly}
@@ -884,7 +881,8 @@ export default class DetalheClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CNPJ
-                  <input
+                  <InputMask
+                    mask="99.999.999/9999-99"
                     type="text"
                     name="cnpj"
                     objeto="dadosProfissionais"
@@ -1018,7 +1016,8 @@ export default class DetalheClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CEP*
-                  <input
+                  <InputMask
+                    mask="99999-999"
                     type="text"
                     name="cepProf"
                     objeto="dadosProfissionais"
@@ -1081,7 +1080,8 @@ export default class DetalheClientes extends React.Component {
                 </div>
                 <div className="atributoForm metade">
                   TELEFONE
-                  <input
+                  <InputMask
+                    mask="(999) 9 99999 - 9999"
                     type="text"
                     name="telefoneRef"
                     objeto="referenciasPessoais"

@@ -151,8 +151,6 @@ export default class CadastroClientes extends React.Component {
         campo === "dtNascimentoConjugue"
       ) {
         listaValue[campo] = mascaradata(valor);
-      } else if (campo === "telefoneRef") {
-        listaValue[campo] = mascaraTelefone(valor);
       } else {
         listaValue[campo] = valor;
       }
@@ -242,13 +240,6 @@ export default class CadastroClientes extends React.Component {
                       value={this.state.formulario.dadosPessoais.telefone}
                       onChange={this.onchange}
                     />
-                    {/* <input
-                      type="text"
-                      name="telefone"
-                      objeto="dadosPessoais"
-                      value={this.state.formulario.dadosPessoais.telefone}
-                      onChange={this.onchange}
-                    /> */}
                   </div>
                   <div className="atributoForm">
                     Benefício*
@@ -917,8 +908,8 @@ export default class CadastroClientes extends React.Component {
                 </div>
                 <div className="atributoForm metade">
                   TELEFONE
-                  <input
-                    required
+                  <InputMask
+                  mask="(999) 9 99999 - 9999"
                     type="text"
                     name="telefoneRef"
                     objeto="referenciasPessoais"
