@@ -120,7 +120,7 @@ class App extends Component {
                 <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
                 <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
                   setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
-                <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} /> </>} />
+                <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
                 <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
                 <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
                 <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />

@@ -124,3 +124,9 @@
   height: 16px;
   margin: 0 5px;
 }
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

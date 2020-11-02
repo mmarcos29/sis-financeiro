@@ -5,9 +5,10 @@ import mascaraTelefone from "../../../../../Services/mascaraTelefone";
 import mascaraCnpj from "../../../../../Services/mascaraCnpj";
 import mascaradata from "../../../../../Services/mascaraData";
 import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
-import BtnSalvar from "./BtnEditar/BtnEditar";
-import SalvaNoBanco from "../CadastroClientes/SalvaNoBanco";
+import BtnEditar from "./BtnEditar/BtnEditar";
 import SalvarInformacoesCliente from "../CadastroClientes/SalvarInformacoesCliente";
+import BtnSalvar from "../CadastroClientes/BtnSalvar/BtnSalvar";
+import EditaNoBanco from "./EditaNoBanco";
 // export default function CadastroClientes() {
 export default class DetalheClientes extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class DetalheClientes extends React.Component {
       cliente = props.clientes.find((clientes) => clientes.id === idCliente);
     }
     this.state = {
-      readyOnly:true,
+      readyOnly: true,
       clienteAtual: cliente || null,
       exibir: null,
       dados: null,
@@ -99,9 +100,9 @@ export default class DetalheClientes extends React.Component {
       },
     };
     if (cliente) {
-      console.log(cliente)
+      console.log(cliente);
       this.state = {
-        readyOnly:true,
+        readyOnly: true,
         clienteAtual: cliente || null,
         exibir: null,
         dados: null,
@@ -132,6 +133,7 @@ export default class DetalheClientes extends React.Component {
             numeroProf: cliente.numeroProf,
           },
           dadosPessoais: {
+            id: cliente.id,
             nome: cliente.nome,
             cpf: cliente.cpf,
             sexo: cliente.sexo,
@@ -181,7 +183,9 @@ export default class DetalheClientes extends React.Component {
           },
         },
       };
-      props.mudaNomeClienteDetalhe(`CLIENTE 0${cliente.id}    -     ${cliente.nome}`);
+      props.mudaNomeClienteDetalhe(
+        `CLIENTE 0${cliente.id}    -     ${cliente.nome}`
+      );
     }
     // console.log(cliente);
     // if(!this.state.clienteAtual){
@@ -274,12 +278,12 @@ export default class DetalheClientes extends React.Component {
     const dadosValidados = SalvarInformacoesCliente(dadosForm);
 
     if (dadosValidados) {
-      SalvaNoBanco(dadosValidados, this.props.history);
+      EditaNoBanco(dadosValidados, this.props.history);
     }
   };
-  edita = () =>{
-    this.setState({readyOnly: !this.state.readyOnly})
-  }
+  edita = () => {
+    this.setState({ readyOnly: !this.state.readyOnly });
+  };
 
   render() {
     // const idCliente = parseInt(window.location.search.replace(/\D/g, "") )
@@ -513,14 +517,21 @@ export default class DetalheClientes extends React.Component {
                   </div>
                   <div className="atributoForm">
                     NACIONALIDADE*
-                    <input
-                      type="text"
+                    <select
                       name="nacionalidade"
                       objeto="dadosPessoais"
                       disabled={this.state.readyOnly}
-                      value={this.state.formulario.dadosPessoais.nacionalidade}
                       onChange={this.onchange}
-                    />
+                      value={this.state.formulario.dadosPessoais.nacionalidade}
+                    >
+                      <option value="" disabled selected hidden>
+                        SELECIONE
+                      </option>
+                      <option value="BRASILEIRO (A)">
+                        BRASILEIRO (A)
+                      </option>
+                      <option value="ESTRANGEIRO (A)">ESTRANGEIRO (A)</option>
+                    </select>
                   </div>
                 </div>
                 <div>
@@ -1150,7 +1161,10 @@ export default class DetalheClientes extends React.Component {
             </ul>
           </form>
         </div>
-        <BtnSalvar onClick={this.edita} />
+        <div className="acoes">
+          <BtnEditar onClick={this.edita} />
+          <BtnSalvar onClick={this.onSubmit} />
+        </div>
       </>
     );
   }
