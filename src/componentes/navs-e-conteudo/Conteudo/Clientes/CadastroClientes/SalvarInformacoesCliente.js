@@ -11,16 +11,6 @@ export default function SalvarInformacoesCliente(props) {
             alert("CAMPO TELEFONE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosComerciais.benefício) {
             alert("CAMPO BENEFICIO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosComerciais.margem) {
-            alert("CAMPO MARGEM É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosComerciais.BANCO) {
-            alert("CAMPO BANCO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosComerciais.agencia) {
-            alert("CAMPO AGÊNCIA É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosComerciais.conta) {
-            alert("CAMPO CONTA É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.sexo) {
-            alert("CAMPO SEXO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.dtNascimento) {
             alert("CAMPO DATA DE NASCIMENTO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.naturalidade) {
@@ -35,43 +25,46 @@ export default function SalvarInformacoesCliente(props) {
             alert("CAMPO ORGÃO EMISSOR É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.ufEmissor) {
             alert("CAMPO UF É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.email) {
-            alert("CAMPO E-MAIL É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.nomePai) {
             alert("CAMPO NOME DO PAI É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.nomeMae) {
             alert("CAMPO NOME DA MÃE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.grauInstrucao) {
-            alert("CAMPO GRAU DE INSTRUÇÃO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.estadoCivil) {
-            alert("CAMPO ESTADO CIVIL É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.tipoEndereco) {
-            alert("CAMPO END. P/CORRESPONDÊNCIA É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else if (!dadosForm.dadosPessoais.dependentes) {
-            alert("CAMPO Nº DEPENDENTES É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-        } else
-            if (dadosForm.dadosPessoais.estadoCivil === "CASADO(A)") {
-                if (!dadosForm.dadosConjugue.cpfConjugue) {
-                    alert("CAMPO CPF DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else if (!dadosForm.dadosConjugue.nomeConjugue) {
-                    alert("CAMPO NOME DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else if (!dadosForm.dadosConjugue.dtNascimentoConjugue) {
-                    alert("CAMPO DATA DE NASCIMENTO DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else if (!dadosForm.dadosConjugue.rgConjugue) {
-                    alert("CAMPO RG DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else if (!dadosForm.dadosConjugue.naturalidadeConjugue) {
-                    alert("CAMPO NATURARILADE DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else if (!dadosForm.dadosConjugue.nacionalidadeConjugue) {
-                    alert("CAMPO NACIONALIDADE DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
-                } else {
-                    //quando casado
-                    validacaoEndereco();
-                }
+        }
+        else if (dadosForm.dadosPessoais.estadoCivil === "CASADO(A)") {
+            if (!dadosForm.dadosConjugue.cpfConjugue) {
+                alert("CAMPO CPF DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            } else if (!dadosForm.dadosConjugue.nomeConjugue) {
+                alert("CAMPO NOME DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            } else if (!dadosForm.dadosConjugue.dtNascimentoConjugue) {
+                alert("CAMPO DATA DE NASCIMENTO DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            } else if (!dadosForm.dadosConjugue.rgConjugue) {
+                alert("CAMPO RG DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            } else if (!dadosForm.dadosConjugue.naturalidadeConjugue) {
+                alert("CAMPO NATURARILADE DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            } else if (!dadosForm.dadosConjugue.nacionalidadeConjugue) {
+                alert("CAMPO NACIONALIDADE DO CÔNJUGE É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
             } else {
-                //fluxo quando for solteiro
+                //quando casado
                 validacaoEndereco();
-                // alert("todos os dados pessoais foram preenchidos!");
             }
+        } else {
+            //fluxo quando for solteiro
+            validacaoEndereco();
+            // alert("todos os dados pessoais foram preenchidos!");
+
+            // else if (!dadosForm.dadosPessoais.grauInstrucao) {
+            //     alert("CAMPO GRAU DE INSTRUÇÃO É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            // } 
+            // else if (!dadosForm.dadosPessoais.estadoCivil) {
+            //     alert("CAMPO ESTADO CIVIL É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            // } 
+            // else if (!dadosForm.dadosPessoais.tipoEndereco) {
+            //     alert("CAMPO END. P/CORRESPONDÊNCIA É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            // } 
+            // else if (!dadosForm.dadosPessoais.dependentes) {
+            //     alert("CAMPO Nº DEPENDENTES É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
+            // } 
+        }
     }
 
     const validacaoEndereco = function () {
@@ -88,7 +81,8 @@ export default function SalvarInformacoesCliente(props) {
         } else if (!dadosForm.enderecoCliente.cep) {
             alert("CAMPO CEP É OBRIGATÓRIO ( ENDEREÇO CLIENTE ) ");
         } else {
-            validacaoDadosProfissionais();
+            // validacaoDadosProfissionais();
+            retorno = dadosForm
         }
     };
 
@@ -131,7 +125,7 @@ export default function SalvarInformacoesCliente(props) {
     const validacaoReferenciasPessoais = () => {
         if (!dadosForm.referenciasPessoais.nomeRef) {
             alert("CAMPO NOME COMPLETO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
-        }        
+        }
         else if (!dadosForm.referenciasPessoais.telefoneRef) {
             alert("CAMPO TELEFONE É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         }
@@ -154,7 +148,7 @@ export default function SalvarInformacoesCliente(props) {
             alert("CAMPO NÚMERO É OBRIGATÓRIO ( REFERÊNCIAS PESSOAIS ) ");
         } else {
             // alert("TUDO PRONTO MEU FI")
-            retorno = dadosForm
+            // retorno = dadosForm
         }
     }
 
