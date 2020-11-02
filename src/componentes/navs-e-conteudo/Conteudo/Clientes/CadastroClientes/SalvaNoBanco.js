@@ -8,6 +8,7 @@ export default function SalvaNoBanco(dados, history) {
     api.post("Clientes", prontoEnviar).then(response => {
         console.log(response)
         history.push("/clientes")
+        window.location.reload()
     })
 
 }

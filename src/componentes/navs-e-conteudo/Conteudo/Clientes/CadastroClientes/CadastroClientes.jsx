@@ -8,6 +8,7 @@ import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
 import BtnSalvar from "./BtnSalvar/BtnSalvar";
 import SalvarInformacoesCliente from "./SalvarInformacoesCliente";
 import SalvaNoBanco from "./SalvaNoBanco";
+import InputMask from "react-input-mask";
 
 // export default function CadastroClientes() {
 export default class CadastroClientes extends React.Component {
@@ -144,17 +145,13 @@ export default class CadastroClientes extends React.Component {
         listaValue[campo] = mascaradata(valor);
       } else if (campo === "rendaMensal" || campo === "margem") {
         listaValue[campo] = mascaraDinheiro(valor);
-      } else if (campo === "cnpj") {
-        listaValue[campo] = mascaraCnpj(valor);
-      } else if (campo === "cpf" || campo === "cpfConjugue") {
-        listaValue[campo] = mascaraCpf(valor);
       } else if (
         campo === "dtNascimento" ||
         campo === "dtEmissao" ||
         campo === "dtNascimentoConjugue"
       ) {
         listaValue[campo] = mascaradata(valor);
-      } else if (campo === "telefone" ||campo === "telefoneRef") {
+      } else if (campo === "telefoneRef") {
         listaValue[campo] = mascaraTelefone(valor);
       } else {
         listaValue[campo] = valor;
@@ -173,9 +170,8 @@ export default class CadastroClientes extends React.Component {
     const dadosValidados = SalvarInformacoesCliente(dadosForm);
 
     if (dadosValidados) {
-      SalvaNoBanco(dadosValidados, this.props.history)
+      SalvaNoBanco(dadosValidados, this.props.history);
     }
-    
   };
 
   render() {
@@ -208,7 +204,8 @@ export default class CadastroClientes extends React.Component {
               <div className="dIdentificacao" ref="dIdentificacao">
                 <div className="atributoForm">
                   CPF*
-                  <input
+                  <InputMask
+                    mask="999.999.999-99"
                     type="text"
                     name="cpf"
                     objeto="dadosPessoais"
@@ -237,13 +234,21 @@ export default class CadastroClientes extends React.Component {
                 <div>
                   <div className="atributoForm">
                     Telefone
-                    <input
+                    <InputMask
+                      mask="(999) 9 9999 - 9999"
                       type="text"
                       name="telefone"
                       objeto="dadosPessoais"
                       value={this.state.formulario.dadosPessoais.telefone}
                       onChange={this.onchange}
                     />
+                    {/* <input
+                      type="text"
+                      name="telefone"
+                      objeto="dadosPessoais"
+                      value={this.state.formulario.dadosPessoais.telefone}
+                      onChange={this.onchange}
+                    /> */}
                   </div>
                   <div className="atributoForm">
                     Benefício*
@@ -395,15 +400,18 @@ export default class CadastroClientes extends React.Component {
                       onChange={this.onchange}
                       value={this.state.formulario.dadosPessoais.nacionalidade}
                     >
-                      <option value="BRASILEIRO (A)" selected>BRASILEIRO (A)</option>
+                      <option value="BRASILEIRO (A)" selected>
+                        BRASILEIRO (A)
+                      </option>
                       <option value="ESTRANGEIRO (A)">ESTRANGEIRO (A)</option>
-                    </select>                    
+                    </select>
                   </div>
                 </div>
                 <div>
                   <div className="atributoForm">
                     RG Nº *
-                    <input
+                    <InputMask
+                      mask="9999999999-9"
                       type="text"
                       name="rg"
                       objeto="dadosPessoais"
@@ -569,7 +577,8 @@ export default class CadastroClientes extends React.Component {
                 <div className={`conjugue ` + visivelConjugue}>
                   <div className="atributoForm umTerco">
                     CPF DO CÔNJUGE*
-                    <input
+                    <InputMask
+                      mask="999.999.999-99"
                       type="text"
                       name="cpfConjugue"
                       objeto="dadosConjugue"
@@ -694,8 +703,8 @@ export default class CadastroClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CEP*
-                  <input
-                    type="text"
+                  <InputMask
+                    mask="99999-999"
                     name="cep"
                     objeto="enderecoCliente"
                     value={this.state.formulario.enderecoCliente.cep}
@@ -724,7 +733,8 @@ export default class CadastroClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CNPJ
-                  <input
+                  <InputMask
+                    mask="99.999.999/9999-99"
                     type="text"
                     name="cnpj"
                     objeto="dadosProfissionais"
@@ -848,7 +858,8 @@ export default class CadastroClientes extends React.Component {
                 </div>
                 <div className="atributoForm umTerco">
                   CEP*
-                  <input
+                  <InputMask
+                    mask="99999-999"
                     type="text"
                     name="cepProf"
                     objeto="dadosProfissionais"
@@ -907,6 +918,7 @@ export default class CadastroClientes extends React.Component {
                 <div className="atributoForm metade">
                   TELEFONE
                   <input
+                    required
                     type="text"
                     name="telefoneRef"
                     objeto="referenciasPessoais"

@@ -4,7 +4,7 @@ import BarraFuncionalidades from './componentes/barra-lateral/BarraFuncionalidad
 import './Styles.css'
 import NavsEConteudo from './componentes/navs-e-conteudo/NavsEConteudo'
 import BarraFuncionalidadesLess from './componentes/barraless/BarraFuncionalidadesLess'
-import { Router, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Conteudo from './componentes/navs-e-conteudo/Conteudo/Conteudo'
 import Propostas from './componentes/navs-e-conteudo/Conteudo/Propostas/Propostas'
 import Esteira from './componentes/navs-e-conteudo/Conteudo/Esteira/Esteira'
@@ -20,10 +20,10 @@ import CadastroClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/Ca
 import BarraLocationPage from './componentes/navs-e-conteudo/Conteudo/PesquisaInss/BarraLocationPage/BarraLocationPage'
 import { Redirect } from 'react-router-dom';
 
-import { createBrowserHistory } from "history"
+import { createHashHistory } from "history"
 import api from './Services/api'
 import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/DetalheClientes/DetalheClientes'
-const history = createBrowserHistory();
+const history = createHashHistory();
 
 
 
@@ -108,7 +108,7 @@ class App extends Component {
     }
     return (
       <div id="App">
-        <Router history={history}>
+        <HashRouter history={history}>
           {this.state.menu}
           <Switch>
             <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
@@ -129,7 +129,7 @@ class App extends Component {
               </Conteudo>
             </NavsEConteudo>
           </Switch>
-        </Router>
+        </HashRouter>
         {/* <NavsEConteudo /> */}
       </div>
     );

@@ -13,7 +13,8 @@ import EditaNoBanco from "./EditaNoBanco";
 export default class DetalheClientes extends React.Component {
   constructor(props) {
     super(props);
-    const idCliente = parseInt(window.location.search.replace(/\D/g, ""));
+    // const idCliente = parseInt(window.location.search.replace(/\D/g, ""));
+    const idCliente = parseInt(window.location.hash.replace(/\D/g, ""));
     let cliente;
     if (props.clientes) {
       cliente = props.clientes.find((clientes) => clientes.id === idCliente);
