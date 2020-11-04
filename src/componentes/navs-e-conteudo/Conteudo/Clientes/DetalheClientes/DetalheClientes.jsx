@@ -352,7 +352,7 @@ export default class DetalheClientes extends React.Component {
                   <div className="atributoForm">
                     Telefone
                     <InputMask
-                      mask="(999) 9 9999 - 9999"
+                      mask="(999) 9 9999-9999"
                       type="text"
                       name="telefone"
                       objeto="dadosPessoais"
@@ -1164,7 +1164,7 @@ export default class DetalheClientes extends React.Component {
         </div>
         <div className="acoes">
           <BtnEditar onClick={this.edita} />
-          <BtnSalvar onClick={this.onSubmit} />
+          <BtnSalvar onClick={this.onSubmit} ativo={this.state.readyOnly}/>
         </div>
       </>
     );

@@ -23,6 +23,7 @@ import { Redirect } from 'react-router-dom';
 import { createHashHistory } from "history"
 import api from './Services/api'
 import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/DetalheClientes/DetalheClientes'
+import Login from './componentes/Login/Login'
 const history = createHashHistory();
 
 
@@ -30,6 +31,7 @@ const history = createHashHistory();
 
 class App extends Component {
   state = {
+    logued: false,
     activeMenu: null,
     activeItem: null,
     menu: null,
@@ -82,6 +84,12 @@ class App extends Component {
   //   }
   // }
 
+  componentDidMount(){
+    const user = localStorage.getItem('@username')
+    if(user){
+      this.setState({logued:true})
+    }
+  }
   componentWillMount() {
     if (!this.state.clientes) {
       api
@@ -106,9 +114,11 @@ class App extends Component {
           />
       })
     }
+    if(this.state.logued){
     return (
       <div id="App">
         <HashRouter history={history}>
+            {/* <Route path="/login" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage></>} /> */}
           {this.state.menu}
           <Switch>
             <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
@@ -133,6 +143,11 @@ class App extends Component {
         {/* <NavsEConteudo /> */}
       </div>
     );
+    }else{
+      return (
+        <Login />
+      );
+    }
   }
 }
 

@@ -1,0 +1,56 @@
+.Login {
+  background: #21529f;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-height: 100vh;
+}
+.formLogin {
+  background: #ffffff14;
+  height: 60vh;
+  width: 27vw;
+  border-radius: 35px;
+  margin-top: 8vh;
+  margin-right: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.input {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 6%;
+  justify-content: space-between;
+  background: #d1d1d1;
+  margin: 16px;
+  padding: 5px;
+  border-radius: 1vw;
+}
+.input span.material-icons {
+  align-self: baseline;
+  margin-left: 0.5vw;
+}
+.formLogin input {
+  background-color: transparent;
+  outline: none;
+  width: 75%;
+  margin-right: 5%;
+  text-align: center;
+}
+.Login button {
+  width: 50%;
+  height: 8%;
+  background: #fff212;
+  color: #054f75;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 8px;
+  outline: none;
+  margin: 16px;
+}
+.Login button:hover {
+  background: #fff212cc;
+  cursor: pointer;
+}

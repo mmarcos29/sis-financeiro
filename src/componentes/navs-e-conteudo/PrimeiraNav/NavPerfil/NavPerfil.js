@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import Styles from './Styles.css'
 
 class NavPerfil extends Component {
+    logout = () => {
+        localStorage.removeItem('@username');
+        window.location.reload();
+    }
     render() {
         return (
             <div id="NavPerfil">
                 <a href="#" className="material-icons">account_circle</a>
                 <span>THULIO - Agente de Crédito</span>
-                <a href="#" className="material-icons exit">exit_to_app</a>
+                <a className="material-icons exit" onClick={this.logout}>exit_to_app</a>
             </div>
         );
     }

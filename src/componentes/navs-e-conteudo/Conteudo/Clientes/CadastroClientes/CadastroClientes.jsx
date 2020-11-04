@@ -233,7 +233,7 @@ export default class CadastroClientes extends React.Component {
                   <div className="atributoForm">
                     Telefone
                     <InputMask
-                      mask="(999) 9 9999 - 9999"
+                      mask="(999) 9 9999-9999"
                       type="text"
                       name="telefone"
                       objeto="dadosPessoais"
