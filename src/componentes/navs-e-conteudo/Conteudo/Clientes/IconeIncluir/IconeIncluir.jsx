@@ -6,7 +6,7 @@ export default class IconeIncluir extends Component {
     render() {
         return (
             <div id="IconeIncluir">
-                <Link to="/CadastroClientes">+</Link>                
+                <Link to={this.props.rota}>+</Link>                
             </div>
         )
     }

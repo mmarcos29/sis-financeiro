@@ -39,7 +39,7 @@ export default class Clientes extends Component {
     // console.log(this.state.clientes)
     return (
       <div id="Clientes">
-        <BarraLocationPage incluir={<IconeIncluir />}>
+        <BarraLocationPage incluir={<IconeIncluir rota="/CadastroClientes"/>}>
           {[...this.props.children]}
         </BarraLocationPage>
         {/* {this.state.clientes.length > 0 ?  */}

@@ -24,6 +24,7 @@ import { createHashHistory } from "history"
 import api from './Services/api'
 import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/DetalheClientes/DetalheClientes'
 import Login from './componentes/Login/Login'
+import CadastroPropostas from './componentes/navs-e-conteudo/Conteudo/Propostas/CadastroPropostas/CadastroPropostas'
 const history = createHashHistory();
 
 
@@ -84,10 +85,10 @@ class App extends Component {
   //   }
   // }
 
-  componentDidMount(){
+  componentDidMount() {
     const user = localStorage.getItem('@username')
-    if(user){
-      this.setState({logued:true})
+    if (user) {
+      this.setState({ logued: true })
     }
   }
   componentWillMount() {
@@ -114,36 +115,37 @@ class App extends Component {
           />
       })
     }
-    if(this.state.logued){
-    return (
-      <div id="App">
-        <HashRouter history={history}>
+    if (this.state.logued) {
+      return (
+        <div id="App">
+          <HashRouter history={history}>
             {/* <Route path="/login" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage></>} /> */}
-          {this.state.menu}
-          <Switch>
-            <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
-              <Conteudo dados={this.state.dadosClientes} > {/*reloadConteudo={alterarConteudo} data={reloadConteudo} */}
-                <Route exact path="/" component={() => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />} />
-                <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
-                <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
-                <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
-                <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
-                <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
-                  setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
-                <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
-                <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
-                <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
-                <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />
-                <Route path="/comissionamento" component={() => <Comissionamento setListaAtiva={this.setListaAtiva}>COMISSIONAMENTO</Comissionamento>} />
-                <Route path="/relatorios" component={() => <Relatorios setListaAtiva={this.setListaAtiva}>RELATÓRIOS</Relatorios>} />
-              </Conteudo>
-            </NavsEConteudo>
-          </Switch>
-        </HashRouter>
-        {/* <NavsEConteudo /> */}
-      </div>
-    );
-    }else{
+            {this.state.menu}
+            <Switch>
+              <NavsEConteudo {...this.props} tipoContent={this.state.tipoConteudo} mudaDadosClientes={this.mudaDadosClientes} > {/*changeTypeContent={this.changeTypeContent}*/}
+                <Conteudo dados={this.state.dadosClientes} > {/*reloadConteudo={alterarConteudo} data={reloadConteudo} */}
+                  <Route exact path="/" component={() => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />} />
+                  <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
+                  <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
+                  <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
+                  <Route path="/CadastroPropostas" component={() => <><BarraLocationPage>Cadastro de Proposta</BarraLocationPage> <CadastroPropostas /> </>} />
+                  <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
+                  <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
+                    setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
+                  <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
+                  <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
+                  <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
+                  <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />
+                  <Route path="/comissionamento" component={() => <Comissionamento setListaAtiva={this.setListaAtiva}>COMISSIONAMENTO</Comissionamento>} />
+                  <Route path="/relatorios" component={() => <Relatorios setListaAtiva={this.setListaAtiva}>RELATÓRIOS</Relatorios>} />
+                </Conteudo>
+              </NavsEConteudo>
+            </Switch>
+          </HashRouter>
+          {/* <NavsEConteudo /> */}
+        </div>
+      );
+    } else {
       return (
         <Login />
       );

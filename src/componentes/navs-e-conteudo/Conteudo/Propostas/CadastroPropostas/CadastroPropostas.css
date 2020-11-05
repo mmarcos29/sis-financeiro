@@ -1,0 +1,31 @@
+.CadastroPropostas {
+  overflow: overlay;
+  height: 70vh;
+  max-height: 75vh;
+  min-height: 419px;
+  display: flex;
+}
+/* .CadastroPropostas div{
+  width: 100vw;
+  display: flex;
+} */
+.CadastroPropostas .visivel {
+  display: flex !important;
+}
+
+.CadastroPropostas .atributoForm{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+.CadastroPropostas .metade{
+  width: 50%;
+}
+.CadastroPropostas .umTerco{
+  width: 33%;
+}
+.CadastroPropostas .umQuarto{
+  width: 33%;
+}
+
+
