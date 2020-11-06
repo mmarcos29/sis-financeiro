@@ -8,6 +8,15 @@ const options = [
   { label: "bin", value: 3 },
 ];
 
+const customStyles = {
+  option: (provided, state) => ({
+    ...provided,
+    borderBottom: "1px dotted pink",
+    color: state.isSelected ? "red" : "blue",
+    // padding: 20,
+  }),
+};
+
 export default class CadastroPropostas extends React.Component {
   state = {
     value: false,
@@ -15,23 +24,43 @@ export default class CadastroPropostas extends React.Component {
     clientes: [],
   };
   onChange = (option) => {
-    this.setState({ value: option }, () => console.log(this.state.value));
+    this.setState({ value: option });
     //   console.log(this.state.value)
   };
   componentWillMount() {
+    if (document.querySelectorAll("#operacional li.active")[0]) {
+      document
+        .querySelectorAll("#operacional li.active")[0]
+        .classList.remove("active");
+    }
+
     if (this.props.clientes) {
       let clientePronto = this.props.clientes;
       clientePronto.map((cliente) => {
         cliente.label = cliente.nome;
-        cliente.value = cliente.nome;
+        cliente.value = cliente.id;
       });
 
       this.setState({ clientes: clientePronto });
       // console.log(this.state)
     }
   }
+  componentDidMount() {
+    if (document.getElementById("operacional")) {
+      if (
+        !document.getElementById("operacional").classList.contains("active")
+      ) {
+        // alert("era p ta dando certo")
+        document.getElementById("operacional").classList.add("active");
+        this.props.setListaAtiva(document.getElementById("operacional"));
+      }
+    }
+    if (document.getElementsByClassName("li-propostas")[0]) {
+      document.getElementsByClassName("li-propostas")[0].classList.add("active");
+    }
+  }
   render() {
-      console.log(this.state.value)
+    console.log(this.state.value);
     const novo = <div>variavel novo</div>;
     const refin = <div>variavel refin</div>;
 
@@ -40,10 +69,12 @@ export default class CadastroPropostas extends React.Component {
         <div className="atributoForm umTerco">
           CLIENTE*
           <Select
+            styles={customStyles}
             onChange={this.onChange}
-            options={this.state.clientes.filter((option) => option.label)}
+            options={this.state.clientes.filter((option) => option.cpf)}
             value={this.state.value}
             noOptionsMessage={() => "Nenhum cliente encontrado"}
+            placeholder="BUSQUE POR NOME"
           />
         </div>
         <div className="atributoForm umTerco">

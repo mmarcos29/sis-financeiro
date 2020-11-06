@@ -1,9 +1,15 @@
 .CadastroPropostas {
+  padding: 8px;
   overflow: overlay;
   height: 70vh;
   max-height: 75vh;
   min-height: 419px;
   display: flex;
+  background: #054f75;
+  border-radius: 1vw;
+  color: #ffffff;
+  font-weight: bold;
+  font-style: italic;
 }
 /* .CadastroPropostas div{
   width: 100vw;
@@ -13,19 +19,29 @@
   display: flex !important;
 }
 
-.CadastroPropostas .atributoForm{
+.CadastroPropostas .atributoForm {
   display: flex;
   flex-direction: column;
   margin: 5px;
+  height: 59px;
 }
-.CadastroPropostas .metade{
+.CadastroPropostas .atributoForm .css-2b097c-container {
+  margin-top: 3px;
+}
+.CadastroPropostas .atributoForm select {
+  border: solid 1px #00000054;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+.CadastroPropostas .metade {
   width: 50%;
 }
-.CadastroPropostas .umTerco{
+.CadastroPropostas .umTerco {
   width: 33%;
 }
-.CadastroPropostas .umQuarto{
+.CadastroPropostas .umQuarto {
   width: 33%;
 }
-
-

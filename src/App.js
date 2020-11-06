@@ -128,7 +128,7 @@ class App extends Component {
                   <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
                   <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
                   <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
-                  <Route path="/CadastroPropostas" component={() => <><BarraLocationPage>Cadastro de Proposta</BarraLocationPage> <CadastroPropostas clientes={this.state.clientes}/> </>} />
+                  <Route path="/CadastroPropostas" component={() => <><BarraLocationPage>Cadastro de Proposta</BarraLocationPage> <CadastroPropostas clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} /> </>} />
                   <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
                   <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
                     setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
