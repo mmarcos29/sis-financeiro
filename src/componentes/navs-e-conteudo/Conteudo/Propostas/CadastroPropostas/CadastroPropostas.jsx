@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./CadastroPropostas.css";
-import { render } from "@testing-library/react";
+import RemoveMascaraCpf from '../../../../../Services/RemoveMascaraCpf'
 const options = [
   { label: "joao", cpf: "07360473365" },
   { label: "bar", value: 2 },
@@ -13,6 +13,7 @@ const customStyles = {
     ...provided,
     borderBottom: "1px dotted pink",
     color: state.isSelected ? "red" : "blue",
+    // width: "1px",
     // padding: 20,
   }),
 };
@@ -37,7 +38,7 @@ export default class CadastroPropostas extends React.Component {
     if (this.props.clientes) {
       let clientePronto = this.props.clientes;
       clientePronto.map((cliente) => {
-        cliente.label = cliente.nome;
+        cliente.label = `${cliente.nome} - ${RemoveMascaraCpf(cliente.cpf)}`;
         cliente.value = cliente.id;
       });
 
@@ -71,7 +72,7 @@ export default class CadastroPropostas extends React.Component {
           <Select
             styles={customStyles}
             onChange={this.onChange}
-            options={this.state.clientes.filter((option) => option.cpf)}
+            options={this.state.clientes.filter((option) => option.label)}
             value={this.state.value}
             noOptionsMessage={() => "Nenhum cliente encontrado"}
             placeholder="BUSQUE POR NOME"
