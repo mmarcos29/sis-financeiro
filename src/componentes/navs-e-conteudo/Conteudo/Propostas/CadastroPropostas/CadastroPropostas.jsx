@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import "./CadastroPropostas.css";
-import RemoveMascaraCpf from '../../../../../Services/RemoveMascaraCpf'
-const options = [
-  { label: "joao", cpf: "07360473365" },
-  { label: "bar", value: 2 },
-  { label: "bin", value: 3 },
-];
+import RemoveMascaraCpf from "../../../../../Services/RemoveMascaraCpf";
+const tiposPropostas = [{ label: "novo", value: "novo" }];
 
 const customStyles = {
   option: (provided, state) => ({
@@ -20,13 +16,19 @@ const customStyles = {
 
 export default class CadastroPropostas extends React.Component {
   state = {
-    value: false,
+    proposta: { cliente: "", corretor: "", tipo: "" },
     tipoProposta: false,
     clientes: [],
+    corretor: [{ label: "Magno Vieria", value: 1 }],
   };
-  onChange = (option) => {
-    this.setState({ value: option });
-    //   console.log(this.state.value)
+  onChange = (option, action) => {
+    let state = this.state;
+    // if(action.name === "tipo"){
+    //   state.proposta[action.name] = option.value;
+    // }
+    state.proposta[action.name] = option;
+    this.setState(state);
+    console.log(this.state);
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -57,69 +59,68 @@ export default class CadastroPropostas extends React.Component {
       }
     }
     if (document.getElementsByClassName("li-propostas")[0]) {
-      document.getElementsByClassName("li-propostas")[0].classList.add("active");
+      document
+        .getElementsByClassName("li-propostas")[0]
+        .classList.add("active");
     }
   }
   render() {
-    console.log(this.state.value);
+    const opcoes = [
+      { nome: "novo", conteudo: 
+      <div className="full">
+        <div className="atributoForm umTerco">variavel novo</div> 
+      </div>
+    
+    },
+    ];
     const novo = <div>variavel novo</div>;
     const refin = <div>variavel refin</div>;
 
     return (
       <div className="CadastroPropostas">
-        <div className="atributoForm umTerco">
-          CLIENTE*
-          <Select
-            styles={customStyles}
-            onChange={this.onChange}
-            options={this.state.clientes.filter((option) => option.label)}
-            value={this.state.value}
-            noOptionsMessage={() => "Nenhum cliente encontrado"}
-            placeholder="BUSQUE POR NOME"
-          />
+        <div className="full">
+          <div className="atributoForm umTerco">
+            CLIENTE*
+            <Select
+              styles={customStyles}
+              onChange={this.onChange}
+              name="cliente"
+              options={this.state.clientes.filter((option) => option.label)}
+              value={this.state.proposta.cliente}
+              noOptionsMessage={() => "Nenhum cliente encontrado"}
+              placeholder="BUSQUE POR NOME"
+            />
+          </div>
+          <div className="atributoForm umTerco">
+            CORRETOR*
+            <Select
+              styles={customStyles}
+              onChange={this.onChange}
+              name="corretor"
+              options={this.state.corretor.filter((corretor) => corretor.label)}
+              value={this.state.proposta.corretor}
+              noOptionsMessage={() => "Nenhum cliente encontrado"}
+              placeholder="BUSQUE POR NOME"
+            />
+          </div>
+          <div className="atributoForm umTerco">
+            TIPO DE PROPOSTA*
+            <Select
+              styles={customStyles}
+              onChange={this.onChange}
+              name="tipo"
+              options={tiposPropostas.filter((tipo) => tipo.label)}
+              value={this.state.proposta.tipo}
+              noOptionsMessage={() => "Nenhum cliente encontrado"}
+              placeholder="BUSQUE POR NOME"
+            />
+          </div>
         </div>
-        <div className="atributoForm umTerco">
-          CORRETOR*
-          <select
-            name="grauInstrucao"
-            objeto="dadosPessoais"
-            //   onChange={this.onchange}
-            //   value={this.state.formulario.dadosPessoais.grauInstrucao}
-          >
-            <option value="" disabled selected hidden>
-              SELECIONE
-            </option>
-            <option value="ANALFABETO">ANALFABETO</option>
-            <option value="LÊ E ESCREVE">LÊ E ESCREVE</option>
-            <option value="PRIMEIRO GRAU INCOMPLETO">
-              PRIMEIRO GRAU INCOMPLETO
-            </option>
-            <option value="PRIMEIRO GRAU COMPLETO">
-              PRIMEIRO GRAU COMPLETO
-            </option>
-            <option value="SEGUNDO GRAU INCOMPLETO">
-              SEGUNDO GRAU INCOMPLETO
-            </option>
-            <option value="SEGUNDO GRAU COMPLETO">SEGUNDO GRAU COMPLETO</option>
-            <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
-            <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
-          </select>
-        </div>
-        <div className="atributoForm umTerco">
-          TIPO DE PROPOSTA*
-          <select
-            name="grauInstrucao"
-            objeto="dadosPessoais"
-            //   onChange={this.onchange}
-            //   value={this.state.formulario.dadosPessoais.grauInstrucao}
-          >
-            <option value="" disabled selected hidden>
-              SELECIONE
-            </option>
-            <option value="ANALFABETO">NOVO</option>
-          </select>
-        </div>
-        {/* {tipoProposta} */}
+        {opcoes.map((opcao) =>
+          opcao.nome === this.state.proposta.tipo.value ? (
+            opcao.conteudo
+          ) : ""
+        )}
       </div>
     );
   }
