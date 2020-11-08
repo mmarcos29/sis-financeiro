@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
 
+let focus = { user: false, password: false }
+
 export default class Login extends React.Component {
   state = {
     USERNAME: "",
@@ -13,19 +15,23 @@ export default class Login extends React.Component {
   };
   logar = (e) => {
     e.preventDefault();
+    if(focus.user === false && focus.password ===true){
+          this.refs.user.focus();
+        }
     if (this.state.USERNAME === "jm") {
       localStorage.setItem("@username", "joaoMarcos");
       window.location.reload();
     } else {
       alert("LOGIN INVÁLIDO!");
-      this.setState({USERNAME: "", password: ""})
+      this.setState({ USERNAME: "", password: "" }, () =>
+        console.log(this.state)
+      );
     }
   };
-
-  // localStorage.removeItem('@username');
-  // localStorage.getItem('@username')
-  // localStorage.setItem('@username', "joaoMarcos");
-  // console.log(localStorage.getItem('@username'))
+  componentDidMount() {
+    this.refs.user.focus();
+  }
+  
   render() {
     return (
       <form onSubmit={this.logar}>
@@ -40,11 +46,34 @@ export default class Login extends React.Component {
                 name="USERNAME"
                 value={this.state.USERNAME}
                 onChange={this.onChange}
+                ref="user"
+                onFocus={() => {
+                  focus.user = true 
+                  console.log(focus)
+                }}
+                onBlur={() => {
+                  focus.user = false 
+                  console.log(focus)
+                }}
               />
             </div>
             <div className="input">
               <span class="material-icons">lock</span>
-              <input type="password" placeholder="PASSWORD" />
+              <input
+                type="password"
+                placeholder="PASSWORD"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+                onFocus={() => {
+                  focus.password = true 
+                  console.log(focus)
+                }}
+                onBlur={() => {
+                  focus.password = false 
+                  console.log(focus)
+                }}
+              />
             </div>
             <button type="submit">LOGIN</button>
             {/* <button onClick={this.logar}>LOGIN</button> */}

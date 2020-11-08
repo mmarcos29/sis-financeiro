@@ -5,7 +5,7 @@
   max-height: 75vh;
   /* min-height: 419px; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   background: #054f75;
   border-radius: 1vw;
   color: #ffffff;
@@ -16,12 +16,15 @@
 .CadastroPropostas .visivel {
   display: flex !important;
 }
+.CadastroPropostas textarea {
+  padding: 8px;
+}
 
 .CadastroPropostas .atributoForm {
   display: flex;
   flex-direction: column;
   margin: 15px;
-  height: 59px;
+  height: inherit;
 }
 .CadastroPropostas .atributoForm .css-2b097c-container {
   margin-top: 3px;
@@ -34,6 +37,31 @@
   border-radius: 5px;
   margin-top: 3px;
 }
+.CadastroPropostas .atributoForm textarea {
+  margin-top: 1vh;
+  height: 15vh;
+  outline: none;
+  border-radius: 1vw;
+}
+.CadastroPropostas .atributoForm .dataEmissao {
+  height: 25%;
+  width: 93%;
+  border-radius: 1.2vw;
+  font-size: 1.7em;
+  font-weight: normal;
+  font-style: normal;
+  outline: none;
+  padding: 5px;
+}
+.CadastroPropostas .quaseMetade {
+  width: 40%;
+}
+.CadastroPropostas .maisDaMetade {
+  width: 60%;
+}
+.CadastroPropostas .tudoPossivel {
+  width: -webkit-fill-available;
+}
 .CadastroPropostas .metade {
   width: 50%;
 }
@@ -41,9 +69,71 @@
   width: 30%;
 }
 .CadastroPropostas .umQuarto {
-  width: 33%;
+  width: 25%;
+}
+.CadastroPropostas .umSexto {
+  width: 16%;
+  font-size: 1vw;
+}
+.CadastroPropostas .ultimo {
+  /* margin-top: 3vh; */
 }
 .CadastroPropostas .full {
   width: 100%;
   display: flex;
+  height: 15vh;
+}
+.CadastroPropostas .spaceBetween {
+  justify-content: space-between;
+}
+.CadastroPropostas .flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.situacao {
+  color: #ffff00d4;
+}
+.status {
+  display: flex;
+  flex-direction: column;
+  height: 8vh;
+  justify-content: space-between;
+  margin: 1vh 0;
+}
+.CadastroPropostas .infoEmprestador {
+  margin-right: 2.3%;
+}
+.botaoesEStatus {
+  display: flex;
+  justify-content: space-between;
+  width: 98%;
+}
+.butoons {
+  display: flex;
+  width: 51%;
+  /* justify-content: center; */
+}
+.butoons button {
+  background: #ffffffcc;
+  width: 7vw;
+  padding: 2vh;
+  margin: 1vw 2vw;
+  border-radius: 1vh;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.2vw;
+  outline: none;
+  border: none;
+}
+.butoons button:hover {
+  background: white;
+  cursor: pointer;
+}
+.butoons button.gravar {
+  background: #fff212cc;
+  color: #054f75cc;
+}
+.butoons button.gravar:hover {
+  background: #fff212;
+  color: #054f75;
 }
