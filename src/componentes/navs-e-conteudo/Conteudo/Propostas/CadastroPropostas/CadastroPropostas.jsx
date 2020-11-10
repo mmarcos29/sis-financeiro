@@ -274,100 +274,110 @@ export default class CadastroPropostas extends React.Component {
 
     return (
       <div className="CadastroPropostas">
-        <div className="full spaceBetween">
-          <div className="atributoForm umTerco">
-            CLIENTE*
-            <Select
-              styles={customStyles}
-              onChange={this.onChange}
-              name="cliente"
-              options={this.state.clientes.filter((option) => option.label)}
-              value={this.state.proposta.cliente}
-              noOptionsMessage={() => "Nenhum cliente encontrado"}
-              placeholder="BUSQUE POR NOME"
-            />
-          </div>
-          <div className="atributoForm umTerco">
-            CORRETOR*
-            <Select
-              styles={customStyles}
-              onChange={this.onChange}
-              name="corretor"
-              options={this.state.corretor.filter((corretor) => corretor.label)}
-              value={this.state.proposta.corretor}
-              noOptionsMessage={() => "Nenhum cliente encontrado"}
-              placeholder="BUSQUE POR NOME"
-            />
-          </div>
-          <div className="atributoForm umTerco">
-            TIPO DE PROPOSTA*
-            <Select
-              styles={customStyles}
-              onChange={this.onChange}
-              name="tipo"
-              options={tiposPropostas.filter((tipo) => tipo.label)}
-              value={this.state.proposta.tipo}
-              noOptionsMessage={() => "Nenhum cliente encontrado"}
-              placeholder="BUSQUE POR NOME"
-            />
-          </div>
-        </div>
-        {opcoes.map((opcao) =>
-          opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
-        )}
-        <div className="full spaceBetween ultimo">
-          <div className="quaseMetade">
-            <div className="atributoForm tudoPossivel">
-              OBSERVAÇÕES*
-              <textarea
-                name="observacoes"
-                cols="60"
-                rows="60"
-                value={this.state.proposta.observacoes}
+        <div className="camposPrincipais">
+          <div className="full spaceBetween">
+            <div className="atributoForm umTerco">
+              CLIENTE*
+              <Select
+                styles={customStyles}
                 onChange={this.onChange}
+                name="cliente"
+                options={this.state.clientes.filter((option) => option.label)}
+                value={this.state.proposta.cliente}
+                noOptionsMessage={() => "Nenhum cliente encontrado"}
+                placeholder="BUSQUE POR NOME"
+              />
+            </div>
+            <div className="atributoForm umTerco">
+              CORRETOR*
+              <Select
+                styles={customStyles}
+                onChange={this.onChange}
+                name="corretor"
+                options={this.state.corretor.filter(
+                  (corretor) => corretor.label
+                )}
+                value={this.state.proposta.corretor}
+                noOptionsMessage={() => "Nenhum cliente encontrado"}
+                placeholder="BUSQUE POR NOME"
+              />
+            </div>
+            <div className="atributoForm umTerco">
+              TIPO DE PROPOSTA*
+              <Select
+                styles={customStyles}
+                onChange={this.onChange}
+                name="tipo"
+                options={tiposPropostas.filter((tipo) => tipo.label)}
+                value={this.state.proposta.tipo}
+                noOptionsMessage={() => "Nenhum cliente encontrado"}
+                placeholder="BUSQUE POR NOME"
               />
             </div>
           </div>
-          <div className="maisDaMetade flex">
-            <div className="full spaceBetween">
-              <div className="atributoForm quaseMetade">
-                EMISSÃO*
-                <InputMask
-                  className="dataEmissao"
-                  mask="99/99/9999"
-                  name="dtProposta"
-                  objeto="enderecoCliente"
-                  value={this.state.proposta.dtProposta}
+          {opcoes.map((opcao) =>
+            opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
+          )}
+        </div>
+        <div className="observacoes">
+          <div className="full spaceBetween ultimo">
+            <div className="quaseMetade">
+              <div className="atributoForm tudoPossivel">
+                OBSERVAÇÕES*
+                <textarea
+                  name="observacoes"
+                  cols="60"
+                  rows="60"
+                  value={this.state.proposta.observacoes}
                   onChange={this.onChange}
-                />
-              </div>
-              <div className="atributoForm metade">
-                COMO CHEGOU ATÉ NÓS?
-                <Select
-                  styles={customStyles}
-                  onChange={this.onChange}
-                  name="formaContato"
-                  options={formaContato.filter((tipo) => tipo.label)}
-                  value={this.state.proposta.formaContato}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
                 />
               </div>
             </div>
-            <div className="botaoesEStatus">
-              <div className="status">
-                <div>
-                  Situação: <span className="situacao"> digitando...</span>
+            <div className="maisDaMetade flex">
+              <div className="full spaceBetween">
+                <div className="atributoForm quaseMetade">
+                  EMISSÃO*
+                  <InputMask
+                    className="dataEmissao"
+                    mask="99/99/9999"
+                    name="dtProposta"
+                    objeto="enderecoCliente"
+                    value={this.state.proposta.dtProposta}
+                    onChange={this.onChange}
+                  />
                 </div>
-                <div>
-                  Esteira:{" "}
-                  <span className="situacao"> Verificando Informações...</span>
+                <div className="atributoForm metade">
+                  COMO CHEGOU ATÉ NÓS?
+                  <Select
+                    styles={customStyles}
+                    onChange={this.onChange}
+                    name="formaContato"
+                    options={formaContato.filter((tipo) => tipo.label)}
+                    value={this.state.proposta.formaContato}
+                    noOptionsMessage={() => "Nenhum cliente encontrado"}
+                    placeholder="BUSQUE POR NOME"
+                  />
                 </div>
               </div>
-              <div className="butoons">
-                <button onClick={() => this.props.history.push("/propostas")}>Cancelar</button>
-                <button className="gravar">Gravar</button>
-                
+              <div className="botaoesEStatus">
+                <div className="status">
+                  <div>
+                    Situação: <span className="situacao"> digitando...</span>
+                  </div>
+                  <div>
+                    Esteira:{" "}
+                    <span className="situacao">
+                      {" "}
+                      Verificando Informações...
+                    </span>
+                  </div>
+                </div>
+                <div className="butoons">
+                  <button onClick={() => this.props.history.push("/propostas")}>
+                    Cancelar
+                  </button>
+                  <button className="gravar">Gravar</button>
+                </div>
               </div>
             </div>
           </div>
