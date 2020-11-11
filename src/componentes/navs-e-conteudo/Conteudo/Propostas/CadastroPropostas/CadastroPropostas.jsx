@@ -4,6 +4,8 @@ import "./CadastroPropostas.css";
 import RemoveMascaraCpf from "../../../../../Services/RemoveMascaraCpf";
 import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
 import InputMask from "react-input-mask";
+import listaConvenios from "../../../../../Services/listaConvenios";
+import listaTabela from "../../../../../Services/listaTabela";
 const tiposPropostas = [
   { label: "novo", value: "novo" },
   { label: "teste", value: "teste" },
@@ -52,6 +54,14 @@ export default class CadastroPropostas extends React.Component {
     proposta: {
       valorParcela: "",
       valorProposta: "",
+      banco: "",
+      convenio:"",
+      tabela: "",
+      comissaoEmpresa: "",
+      comissaoCorretor: "",
+      nrProposta: "",
+      parcelas:"",
+      taxa:"",
       cliente: "",
       corretor: "",
       tipo: "", //{ label: "novo", value: "novo" },
@@ -60,7 +70,7 @@ export default class CadastroPropostas extends React.Component {
       observacoes: "",
     },
     clientes: [],
-    corretor: [{ label: "Magno Vieria", value: 1 }],
+    corretor: [{ label: "Magno Vieria", value: "Magno Vieria" }],
   };
   onChange = (option, action) => {
     let state = this.state;
@@ -68,12 +78,17 @@ export default class CadastroPropostas extends React.Component {
       state.proposta[option.target.name] = option.target.value;
       if (
         option.target.name === "valorParcela" ||
-        option.target.name === "valorProposta"
+        option.target.name === "valorProposta" ||
+        option.target.name === "comissaoEmpresa" ||
+        option.target.name === "comissaoCorretor" ||
+        option.target.name === "taxa"
       ) {
         state.proposta[option.target.name] = mascaraDinheiro(
           option.target.value
         );
-      }
+      }else if(option.target.name === "nrProposta" || option.target.name === "parcelas"){
+        state.proposta[option.target.name] = option.target.value.replace(/\D/g, "")
+      } 
     } else {
       state.proposta[action.name] = option;
     }
@@ -124,11 +139,12 @@ export default class CadastroPropostas extends React.Component {
               <div className="atributoForm metade">
                 BANCO*
                 <Select
+                isDisabled
                   styles={customStyles}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
+                  name="banco"
+                  options={formaContato.filter((option) => option.label)}
+                  value={this.state.proposta.banco}
                   noOptionsMessage={() => "Nenhum cliente encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
@@ -138,9 +154,9 @@ export default class CadastroPropostas extends React.Component {
                 <Select
                   styles={customStyles}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
+                  name="convenio"
+                  options={listaConvenios.filter((option) => option.label)}
+                  value={this.state.proposta.convenio}
                   noOptionsMessage={() => "Nenhum cliente encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
@@ -150,11 +166,12 @@ export default class CadastroPropostas extends React.Component {
               <div className="atributoForm umQuarto">
                 PARCEIRO
                 <Select
+                  isDisabled={true}
                   styles={customStyles}
                   onChange={this.onChange}
                   name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
+                  // options={this.state.clientes.filter((option) => option.label)}
+                  // value={this.state.proposta.cliente}
                   noOptionsMessage={() => "Nenhum cliente encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
@@ -164,73 +181,65 @@ export default class CadastroPropostas extends React.Component {
                 <Select
                   styles={customStyles}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
+                  name="tabela"
+                  options={listaTabela.filter((option) => option.label)}
+                  value={this.state.proposta.tabela}
                   noOptionsMessage={() => "Nenhum cliente encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
               </div>
               <div className="atributoForm umQuarto">
                 COMISSÃO EMPRESA (%)*
-                <Select
-                  styles={customStyles}
+                <input
+                  className="dataEmissao"
+                  type="text"
+                  name="comissaoEmpresa"
+                  value={this.state.proposta.comissaoEmpresa}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
                 />
               </div>
               <div className="atributoForm umQuarto">
                 COMISSÃO CORRETOR (%)*
-                <Select
-                  styles={customStyles}
+                <input
+                  className="dataEmissao"
+                  type="text"
+                  name="comissaoCorretor"
+                  value={this.state.proposta.comissaoCorretor}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
                 />
               </div>
             </div>
             <div className="full">
               <div className="atributoForm umSexto">
                 NR. PROPOSTA
-                <Select
-                  styles={customStyles}
+                <input
+                  className="dataEmissao"
+                  type="text"
+                  name="nrProposta"
+                  value={this.state.proposta.nrProposta}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
+                  maxlength="9"
                 />
               </div>
               <div className="atributoForm umSexto">
                 PARCELAS*
-                <Select
-                  styles={customStyles}
+                <input
+                  className="dataEmissao"
+                  type="text"
+                  name="parcelas"
+                  value={this.state.proposta.parcelas}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
+                  maxlength="3"
                 />
               </div>
               <div className="atributoForm umSexto">
                 TAXA*
-                <Select
-                  styles={customStyles}
+                <input
+                  className="dataEmissao"
+                  type="text"
+                  name="taxa"
+                  value={this.state.proposta.taxa}
                   onChange={this.onChange}
-                  name="cliente"
-                  options={this.state.clientes.filter((option) => option.label)}
-                  value={this.state.proposta.cliente}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
                 />
               </div>
               <div className="atributoForm umSexto">
