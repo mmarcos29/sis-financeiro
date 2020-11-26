@@ -98,7 +98,6 @@ export default class DetalheProposta extends React.Component {
       state.proposta[action.name] = option;
     }
     this.setState(state);
-    console.log(this.state);
   };
 
   onSubmit = (event) => {
@@ -121,7 +120,7 @@ export default class DetalheProposta extends React.Component {
       });
 
       this.setState({ clientes: clientePronto });
-      // console.log(this.state)
+      
       
     }
     
@@ -144,10 +143,21 @@ export default class DetalheProposta extends React.Component {
     if(this.state.clientes.length > 0 && this.state.propostaAtual){ 
       // console.log(this.state.propostaAtual.clienteId)
       const clienteProposta = this.state.clientes.filter(cliente => cliente.value === parseInt(this.state.propostaAtual.clienteId) ) 
-      console.log(clienteProposta)
+      const corretorProposta = corretores.filter(corretor => corretor.value === this.state.propostaAtual.corretor)
+      const tipoProposta = tiposPropostas.find(tipo => tipo.value === this.state.propostaAtual.tipo)
+      const banco = listaDeBancos.filter(banco => banco.value === this.state.propostaAtual.banco)
+      const convenio = listaConvenios.filter(convenio => convenio.value === this.state.propostaAtual.convenio)
+      const tabela = listaTabela.filter(tabela => tabela.value === this.state.propostaAtual.tabela)
       let statePropostas = this.state.proposta
       statePropostas.clienteId = clienteProposta
-      this.setState({proposta: statePropostas})
+      statePropostas.corretor = corretorProposta
+      statePropostas.banco = banco
+      statePropostas.convenio = convenio
+      statePropostas.tabela = tabela
+      if(tipoProposta){
+        statePropostas.tipo = tipoProposta
+      }
+      this.setState({proposta: statePropostas}, console.log(this.state.proposta))
       
     }
   }
@@ -163,10 +173,10 @@ export default class DetalheProposta extends React.Component {
                 <Select
                   // isDisabled
                   styles={customStyles}
-                  // onChange={this.onChange}
+                  onChange={this.onChange}
                   name="banco"
-                  // options={listaDeBancos.filter((option) => option.label)}
-                  // value={this.state.proposta.banco}
+                  options={listaDeBancos.filter((option) => option.label)}
+                  value={this.state.proposta.banco}
                   noOptionsMessage={() => "Nenhum Banco encontrado"}
                   placeholder="BUSQUE POR NOME OU CÓDIGO DO BANCO"
                 />
@@ -178,7 +188,7 @@ export default class DetalheProposta extends React.Component {
                   onChange={this.onChange}
                   name="convenio"
                   options={listaConvenios.filter((option) => option.label)}
-                  // value={this.state.proposta.convenio}
+                  value={this.state.proposta.convenio}
                   noOptionsMessage={() => "Nenhum tipo de convênio encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
@@ -343,7 +353,8 @@ export default class DetalheProposta extends React.Component {
               />
             </div>
           </div>
-          {opcoes.map((opcao) =>
+          {
+          opcoes.map((opcao) =>
             opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
           )}
         </div>
