@@ -1,5 +1,5 @@
 import React from "react";
-import "./ListaClientes.css";
+import "./ListaPropostas.css";
 import mascaraCpf from "../../../mascaraCpf";
 import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
 
@@ -11,16 +11,18 @@ export default (props) => {
       // state:{msg:'usuário não autenticado'}
     });
   };
+  const clientes = props.clientes || []
   let tr =
-    props.clientes.length > 0 ? (
-      props.clientes.map((cliente) => (
-        <tr onClick={() => detalhe(cliente.id)}>
-          <td>{cliente.id}</td>
-          <td>{cliente.nome}</td>
-          <td>{mascaraCpf(cliente.cpf)}</td>
-          <td>{cliente.dtNascimento || "------"}</td>
-          <td>{IdadePorAnoNascimento(cliente.dtNascimento)}</td>
-          <td>******</td>
+    props.propostas.length > 0 && clientes.length > 0 ? (
+      props.propostas.map((proposta) => (
+        <tr onClick={() => detalhe(proposta.id)}>
+          <td>{proposta.id}</td>
+          <td>{proposta.dtProposta}</td>
+      <td className="nome">{clientes.find(cliente => cliente.id === parseInt(proposta.clienteId)).nome }</td>{/* {mascaraCpf(proposta.cpf)}*/}
+          <td>{clientes.find(cliente => cliente.id === parseInt(proposta.clienteId)).cpf }</td>
+          <td>{proposta.tipo}</td>
+          <td>{proposta.valorProposta}</td>
+          <td>{proposta.esteira}</td>
         </tr>
       ))
     ) : (
@@ -34,28 +36,30 @@ export default (props) => {
       </tr>
     );
   return (
-    <div className="ListaClientes">
-      {console.log(props)}
+    <div className="ListaPropostas">
       <table className="alunos">
         <thead>
           <tr>
             <th className="espacamento">
-              <b>ID Cliente</b>
+              <b>ID PROPOSTA</b>
             </th>
             <th className="espacamento">
-              <b>NOME</b>
+              <b>EMISSÃO</b>
+            </th>
+            <th className="espacamento">
+              <b>CLIENTE</b>
             </th>
             <th className="espacamento">
               <b>CPF</b>
             </th>
             <th className="espacamento">
-              <b>DATA DE NASCIMENTO</b>
+              <b>TIPO</b>
             </th>
             <th className="espacamento">
-              <b>IDADE</b>
+              <b>VL.PROPOSTA</b>
             </th>
             <th className="espacamento">
-              <b>AÇÕES</b>
+              <b>ESTEIRA</b>
             </th>
           </tr>
         </thead>

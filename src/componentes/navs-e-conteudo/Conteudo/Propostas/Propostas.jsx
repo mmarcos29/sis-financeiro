@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Propostas.css";
 import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPage";
 import IconeIncluir from "../Clientes/IconeIncluir/IconeIncluir";
+import ListaClientes from "../Clientes/ListaClientes";
+import ListaPropostas from "./ListaPropostas";
 
 export default class Propostas extends Component {
   componentWillMount() {
@@ -26,12 +28,18 @@ export default class Propostas extends Component {
         .classList.add("active");
     }
   }
+
   render() {
     return (
       <div id="Propostas">
         <BarraLocationPage incluir={<IconeIncluir rota="CadastroPropostas" /> }>
           {[...this.props.children]}
         </BarraLocationPage>
+        <ListaPropostas 
+        propostas={this.props.propostas? this.props.propostas : []} 
+        history={this.props.history}
+        clientes={this.props.clientes}
+        />      
       </div>
     );
   }

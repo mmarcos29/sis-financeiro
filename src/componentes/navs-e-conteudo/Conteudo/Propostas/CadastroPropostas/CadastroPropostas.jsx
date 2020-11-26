@@ -6,38 +6,14 @@ import mascaraDinheiro from "../../../../../Services/mascaraDinheiro";
 import InputMask from "react-input-mask";
 import listaConvenios from "../../../../../Services/listaConvenios";
 import listaTabela from "../../../../../Services/listaTabela";
+import listaDeBancos from "../../../../../Services/listaDeBancos";
+import formasDeContato from "../../../../../Services/formasDeContato";
+
 const tiposPropostas = [
   { label: "novo", value: "novo" },
-  { label: "teste", value: "teste" },
+  // { label: "teste", value: "teste" },
 ];
-const formaContato = [
-  { label: "Indicação de amigos", value: "Indicação de amigos" },
-  { label: "Balcão", value: "Balcão" },
-  { label: "E-mail marketing", value: "E-mail marketing" },
-  { label: "Facebook", value: "Facebook" },
-  { label: "Folder e panfletos", value: "Folder e panfletos" },
-  { label: "Fomulário web site", value: "Fomulário web site" },
-  { label: "Instagram", value: "Instagram" },
-  { label: "Outdoor e placas", value: "Outdoor e placas" },
-  { label: "Rádio", value: "Rádio" },
-  { label: "Sms Marketing", value: "Sms Marketing" },
-  { label: "Telemarketing", value: "Telemarketing" },
-  { label: "Televisão", value: "Televisão" },
-  { label: "Twitter", value: "Twitter" },
-  { label: "Visita de corretor", value: "Visita de corretor" },
-  { label: "conect.app.br", value: "conect.app.br" },
-  { label: "Mala direta - carta", value: "Mala direta - carta" },
-  { label: "Whatsapp", value: "Whatsapp" },
-  { label: "Retenção", value: "Retenção" },
-  { label: "Divulgação", value: "Divulgação" },
-  { label: "Google", value: "Google" },
-  { label: "Jornal", value: "Jornal" },
-  { label: "Revista", value: "Revista" },
-  { label: "Receptivo", value: "Receptivo" },
-  { label: "Abordagem externa", value: "Abordagem externa" },
-  { label: "Panfletagem", value: "Panfletagem" },
-  { label: "Indicação parceria", value: "Indicação parceria" },
-];
+const corretores = [{ label: "Magno Vieria", value: "Magno Vieria" }];
 
 const customStyles = {
   option: (provided, state) => ({
@@ -52,25 +28,27 @@ const customStyles = {
 export default class CadastroPropostas extends React.Component {
   state = {
     proposta: {
-      valorParcela: "",
-      valorProposta: "",
+      clienteId: "",
+      corretor: "",
+      tipo: "", //{ label: "novo", value: "novo" },
       banco: "",
-      convenio:"",
+      convenio: "",
+      parceiro: "",
       tabela: "",
       comissaoEmpresa: "",
       comissaoCorretor: "",
       nrProposta: "",
-      parcelas:"",
-      taxa:"",
-      cliente: "",
-      corretor: "",
-      tipo: "", //{ label: "novo", value: "novo" },
+      parcelas: "",
+      taxa: "",
+      valorProposta: "",
+      valorParcela: "",
+      dtPrimeiraParcela: "",
+      observacoes: "",
       dtProposta: new Date().toLocaleDateString(),
       formaContato: "",
-      observacoes: "",
+      esteira: "CADASTRADO",
     },
     clientes: [],
-    corretor: [{ label: "Magno Vieria", value: "Magno Vieria" }],
   };
   onChange = (option, action) => {
     let state = this.state;
@@ -86,14 +64,26 @@ export default class CadastroPropostas extends React.Component {
         state.proposta[option.target.name] = mascaraDinheiro(
           option.target.value
         );
-      }else if(option.target.name === "nrProposta" || option.target.name === "parcelas"){
-        state.proposta[option.target.name] = option.target.value.replace(/\D/g, "")
-      } 
+      } else if (
+        option.target.name === "nrProposta" ||
+        option.target.name === "parcelas"
+      ) {
+        state.proposta[option.target.name] = option.target.value.replace(
+          /\D/g,
+          ""
+        );
+      }
     } else {
       state.proposta[action.name] = option;
     }
     this.setState(state);
     console.log(this.state);
+  };
+
+  onSubmit = (event) => {
+    // console.log(event.target);
+
+    this.props.enviarProposta(this.state.proposta)
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -139,14 +129,14 @@ export default class CadastroPropostas extends React.Component {
               <div className="atributoForm metade">
                 BANCO*
                 <Select
-                isDisabled
+                  // isDisabled
                   styles={customStyles}
                   onChange={this.onChange}
                   name="banco"
-                  options={formaContato.filter((option) => option.label)}
+                  options={listaDeBancos.filter((option) => option.label)}
                   value={this.state.proposta.banco}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
-                  placeholder="BUSQUE POR NOME"
+                  noOptionsMessage={() => "Nenhum Banco encontrado"}
+                  placeholder="BUSQUE POR NOME OU CÓDIGO DO BANCO"
                 />
               </div>
               <div className="atributoForm metade">
@@ -157,7 +147,7 @@ export default class CadastroPropostas extends React.Component {
                   name="convenio"
                   options={listaConvenios.filter((option) => option.label)}
                   value={this.state.proposta.convenio}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
+                  noOptionsMessage={() => "Nenhum tipo de convênio encontrado"}
                   placeholder="BUSQUE POR NOME"
                 />
               </div>
@@ -184,7 +174,7 @@ export default class CadastroPropostas extends React.Component {
                   name="tabela"
                   options={listaTabela.filter((option) => option.label)}
                   value={this.state.proposta.tabela}
-                  noOptionsMessage={() => "Nenhum cliente encontrado"}
+                  noOptionsMessage={() => "Nenhum tipo de tabela encontrada"}
                   placeholder="BUSQUE POR NOME"
                 />
               </div>
@@ -267,10 +257,9 @@ export default class CadastroPropostas extends React.Component {
                 <InputMask
                   className="dataEmissao"
                   mask="99/99/9999"
-                  // name="dtProposta"
-                  objeto="enderecoCliente"
-                  // value={this.state.proposta.dtProposta}
-                  // onChange={this.onChange}
+                  name="dtPrimeiraParcela"
+                  value={this.state.proposta.dtPrimeiraParcela}
+                  onChange={this.onChange}
                 />
               </div>
             </div>
@@ -290,9 +279,9 @@ export default class CadastroPropostas extends React.Component {
               <Select
                 styles={customStyles}
                 onChange={this.onChange}
-                name="cliente"
+                name="clienteId"
                 options={this.state.clientes.filter((option) => option.label)}
-                value={this.state.proposta.cliente}
+                value={this.state.proposta.clienteId}
                 noOptionsMessage={() => "Nenhum cliente encontrado"}
                 placeholder="BUSQUE POR NOME"
               />
@@ -303,11 +292,9 @@ export default class CadastroPropostas extends React.Component {
                 styles={customStyles}
                 onChange={this.onChange}
                 name="corretor"
-                options={this.state.corretor.filter(
-                  (corretor) => corretor.label
-                )}
+                options={corretores.filter((corretor) => corretor.label)}
                 value={this.state.proposta.corretor}
-                noOptionsMessage={() => "Nenhum cliente encontrado"}
+                noOptionsMessage={() => "Nenhum corretor encontrado"}
                 placeholder="BUSQUE POR NOME"
               />
             </div>
@@ -361,7 +348,7 @@ export default class CadastroPropostas extends React.Component {
                     styles={customStyles}
                     onChange={this.onChange}
                     name="formaContato"
-                    options={formaContato.filter((tipo) => tipo.label)}
+                    options={formasDeContato.filter((tipo) => tipo.label)}
                     value={this.state.proposta.formaContato}
                     noOptionsMessage={() => "Nenhum cliente encontrado"}
                     placeholder="BUSQUE POR NOME"
@@ -385,7 +372,16 @@ export default class CadastroPropostas extends React.Component {
                   <button onClick={() => this.props.history.push("/propostas")}>
                     Cancelar
                   </button>
-                  <button className="gravar">Gravar</button>
+                  <button
+                    type="submit"
+                    // disabled={false}
+                    className="gravar"
+                    onClick={this.onSubmit}
+                  >
+                    Gravar
+                  </button>
+                  {/* <form onSubmit={this.onSubmit}>
+                  </form> */}
                 </div>
               </div>
             </div>

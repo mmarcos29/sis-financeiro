@@ -40,7 +40,9 @@ class App extends Component {
     tipoConteudo: null,
     beneficio: null,
     clientes: null,
-    nomeClienteDetalhe: ""
+    propostas: null,
+    nomeClienteDetalhe: "",
+    propostas: []
   }
   troca(menu, modulo) {
     switch (menu) {
@@ -91,18 +93,47 @@ class App extends Component {
       this.setState({ logued: true })
     }
   }
-  componentWillMount() {
-    if (!this.state.clientes) {
-      api
-        .get("Clientes")
-        .then((Response) => this.setState({ clientes: Response.data }));
-    }
+  componentWillMount() {    
+    this.getPropostas()
+    this.getClientes()
   }
 
   mudaNomeClienteDetalhe = (nome) => {
     if (this.state.nomeClienteDetalhe !== nome) {
       this.setState({ nomeClienteDetalhe: nome })
     }
+  }
+
+  enviarProposta = (proposta) => {
+    let propostaPronta = proposta
+    if(propostaPronta.clienteId.id){
+      propostaPronta.formaContato = propostaPronta.formaContato.value
+      propostaPronta.corretor = propostaPronta.corretor.value
+      propostaPronta.clienteId = propostaPronta.clienteId.id
+      propostaPronta.tipo = propostaPronta.tipo.value
+      propostaPronta.banco = propostaPronta.banco.value
+      propostaPronta.convenio = propostaPronta.convenio.value
+      propostaPronta.tabela = propostaPronta.tabela.value
+      api.post("Propostas", propostaPronta).then(response => {
+        // console.log(response)
+        this.getPropostas()
+        history.push("/propostas")
+    })
+    }else{
+      alert("enviando proposta", (console.log(propostaPronta)))
+    }
+  }
+  getPropostas = () =>{
+    api.get("Propostas").then( response =>{
+      // console.log(response.data)
+      this.setState({propostas: response.data})
+    })
+  }
+  getClientes = () =>{
+    api.get("Clientes").then( response =>{
+      // console.log(response.data)
+      this.setState({clientes: response.data})
+    })
   }
 
   render() {
@@ -127,8 +158,8 @@ class App extends Component {
                   <Route exact path="/" component={() => <ZeraMenu activeMenu={this.state.activeMenu} setListaAtiva={this.setListaAtiva} />} />
                   <Route path="/pesquisa-inss" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <PesquisaInss dados={this.state.dadosClientes} >PESQUISA INSS</PesquisaInss>} />
                   <Route path="/simulacao-proposta" component={() => (this.state.dadosClientes === null) ? <Redirect to="/" /> : <SimulacaoProposta dados={this.state.dadosClientes} >PESQUISA INSS</SimulacaoProposta>} />
-                  <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
-                  <Route path="/CadastroPropostas" component={() => <><BarraLocationPage>Cadastro de Proposta</BarraLocationPage> <CadastroPropostas clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
+                  <Route path="/propostas" component={() => <Propostas setListaAtiva={this.setListaAtiva} history={history} propostas={this.state.propostas} clientes={this.state.clientes}>PROPOSTAS</Propostas>} /> {/*reloadConteudo={reloadConteudo} changeTypeContent={this.changeTypeContent}*/}
+                  <Route path="/CadastroPropostas" component={() => <><BarraLocationPage>Cadastro de Proposta</BarraLocationPage> <CadastroPropostas clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} enviarProposta={this.enviarProposta} /> </>} />
                   <Route path="/clientes" component={() => <Clientes setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes}>CLIENTES</Clientes>} />
                   <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
                     setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
