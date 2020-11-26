@@ -1,0 +1,26 @@
+.BtnEditar{
+    display: flex;
+    margin: 5px 1.5vw;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 3vw;
+}
+.BtnEditar button{
+    padding: 5px;
+    margin: 5px;
+    background: #6190e6;
+    color: white;
+    border-radius: 9px;
+    font-weight: bold;
+    font-size: 18px;
+    outline: none;
+}
+.BtnEditar button:hover{    
+    background: #6190e6cc;
+    color: white;
+    cursor: pointer;
+}
+.BtnEditar button:active{    
+    background: #61cbe6;
+    cursor: pointer;
+}

@@ -6,7 +6,7 @@ import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
 export default (props) => {
   const detalhe = (id) => {
     props.history.push({
-      pathname: "/DetalheClientes",
+      pathname: "/DetalhePropostas",
       search: `${id}`,
       // state:{msg:'usuário não autenticado'}
     });

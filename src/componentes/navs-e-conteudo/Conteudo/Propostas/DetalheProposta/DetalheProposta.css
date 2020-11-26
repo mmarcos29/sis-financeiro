@@ -1,0 +1,132 @@
+.CadastroClientes {
+  overflow: overlay;
+  height: 70vh;
+  max-height: 75vh;
+  min-height: 419px;
+}
+
+.atributoForm input,
+.tipoConta input {
+  border: solid 1px #00000054;
+  margin-top: 5px;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.atributoForm select {
+  border: solid 1px #00000054;
+  margin-top: 5px;
+  height: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.atributoForm label {
+  align-items: center;
+  height: 95%;
+  width: 33%;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  background-color: #c1b9b9f5;
+  border: solid 1px #00000054;
+  color: white;
+  cursor: pointer;
+}
+
+.dIdentificacao .tipoConta {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  margin-top: 5px;
+  width: 100%;
+}
+.tipoConta input[type="radio"] {
+  display: none;
+}
+
+.atributoForm input:checked + label {
+  /* outline: 2px dotted #21b4d0; */
+  background-color: #cddc39;
+  color: white;
+}
+.dIdentificacao {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #35bae8fa;
+  display: none;
+  padding: 0 16px 16px;
+}
+
+.dIdentificacao .umTerco {
+  width: 30%;
+}
+.dIdentificacao .umQuarto {
+  width: 25%;
+}
+.dIdentificacao .umOitavo {
+  width: 12%;
+}
+.atributoForm {
+  margin-top: 16px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.dIdentificacao div {
+  width: 48%;
+  display: flex;
+  justify-content: space-between;
+}
+.dIdentificacao div.conjugue {
+  width: 100%;
+  flex-wrap: wrap;
+  display: none;
+  background-color: #0176a1;
+  padding: 16px;
+  margin: 10px 0;
+  color: yellow;
+  font-weight: bolder;
+}
+.dIdentificacao .visivel {
+  display: flex !important;
+}
+.CadastroClientes form ul {
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+}
+
+/* .CadastroClientes li:first-child{margin-bottom: 0;} */
+.CadastroClientes li {
+  display: flex;
+  background-color: #ffff00;
+  font-weight: bold;
+  color: #054f75;
+  width: 100%;
+  border: solid 5px black;
+  border-width: 0 0 1px 0;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.simbolo {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: green;
+  color: white;
+  border-radius: 25px;
+  font-size: 15px;
+  width: 16px;
+  height: 16px;
+  margin: 0 5px;
+}
+
+.acoes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

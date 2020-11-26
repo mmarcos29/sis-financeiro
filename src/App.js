@@ -25,6 +25,7 @@ import api from './Services/api'
 import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/DetalheClientes/DetalheClientes'
 import Login from './componentes/Login/Login'
 import CadastroPropostas from './componentes/navs-e-conteudo/Conteudo/Propostas/CadastroPropostas/CadastroPropostas'
+import DetalheProposta from './componentes/navs-e-conteudo/Conteudo/Propostas/DetalheProposta/DetalheProposta'
 const history = createHashHistory();
 
 
@@ -42,6 +43,7 @@ class App extends Component {
     clientes: null,
     propostas: null,
     nomeClienteDetalhe: "",
+    nomePropostaDetalhe: "",
     propostas: []
   }
   troca(menu, modulo) {
@@ -65,27 +67,10 @@ class App extends Component {
   }
 
   setListaAtiva = (ul) => {
-    // alert("funcao")
-    // console.log(ul, li)
     if (this.state.activeMenu !== ul) {
       this.setState({ activeMenu: ul })
     }
-    // if(this.state.activeItem !== li){
-    //   this.setState({ activeItem: li[0] })
-    // }
   }
-
-  // componentDidUpdate() {
-  //   // alert("atualizou")
-  //   if (this.state.activeMenu) {
-  //     if (!this.state.activeMenu.classList.contains("active")) {
-  //       this.state.activeMenu.classList.add("active")
-  //     }
-  //     // if(!this.state.activeItem.classList.contains("active")){
-  //     //   this.state.activeItem.classList.add("active")
-  //     // }
-  //   }
-  // }
 
   componentDidMount() {
     const user = localStorage.getItem('@username')
@@ -103,6 +88,11 @@ class App extends Component {
       this.setState({ nomeClienteDetalhe: nome })
     }
   }
+  mudaNomePropostaDetalhe = (nome) => {
+    if (this.state.nomePropostaDetalhe !== nome) {
+      this.setState({ nomePropostaDetalhe: nome })
+    }
+  }
 
   enviarProposta = (proposta) => {
     let propostaPronta = proposta
@@ -115,7 +105,6 @@ class App extends Component {
       propostaPronta.convenio = propostaPronta.convenio.value
       propostaPronta.tabela = propostaPronta.tabela.value
       api.post("Propostas", propostaPronta).then(response => {
-        // console.log(response)
         this.getPropostas()
         history.push("/propostas")
     })
@@ -164,6 +153,7 @@ class App extends Component {
                   <Route path="/CadastroClientes" component={() => <><BarraLocationPage>Cadastro de Clientes</BarraLocationPage><CadastroClientes setListaAtiva={this.setListaAtiva} dados={this.state.dadosClientes}
                     setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
                   <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
+                  <Route path="/DetalhePropostas" component={() => <><BarraLocationPage>{this.state.nomePropostaDetalhe}</BarraLocationPage><DetalheProposta mudaNomePropostaDetalhe={this.mudaNomePropostaDetalhe} propostas={this.state.propostas} setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes} /> </>} />
                   <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
                   <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
                   <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />
