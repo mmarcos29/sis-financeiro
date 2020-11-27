@@ -8,6 +8,8 @@ import listaConvenios from "../../../../../Services/listaConvenios";
 import listaTabela from "../../../../../Services/listaTabela";
 import listaDeBancos from "../../../../../Services/listaDeBancos";
 import formasDeContato from "../../../../../Services/formasDeContato";
+import EditaNoBanco from "../../../../../Services/EditaNoBanco";
+import validaCamposFoms from "../../../../../Services/validaCamposFoms";
 
 const tiposPropostas = [
   { label: "novo", value: "novo" },
@@ -101,9 +103,9 @@ export default class DetalheProposta extends React.Component {
   };
 
   onSubmit = (event) => {
-    // console.log(event.target);
-
-    this.props.enviarProposta(this.state.proposta);
+    const dadosProposta = validaCamposFoms( this.state.proposta, "propostas")
+    
+    // EditaNoBanco(dadosProposta, this.props.history, "propostas")
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -142,18 +144,30 @@ export default class DetalheProposta extends React.Component {
     }
     if(this.state.clientes.length > 0 && this.state.propostaAtual){ 
       // console.log(this.state.propostaAtual.clienteId)
-      const clienteProposta = this.state.clientes.filter(cliente => cliente.value === parseInt(this.state.propostaAtual.clienteId) ) 
-      const corretorProposta = corretores.filter(corretor => corretor.value === this.state.propostaAtual.corretor)
+      const clienteProposta = this.state.clientes.find(cliente => cliente.value === parseInt(this.state.propostaAtual.clienteId) ) 
+      const corretorProposta = corretores.find(corretor => corretor.value === this.state.propostaAtual.corretor)
       const tipoProposta = tiposPropostas.find(tipo => tipo.value === this.state.propostaAtual.tipo)
-      const banco = listaDeBancos.filter(banco => banco.value === this.state.propostaAtual.banco)
-      const convenio = listaConvenios.filter(convenio => convenio.value === this.state.propostaAtual.convenio)
-      const tabela = listaTabela.filter(tabela => tabela.value === this.state.propostaAtual.tabela)
+      const banco = listaDeBancos.find(banco => banco.value === this.state.propostaAtual.banco)
+      const convenio = listaConvenios.find(convenio => convenio.value === this.state.propostaAtual.convenio)
+      const tabela = listaTabela.find(tabela => tabela.value === this.state.propostaAtual.tabela)
+      const formaContato = formasDeContato.find(formaContato => formaContato.value === this.state.propostaAtual.formaContato)
       let statePropostas = this.state.proposta
       statePropostas.clienteId = clienteProposta
       statePropostas.corretor = corretorProposta
       statePropostas.banco = banco
       statePropostas.convenio = convenio
       statePropostas.tabela = tabela
+      statePropostas.comissaoEmpresa = this.state.propostaAtual.comissaoEmpresa
+      statePropostas.comissaoCorretor = this.state.propostaAtual.comissaoCorretor
+      statePropostas.nrProposta = this.state.propostaAtual.nrProposta
+      statePropostas.parcelas = this.state.propostaAtual.parcelas
+      statePropostas.taxa = this.state.propostaAtual.taxa
+      statePropostas.valorProposta = this.state.propostaAtual.valorProposta
+      statePropostas.dtPrimeiraParcela = this.state.propostaAtual.dtPrimeiraParcela
+      statePropostas.observacoes = this.state.propostaAtual.observacoes
+      statePropostas.dtProposta = this.state.propostaAtual.dtProposta
+      statePropostas.formaContato = formaContato
+      statePropostas.esteira = this.state.propostaAtual.esteira
       if(tipoProposta){
         statePropostas.tipo = tipoProposta
       }
@@ -406,8 +420,8 @@ export default class DetalheProposta extends React.Component {
                   <div>
                     Esteira:{" "}
                     <span className="situacao">
-                      {" "}
-                      Verificando Informações...
+                      {this.state.proposta.esteira}
+                      {/* Verificando Informações... */}
                     </span>
                   </div>
                 </div>
