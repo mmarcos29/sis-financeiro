@@ -130,3 +130,6 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
+.CadastroPropostas .atributoForm input:disabled{
+  color: white;
+}

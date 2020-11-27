@@ -323,8 +323,7 @@ export default class DetalheClientes extends React.Component {
                     type="text"
                     name="cpf"
                     disabled={this.state.readyOnly}
-                    objeto="dadosPessoais"
-                    disabled={this.state.readyOnly}
+                    objeto="dadosPessoais"                    
                     value={
                       this.state.dados
                         ? mascaraCpf(this.state.dados.cpf)

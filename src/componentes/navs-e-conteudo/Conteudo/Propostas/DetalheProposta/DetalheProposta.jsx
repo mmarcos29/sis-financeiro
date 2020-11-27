@@ -45,6 +45,7 @@ export default class DetalheProposta extends React.Component {
       propostaAtual: proposta || null,
       exibir: null,
       dados: null,
+      id: idProposta,
       proposta: {
         clienteId: "",
         corretor: "",
@@ -103,9 +104,13 @@ export default class DetalheProposta extends React.Component {
   };
 
   onSubmit = (event) => {
-    const dadosProposta = validaCamposFoms( this.state.proposta, "propostas")
-    
-    // EditaNoBanco(dadosProposta, this.props.history, "propostas")
+    const dadosProposta = validaCamposFoms(this.state.proposta, "propostas");
+
+    if (dadosProposta) {
+      dadosProposta.id = this.state.id;
+      // console.log(dadosProposta)
+      EditaNoBanco(dadosProposta, this.props.history, "propostas")
+    }
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -122,10 +127,7 @@ export default class DetalheProposta extends React.Component {
       });
 
       this.setState({ clientes: clientePronto });
-      
-      
     }
-    
   }
   componentDidMount() {
     if (document.getElementById("operacional")) {
@@ -142,37 +144,56 @@ export default class DetalheProposta extends React.Component {
         .getElementsByClassName("li-propostas")[0]
         .classList.add("active");
     }
-    if(this.state.clientes.length > 0 && this.state.propostaAtual){ 
+    if (this.state.clientes.length > 0 && this.state.propostaAtual) {
       // console.log(this.state.propostaAtual.clienteId)
-      const clienteProposta = this.state.clientes.find(cliente => cliente.value === parseInt(this.state.propostaAtual.clienteId) ) 
-      const corretorProposta = corretores.find(corretor => corretor.value === this.state.propostaAtual.corretor)
-      const tipoProposta = tiposPropostas.find(tipo => tipo.value === this.state.propostaAtual.tipo)
-      const banco = listaDeBancos.find(banco => banco.value === this.state.propostaAtual.banco)
-      const convenio = listaConvenios.find(convenio => convenio.value === this.state.propostaAtual.convenio)
-      const tabela = listaTabela.find(tabela => tabela.value === this.state.propostaAtual.tabela)
-      const formaContato = formasDeContato.find(formaContato => formaContato.value === this.state.propostaAtual.formaContato)
-      let statePropostas = this.state.proposta
-      statePropostas.clienteId = clienteProposta
-      statePropostas.corretor = corretorProposta
-      statePropostas.banco = banco
-      statePropostas.convenio = convenio
-      statePropostas.tabela = tabela
-      statePropostas.comissaoEmpresa = this.state.propostaAtual.comissaoEmpresa
-      statePropostas.comissaoCorretor = this.state.propostaAtual.comissaoCorretor
-      statePropostas.nrProposta = this.state.propostaAtual.nrProposta
-      statePropostas.parcelas = this.state.propostaAtual.parcelas
-      statePropostas.taxa = this.state.propostaAtual.taxa
-      statePropostas.valorProposta = this.state.propostaAtual.valorProposta
-      statePropostas.dtPrimeiraParcela = this.state.propostaAtual.dtPrimeiraParcela
-      statePropostas.observacoes = this.state.propostaAtual.observacoes
-      statePropostas.dtProposta = this.state.propostaAtual.dtProposta
-      statePropostas.formaContato = formaContato
-      statePropostas.esteira = this.state.propostaAtual.esteira
-      if(tipoProposta){
-        statePropostas.tipo = tipoProposta
+      const clienteProposta = this.state.clientes.find(
+        (cliente) =>
+          cliente.value === parseInt(this.state.propostaAtual.clienteId)
+      );
+      const corretorProposta = corretores.find(
+        (corretor) => corretor.value === this.state.propostaAtual.corretor
+      );
+      const tipoProposta = tiposPropostas.find(
+        (tipo) => tipo.value === this.state.propostaAtual.tipo
+      );
+      const banco = listaDeBancos.find(
+        (banco) => banco.value === this.state.propostaAtual.banco
+      );
+      const convenio = listaConvenios.find(
+        (convenio) => convenio.value === this.state.propostaAtual.convenio
+      );
+      const tabela = listaTabela.find(
+        (tabela) => tabela.value === this.state.propostaAtual.tabela
+      );
+      const formaContato = formasDeContato.find(
+        (formaContato) =>
+          formaContato.value === this.state.propostaAtual.formaContato
+      );
+      let statePropostas = this.state.proposta;
+      statePropostas.clienteId = clienteProposta;
+      statePropostas.corretor = corretorProposta;
+      statePropostas.banco = banco;
+      statePropostas.convenio = convenio;
+      statePropostas.tabela = tabela;
+      statePropostas.comissaoEmpresa = this.state.propostaAtual.comissaoEmpresa;
+      statePropostas.comissaoCorretor = this.state.propostaAtual.comissaoCorretor;
+      statePropostas.nrProposta = this.state.propostaAtual.nrProposta;
+      statePropostas.parcelas = this.state.propostaAtual.parcelas;
+      statePropostas.taxa = this.state.propostaAtual.taxa;
+      statePropostas.valorProposta = this.state.propostaAtual.valorProposta;
+      statePropostas.valorParcela = this.state.propostaAtual.valorParcela;
+      statePropostas.dtPrimeiraParcela = this.state.propostaAtual.dtPrimeiraParcela;
+      statePropostas.observacoes = this.state.propostaAtual.observacoes;
+      statePropostas.dtProposta = this.state.propostaAtual.dtProposta;
+      statePropostas.formaContato = formaContato;
+      statePropostas.esteira = this.state.propostaAtual.esteira;
+      if (tipoProposta) {
+        statePropostas.tipo = tipoProposta;
       }
-      this.setState({proposta: statePropostas}, console.log(this.state.proposta))
-      
+      this.setState(
+        { proposta: statePropostas },
+        console.log(this.state.proposta)
+      );
     }
   }
   render() {
@@ -367,8 +388,7 @@ export default class DetalheProposta extends React.Component {
               />
             </div>
           </div>
-          {
-          opcoes.map((opcao) =>
+          {opcoes.map((opcao) =>
             opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
           )}
         </div>
@@ -391,6 +411,7 @@ export default class DetalheProposta extends React.Component {
                 <div className="atributoForm quaseMetade">
                   EMISSÃO*
                   <InputMask
+                    disabled
                     className="dataEmissao"
                     mask="99/99/9999"
                     name="dtProposta"
