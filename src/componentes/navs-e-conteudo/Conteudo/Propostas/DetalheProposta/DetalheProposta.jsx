@@ -69,10 +69,11 @@ export default class DetalheProposta extends React.Component {
       },
       clientes: [],
     };
-
-    // props.mudaNomePropostaDetalhe(
-    //   `CLIENTE 0${proposta.id}    -     ${proposta.nome}`
-    // );
+    if(proposta && this.props.clientes){
+      props.mudaNomePropostaDetalhe(
+        `Proposta 0${proposta.id}    - ${ this.props.clientes.find(cliente => cliente.id === parseInt( proposta.clienteId) ).nome } -  ${ proposta.dtProposta }`
+      );
+    }
   }
   onChange = (option, action) => {
     let state = this.state;
@@ -190,10 +191,7 @@ export default class DetalheProposta extends React.Component {
       if (tipoProposta) {
         statePropostas.tipo = tipoProposta;
       }
-      this.setState(
-        { proposta: statePropostas },
-        console.log(this.state.proposta)
-      );
+      this.setState( { proposta: statePropostas } );
     }
   }
   render() {

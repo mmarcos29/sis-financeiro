@@ -26,9 +26,9 @@ export default (dadosProposta, rota) => {
         else if(!dadosProposta.comissaoCorretor){
             alert("CAMPO COMISSÂO CORRETOR É OBRIGATÓRIO");
         }
-        else if(!dadosProposta.nrProposta){
-            alert("CAMPO NR PORPOSTA É OBRIGATÓRIO");
-        }
+        // else if(!dadosProposta.nrProposta){
+        //     alert("CAMPO NR PORPOSTA É OBRIGATÓRIO");
+        // }
         else if(!dadosProposta.parcelas){
             alert("CAMPO PARCELAS É OBRIGATÓRIO");
         }
