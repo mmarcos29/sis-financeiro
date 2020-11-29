@@ -3,6 +3,7 @@ export default function SalvarInformacoesCliente(props) {
     let retorno = false
 
     const validacaoDadosPessoais = () => {
+        console.log(dadosForm)
         if (!dadosForm.dadosPessoais.cpf) {
             alert("CAMPO CPF É OBRIGATÓRIO ( DADOS PESSOAIS ) ");
         } else if (!dadosForm.dadosPessoais.nome) {

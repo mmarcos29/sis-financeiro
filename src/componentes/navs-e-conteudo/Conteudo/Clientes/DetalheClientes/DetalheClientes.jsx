@@ -522,7 +522,10 @@ export default class DetalheClientes extends React.Component {
                       onChange={this.onchange}
                       value={this.state.formulario.dadosPessoais.nacionalidade}
                     >
-                      <option value="BRASILEIRO (A)" selected>
+                      <option value={null}>
+                        SELECIONE
+                      </option>
+                      <option value="BRASILEIRO (A)">
                         BRASILEIRO (A)
                       </option>
                       <option value="ESTRANGEIRO (A)">ESTRANGEIRO (A)</option>
