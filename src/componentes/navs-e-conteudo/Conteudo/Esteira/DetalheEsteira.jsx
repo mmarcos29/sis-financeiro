@@ -68,7 +68,13 @@ export default class DetalheEsteira extends React.Component {
   }
   onChange = (option, action) => {
     let state = this.state;
-    state.proposta[action.name] = option;
+    if( action.name === "esteira" ){
+
+        state.proposta[action.name] = option;
+        state.proposta.situacao = null;
+    }else{
+        state.proposta[action.name] = option;
+    }
 
     this.setState(state, console.log(this.state));
   };
@@ -101,7 +107,7 @@ export default class DetalheEsteira extends React.Component {
         case "EM ANDAMENTO":
           return (
             <div className="Componente metade">
-              Estado Esteira*
+              Situação Esteira*
               <Select
                 styles={customStyles}
                 onChange={this.onChange}
@@ -117,7 +123,7 @@ export default class DetalheEsteira extends React.Component {
         case "COM PENDÊNCIA":
           return (
             <div className="Componente metade">
-              Estado Esteira*
+              Situação Esteira*
               <Select
                 styles={customStyles}
                 onChange={this.onChange}
