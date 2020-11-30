@@ -1,0 +1,17 @@
+.DetalheEsteira {
+    display: flex;
+    background: #054f75;
+    border-radius: 1vw;
+}
+.DetalheEsteira .Componente{
+    margin: 2%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+.metade{
+    width: 45%;
+}
+.css-2b097c-container{
+    margin-top: 3px;
+}

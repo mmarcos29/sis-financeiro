@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Esteira.css";
 import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPage";
+import ListaPropostas from "../Propostas/ListaPropostas";
 
 export default class Esteira extends Component {
   componentWillMount() {
@@ -30,6 +31,12 @@ export default class Esteira extends Component {
     return (
       <div id="Esteira">
         <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
+        <ListaPropostas 
+        propostas={this.props.propostas? this.props.propostas : []} 
+        history={this.props.history}
+        clientes={this.props.clientes}
+        toGo="DetalheEsteira"
+        />
       </div>
     );
   }

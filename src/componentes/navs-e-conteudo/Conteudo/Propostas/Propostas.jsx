@@ -39,6 +39,7 @@ export default class Propostas extends Component {
         propostas={this.props.propostas? this.props.propostas : []} 
         history={this.props.history}
         clientes={this.props.clientes}
+        toGo="/DetalhePropostas"
         />      
       </div>
     );

@@ -26,6 +26,7 @@ import DetalheClientes from './componentes/navs-e-conteudo/Conteudo/Clientes/Det
 import Login from './componentes/Login/Login'
 import CadastroPropostas from './componentes/navs-e-conteudo/Conteudo/Propostas/CadastroPropostas/CadastroPropostas'
 import DetalheProposta from './componentes/navs-e-conteudo/Conteudo/Propostas/DetalheProposta/DetalheProposta'
+import DetalheEsteira from './componentes/navs-e-conteudo/Conteudo/Esteira/DetalheEsteira'
 const history = createHashHistory();
 
 
@@ -154,7 +155,8 @@ class App extends Component {
                     setListaAtiva={this.setListaAtiva} listaAtiva={this.state.listaAtiva} history={history} /></>} />
                   <Route path="/DetalheClientes" component={() => <><BarraLocationPage>{this.state.nomeClienteDetalhe}</BarraLocationPage><DetalheClientes mudaNomeClienteDetalhe={this.mudaNomeClienteDetalhe} clientes={this.state.clientes} setListaAtiva={this.setListaAtiva} history={history} /> </>} />
                   <Route path="/DetalhePropostas" component={() => <><BarraLocationPage>{this.state.nomePropostaDetalhe}</BarraLocationPage><DetalheProposta mudaNomePropostaDetalhe={this.mudaNomePropostaDetalhe} propostas={this.state.propostas} setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes} getPropostas={this.getPropostas} /> </>} />
-                  <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva}>ESTEIRA</Esteira>} />
+                  <Route path="/esteira" component={() => <Esteira setListaAtiva={this.setListaAtiva} history={history} propostas={this.state.propostas} clientes={this.state.clientes} >ESTEIRA</Esteira>} />
+                  <Route path="/DetalheEsteira" component={() => <><BarraLocationPage>{this.state.nomePropostaDetalhe}</BarraLocationPage><DetalheEsteira mudaNomePropostaDetalhe={this.mudaNomePropostaDetalhe} propostas={this.state.propostas} setListaAtiva={this.setListaAtiva} history={history} clientes={this.state.clientes} getPropostas={this.getPropostas} /> </>} />
                   <Route path="/formalizacao" component={() => <Formalizacao setListaAtiva={this.setListaAtiva}>FORMALIZAÇÃO</Formalizacao>} />
                   <Route path="/bordero" component={() => <Bordero setListaAtiva={this.setListaAtiva}>BORDERÔ</Bordero>} />
                   <Route path="/comissionamento" component={() => <Comissionamento setListaAtiva={this.setListaAtiva}>COMISSIONAMENTO</Comissionamento>} />

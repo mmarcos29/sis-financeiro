@@ -4,9 +4,9 @@ import mascaraCpf from "../../../mascaraCpf";
 import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
 
 export default (props) => {
-  const detalhe = (id) => {
+  const detalhe = (id, toGo) => {
     props.history.push({
-      pathname: "/DetalhePropostas",
+      pathname: toGo,
       search: `${id}`,
       // state:{msg:'usuário não autenticado'}
     });
@@ -15,7 +15,7 @@ export default (props) => {
   let tr =
     props.propostas.length > 0 && clientes.length > 0 ? (
       props.propostas.map((proposta) => (
-        <tr onClick={() => detalhe(proposta.id)}>
+        <tr onClick={() => detalhe(proposta.id, props.toGo)}>
           <td>{proposta.id}</td>
           <td>{proposta.dtProposta}</td>
       <td className="nome">{clientes.find(cliente => cliente.id === parseInt(proposta.clienteId)).nome }</td>{/* {mascaraCpf(proposta.cpf)}*/}
