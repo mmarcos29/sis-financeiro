@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./DetalheEsteira.css";
 import Select from "react-select";
 import estadosEsteira from "../../../../Services/estadosEsteira";
+import validaCamposFoms from "../../../../Services/validaCamposFoms";
+import EditaNoBanco from "../../../../Services/EditaNoBanco";
 
 const customStyles = {
   option: (provided, state) => ({
@@ -28,7 +30,7 @@ export default class DetalheEsteira extends React.Component {
 
     this.state = {
       readyOnly: true,
-      propostaAtual: proposta || null,
+      propostaAtual: proposta || {},
       exibir: null,
       dados: null,
       id: idProposta,
@@ -52,7 +54,7 @@ export default class DetalheEsteira extends React.Component {
         dtProposta: new Date().toLocaleDateString(),
         formaContato: "",
         esteira: "CADASTRADO",
-        situacao:""
+        situacao: "",
       },
       clientes: [],
     };
@@ -68,18 +70,25 @@ export default class DetalheEsteira extends React.Component {
   }
   onChange = (option, action) => {
     let state = this.state;
-    if( action.name === "esteira" ){
-
-        state.proposta[action.name] = option;
-        state.proposta.situacao = null;
-    }else{
-        state.proposta[action.name] = option;
+    if (action.name === "esteira") {
+      state.propostaAtual[action.name] = option;
+      state.propostaAtual.situacao = null;
+    } else {
+      state.propostaAtual[action.name] = option;
     }
 
     this.setState(state, console.log(this.state));
   };
 
-  onSubmit = (event) => {};
+  onSubmit = (event) => {
+    const dadosProposta = validaCamposFoms(this.state.propostaAtual, "esteira");
+
+    if (dadosProposta) {
+      dadosProposta.id = this.state.id;
+      // console.log(dadosProposta)
+      EditaNoBanco(dadosProposta, this.props.history, "esteira")
+    }
+  };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
       document
@@ -102,8 +111,8 @@ export default class DetalheEsteira extends React.Component {
     }
   }
   situacao = () => {
-    if (this.state.proposta.esteira.value) {
-      switch (this.state.proposta.esteira.value) {
+    if (this.state.propostaAtual.esteira) {
+      switch (this.state.propostaAtual.esteira.value) {
         case "EM ANDAMENTO":
           return (
             <div className="Componente metade">
@@ -113,7 +122,7 @@ export default class DetalheEsteira extends React.Component {
                 onChange={this.onChange}
                 name="situacao"
                 options={estadosEsteira[1].filter((option) => option.label)}
-                value={this.state.proposta.situacao}
+                value={this.state.propostaAtual.situacao}
                 noOptionsMessage={() => "Nenhum encontrado"}
                 placeholder="BUSQUE USANDO APENAS LETRAS"
               />
@@ -129,7 +138,7 @@ export default class DetalheEsteira extends React.Component {
                 onChange={this.onChange}
                 name="situacao"
                 options={estadosEsteira[2].filter((option) => option.label)}
-                value={this.state.proposta.situacao}
+                value={this.state.propostaAtual.situacao}
                 noOptionsMessage={() => "Nenhum encontrado"}
                 placeholder="BUSQUE USANDO APENAS LETRAS"
               />
@@ -152,12 +161,25 @@ export default class DetalheEsteira extends React.Component {
             onChange={this.onChange}
             name="esteira"
             options={estadosEsteira[0].filter((option) => option.label)}
-            value={this.state.proposta.esteira}
+            value={this.state.propostaAtual.esteira}
             noOptionsMessage={() => "Nenhum encontrado"}
             placeholder="BUSQUE USANDO APENAS LETRAS"
           />
         </div>
         {this.situacao()}
+        <div className="butoons full">
+          <button onClick={() => this.props.history.push("/esteira")}>
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            // disabled={false}
+            className="gravar"
+            onClick={this.onSubmit}
+          >
+            Gravar
+          </button>          
+        </div>
       </div>
     );
   }

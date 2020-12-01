@@ -23,6 +23,7 @@ export default (props) => {
           <td>{proposta.tipo}</td>
           <td>{proposta.valorProposta}</td>
           <td>{proposta.esteira}</td>
+          <td>{proposta.situacao}</td>
         </tr>
       ))
     ) : (
@@ -31,6 +32,7 @@ export default (props) => {
         <td>--------------------------------------</td>
         <td>{mascaraCpf("00000000000")}</td>
         <td>----------</td>
+        <td>-------</td>
         <td>-------</td>
         <td>-------</td>
         <td>-------</td>
@@ -61,6 +63,9 @@ export default (props) => {
             </th>
             <th className="espacamento">
               <b>ESTEIRA</b>
+            </th>
+            <th className="espacamento">
+              <b>SITUAÇÃO</b>
             </th>
           </tr>
         </thead>

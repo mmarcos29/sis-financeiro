@@ -24,6 +24,12 @@ export default function EditaNoBanco(dados, history, rota) {
         // history.push(rota)
         // history.reload()
     })
+    }else if(rota === "esteira"){
+        api.put("Propostas", dados).then(response => {
+            console.log(response)
+            window.location.hash = rota
+            // window.location.reload()
+        })
     }
 
 }

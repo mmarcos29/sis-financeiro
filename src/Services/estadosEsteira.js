@@ -2,7 +2,7 @@ export default [
     [
         { label: "EM ANDAMENTO", value: "EM ANDAMENTO" },
         { label: "COM PENDÊNCIA", value: "COM PENDÊNCIA" },
-        { label: "CANCELADAS", value: "CANCELADAS" },
+        { label: "CANCELADA", value: "CANCELADA" },
         { label: "FINALIZADAS", value: "FINALIZADAS" }
     ],
     [
