@@ -4,6 +4,7 @@ import Select from "react-select";
 import estadosEsteira from "../../../../Services/estadosEsteira";
 import validaCamposFoms from "../../../../Services/validaCamposFoms";
 import EditaNoBanco from "../../../../Services/EditaNoBanco";
+import { Load } from "../../../../Services/Load";
 
 const customStyles = {
   option: (provided, state) => ({
@@ -29,6 +30,7 @@ export default class DetalheEsteira extends React.Component {
     }
 
     this.state = {
+      load:false,
       readyOnly: true,
       propostaAtual: proposta || {},
       exibir: null,
@@ -80,13 +82,17 @@ export default class DetalheEsteira extends React.Component {
     this.setState(state, console.log(this.state));
   };
 
+  setLoad = (load) => {
+    this.setState({load: load})
+  }
+
   onSubmit = (event) => {
     const dadosProposta = validaCamposFoms(this.state.propostaAtual, "esteira");
 
     if (dadosProposta) {
       dadosProposta.id = this.state.id;
       // console.log(dadosProposta)
-      EditaNoBanco(dadosProposta, this.props.history, "esteira")
+      EditaNoBanco(dadosProposta, this.props.history, "esteira", this.setLoad)
     }
   };
   componentWillMount() {
@@ -180,6 +186,7 @@ export default class DetalheEsteira extends React.Component {
             Gravar
           </button>          
         </div>
+        <Load load={this.state.load}/>
       </div>
     );
   }
