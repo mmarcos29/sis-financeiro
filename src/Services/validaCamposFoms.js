@@ -52,10 +52,13 @@ export default (dadosProposta, rota) => {
             retorno.clienteId = retorno.clienteId.value
             retorno.corretor = retorno.corretor.value
             retorno.convenio = retorno.convenio.value
-            retorno.formaContato = retorno.formaContato.value
+            if (retorno.formaContato) {
+                retorno.formaContato = retorno.formaContato.value
+            }
             retorno.banco = retorno.banco.value
             retorno.tabela = retorno.tabela.value
             retorno.tipo = retorno.tipo.value
+            // console.log(retorno)
         }
     }
     if (rota === "esteira") {

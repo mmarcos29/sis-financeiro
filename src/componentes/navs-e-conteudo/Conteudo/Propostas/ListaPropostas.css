@@ -20,12 +20,15 @@
   padding: 8px;
   text-align: center;
 }
+.alunos tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
 .alunos tr:nth-child(odd) {
-  background-color: #054f75cc;
+  background-color: white;
 }
 .alunos tr {
-  background-color: #054f75;
-  color: white;
+  background-color: white;
+  color: black;
 
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -49,16 +52,23 @@
   color: inherit;
 }
 .alunos th {
-  color: white;
-  background-color: #054f75;
+  color: black;
+  background-color: #d1d0d0;
   cursor: auto;
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: bolder;
 }
 .alunos td {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.7vw;
+  color: #000000d3;
   /* FONT-SIZE: small; */
 }
-.ListaPropostas .nome{
+.alunos th,
+.alunos td {
+  border-width: 0 0 1px 0;
+  text-align: left;
+}
+.ListaPropostas .nome {
   font-size: 70% !important;
 }

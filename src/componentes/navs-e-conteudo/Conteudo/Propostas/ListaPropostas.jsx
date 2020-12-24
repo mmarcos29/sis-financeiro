@@ -2,6 +2,7 @@ import React from "react";
 import "./ListaPropostas.css";
 import mascaraCpf from "../../../mascaraCpf";
 import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
+import { Load } from "../../../../Services/Load";
 
 export default (props) => {
   const detalhe = (id, toGo) => {
@@ -16,53 +17,52 @@ export default (props) => {
     props.propostas.length > 0 && clientes.length > 0 ? (
       props.propostas.map((proposta) => (
         <tr onClick={() => detalhe(proposta.id, props.toGo)}>
-          <td>{proposta.id}</td>
+          {/* <td>{proposta.id}</td> */}
           <td>{proposta.dtProposta}</td>
       <td className="nome">{clientes.find(cliente => cliente.id === parseInt(proposta.clienteId)).nome }</td>{/* {mascaraCpf(proposta.cpf)}*/}
           <td>{clientes.find(cliente => cliente.id === parseInt(proposta.clienteId)).cpf }</td>
+          <td>{proposta.banco}</td>
           <td>{proposta.tipo}</td>
+          <td>{proposta.valorParcela}</td>
           <td>{proposta.valorProposta}</td>
-          <td>{proposta.esteira}</td>
+          <td>{proposta.corretor}</td>
           <td>{proposta.situacao}</td>
         </tr>
       ))
     ) : (
-      <tr>
-        <td>--</td>
-        <td>--------------------------------------</td>
-        <td>{mascaraCpf("00000000000")}</td>
-        <td>----------</td>
-        <td>-------</td>
-        <td>-------</td>
-        <td>-------</td>
-        <td>-------</td>
-      </tr>
+      <Load load/>
     );
   return (
     <div className="ListaPropostas">
       <table className="alunos">
         <thead>
           <tr>
-            <th className="espacamento">
+            {/* <th className="espacamento">
               <b>ID PROPOSTA</b>
-            </th>
+            </th> */}
             <th className="espacamento">
               <b>EMISSÃO</b>
             </th>
             <th className="espacamento">
-              <b>CLIENTE</b>
+              <b>NOME</b>
             </th>
             <th className="espacamento">
               <b>CPF</b>
             </th>
             <th className="espacamento">
+              <b>BANCO</b>
+            </th>
+            <th className="espacamento">
               <b>TIPO</b>
             </th>
             <th className="espacamento">
-              <b>VL.PROPOSTA</b>
+              <b>PARCELA</b>
             </th>
             <th className="espacamento">
-              <b>ESTEIRA</b>
+              <b>VALOR</b>
+            </th>
+            <th className="espacamento">
+              <b>CORRETOR</b>
             </th>
             <th className="espacamento">
               <b>SITUAÇÃO</b>
