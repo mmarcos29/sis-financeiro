@@ -4,6 +4,7 @@ import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPa
 import IconeIncluir from "../Clientes/IconeIncluir/IconeIncluir";
 import ListaClientes from "../Clientes/ListaClientes";
 import ListaPropostas from "./ListaPropostas";
+import Separador from "./Separador/Separador";
 
 export default class Propostas extends Component {
   componentWillMount() {
@@ -35,6 +36,7 @@ export default class Propostas extends Component {
         <BarraLocationPage incluir={<IconeIncluir rota="CadastroPropostas" /> }>
           {[...this.props.children]}
         </BarraLocationPage>
+        <Separador />
         <ListaPropostas 
         propostas={this.props.propostas? this.props.propostas : []} 
         history={this.props.history}

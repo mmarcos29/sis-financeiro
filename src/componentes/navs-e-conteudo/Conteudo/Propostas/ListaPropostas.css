@@ -21,7 +21,7 @@
   text-align: center;
 }
 .alunos tr:nth-child(even) {
-  background-color: #f3f3f3;
+  background-color: #F3F3F3;
 }
 .alunos tr:nth-child(odd) {
   background-color: white;
@@ -53,7 +53,8 @@
 }
 .alunos th {
   color: black;
-  background-color: #d1d0d0;
+  /* background-color: #d1d0d0; */
+  background-image: linear-gradient(#C1BFBF, #FFFFFF);
   cursor: auto;
   font-size: 16px;
   font-weight: bolder;
