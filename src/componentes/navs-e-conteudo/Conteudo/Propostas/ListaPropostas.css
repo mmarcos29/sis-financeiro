@@ -2,7 +2,7 @@
   overflow: overlay;
   height: 90%;
 }
-.alunos {
+.ListaPropostas {
   border-collapse: collapse;
   width: 98%;
   margin: 0 8px 16px 0;
@@ -13,20 +13,23 @@
 #acoes button {
   margin-left: 5px;
 }
-.alunos th,
-.alunos td {
+.ListaPropostas th,
+.ListaPropostas td {
   letter-spacing: 1.1px;
   border: 1px solid black;
-  padding: 8px;
+  border-width: 0 0 1px 0;  
+  padding: 8px 0;
+  background-color: transparent;
+  color: inherit;
   text-align: center;
 }
-.alunos tr:nth-child(even) {
+.ListaPropostas tr:nth-child(even) {
   background-color: #F3F3F3;
 }
-.alunos tr:nth-child(odd) {
+.ListaPropostas tr:nth-child(odd) {
   background-color: white;
 }
-.alunos tr {
+.ListaPropostas tr {
   background-color: white;
   color: black;
 
@@ -37,21 +40,17 @@
   -ms-user-select: none;
   user-select: none;
 }
-.alunos tr:hover {
-  color: #fff212;
+.ListaPropostas tr:hover {
+  /* color: #fff212; */
+  background-color: #E3F7FE;
   cursor: pointer;
 }
-.alunos tr:active {
+.ListaPropostas tr:active {
   color: black;
   background-color: yellowgreen;
   cursor: pointer;
 }
-.alunos th,
-.alunos td {
-  background-color: transparent;
-  color: inherit;
-}
-.alunos th {
+.ListaPropostas th {
   color: black;
   /* background-color: #d1d0d0; */
   background-image: linear-gradient(#C1BFBF, #FFFFFF);
@@ -59,17 +58,11 @@
   font-size: 16px;
   font-weight: bolder;
 }
-.alunos td {
+.ListaPropostas td {
   font-weight: bold;
   font-size: 0.7vw;
-  color: #000000d3;
-  /* FONT-SIZE: small; */
 }
-.alunos th,
-.alunos td {
-  border-width: 0 0 1px 0;
-  text-align: left;
-}
+
 .ListaPropostas .nome {
   font-size: 70% !important;
 }

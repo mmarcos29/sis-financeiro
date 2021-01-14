@@ -36,7 +36,7 @@ export default class Propostas extends Component {
         <BarraLocationPage incluir={<IconeIncluir rota="CadastroPropostas" /> }>
           {[...this.props.children]}
         </BarraLocationPage>
-        <Separador />
+        {/* <Separador /> */}
         <ListaPropostas 
         propostas={this.props.propostas? this.props.propostas : []} 
         history={this.props.history}

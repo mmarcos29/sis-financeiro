@@ -2,28 +2,28 @@
   overflow: overlay;
   height: 90%;
 }
-.alunos {
+/* .alunos {
   border-collapse: collapse;
   width: 98%;
   margin: 0 8px 16px 0;
-}
+} */
 #acoes {
   width: 118px;
 }
 #acoes button {
   margin-left: 5px;
 }
-.alunos th,
+/* .alunos th,
 .alunos td {
   letter-spacing: 1.1px;
   border: 1px solid black;
   padding: 8px;
   text-align: center;
-}
-.alunos tr:nth-child(odd) {
+} */
+/* .alunos tr:nth-child(odd) {
   background-color: #054f75cc;
-}
-.alunos tr {
+} */
+/* .alunos tr {
   background-color: #054f75;
   color: white;
 
@@ -55,4 +55,4 @@
 }
 .alunos td {
   font-weight: bold;
-}
+} */
