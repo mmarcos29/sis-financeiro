@@ -1,13 +1,16 @@
-import React from 'react'
-import './Separador.css'
+import React from "react";
+import "./Separador.css";
 
-export default props => {
-    return (
-        <div className="Separador">
-            <div className="indicador">
-                <div className="dados">107</div>
-            </div>
-            <div className="legenda"></div>
-        </div>
-    )
-}
+export default (props) => {
+  return (
+    <div className="Separador">
+      <div style={{ backgroundImage: `url(${props.img})` }}>
+          {/* {console.log(props.contador)} */}
+        <p className="contador">{props.contador}</p>
+        <p className="legenda">{props.legenda}</p>
+      </div>
+      {/* <img src={props.img} alt="" /> */}
+      {/* <span>{props.legenda}</span> */}
+    </div>
+  );
+};

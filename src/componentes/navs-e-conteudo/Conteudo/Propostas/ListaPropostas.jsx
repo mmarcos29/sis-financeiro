@@ -40,7 +40,7 @@ export default (props) => {
           <td>{proposta.valorParcela}</td>
           <td>{proposta.valorProposta}</td>
           <td>{proposta.corretor}</td>
-          <td>{proposta.situacao}</td>
+          <td>{proposta.esteira}</td>
         </tr>
       ))
     ) : (

@@ -1,5 +1,31 @@
-#Propostas{
-    width: 100%;
-    height: 96%;
-    overflow: hidden;
+#Propostas {
+  width: 100%;
+  height: 96%;
+  overflow: hidden;
+}
+#Propostas .linhaDoTempo {
+  background: #dddddd;
+  border-radius: 2vw;
+  height: 1vh;
+  align-items: center;
+  margin-bottom: 2vw;
+}
+#Propostas .linhaDoTempo div {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Propostas .linhaDoTempo div .indicador {
+  /* background: red; */
+  width: 2vw;
+  height: 4vh;
+  border-radius: 4vw;
+  border: solid 1px black;
+}
+#Propostas .linhaDoTempo div .indicador div {
+  background: black;
+  width: 0.7vw;
+  height: 1.5vh;
+  border-radius: 20vw;
 }

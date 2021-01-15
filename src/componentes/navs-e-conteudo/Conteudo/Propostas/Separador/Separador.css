@@ -1,4 +1,30 @@
-.Separador{
+.Separador {
+  width: 15vw;
+  margin: 1vw 0;
+}
+.Separador img {
+  width: 15vw;
+  margin: 1vw 0;
+}
+.Separador div {
+  width: 15vw;
+  height: 10vh;
+  background-repeat: no-repeat;
+  display: flex;
+  background-size: contain;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.Separador div .contador {
+  font-size: 2rem;
+  margin-left: 1.5vw;
+  font-weight: bold;
+}
+.Separador div .legenda {
+  font-size: 12px;
+  text-align: center;
+}
+/* .Separador{
     border: solid 1px black;
     width: 15%;
     height: 10%;
@@ -6,8 +32,8 @@
     margin: 2% 0;
     display: flex;
     justify-content: space-between;
-}
-.Separador .indicador{
+} */
+/* .Separador .indicador{
     width: 43%;
     height: 100%;
     margin: 0 0%;
@@ -15,10 +41,10 @@
     background: red;
     -webkit-clip-path: polygon(0 0, 0 60px, -6px 90px, 100% 0);
     clip-path: polygon(0 100000px, 0 100px, -6px 90px, 100% 0);
-}
-.indicador .dados{
+} */
+/* .indicador .dados{
     background: blue;
-}
+} */
 /* .Separador .indicador{
     width: 41%;
     height: 100%;
@@ -27,13 +53,13 @@
     background: red;
     clip-path: polygon(0 0, 0 60px, -6px 90px, 100% 0);
 } */
-.Separador .legenda{
+/* .Separador .legenda{
     width: 59%;
     height: 100%;
     margin: 0 0%;
     border-radius: 0 25px 25px 0;
     background: red;
-}
+} */
 /* .Separador .legenda{
     width: 41%;
     height: 100%;
