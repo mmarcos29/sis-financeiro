@@ -1,8 +1,12 @@
+#Esteira .ListaPropostas{
+  height: 80%;
+  margin-top: 2vh;
+}
 .ListaPropostas {
   overflow: overlay;
   height: 90%;
 }
-.ListaPropostas {
+.ListaPropostas table{
   border-collapse: collapse;
   width: 98%;
   margin: 0 8px 16px 0;
@@ -13,8 +17,8 @@
 #acoes button {
   margin-left: 5px;
 }
-.ListaPropostas th,
-.ListaPropostas td {
+.ListaPropostas table th,
+.ListaPropostas table td {
   letter-spacing: 1.1px;
   border: 1px solid black;
   border-width: 0 0 1px 0;  
@@ -23,13 +27,13 @@
   color: inherit;
   text-align: center;
 }
-.ListaPropostas tr:nth-child(even) {
+.ListaPropostas table tr:nth-child(even) {
   background-color: #F3F3F3;
 }
-.ListaPropostas tr:nth-child(odd) {
+.ListaPropostas table tr:nth-child(odd) {
   background-color: white;
 }
-.ListaPropostas tr {
+.ListaPropostas table tr {
   background-color: white;
   color: black;
 
@@ -40,17 +44,17 @@
   -ms-user-select: none;
   user-select: none;
 }
-.ListaPropostas tr:hover {
+.ListaPropostas table tr:hover {
   /* color: #fff212; */
   background-color: #E3F7FE;
   cursor: pointer;
 }
-.ListaPropostas tr:active {
+.ListaPropostas table tr:active {
   color: black;
   background-color: yellowgreen;
   cursor: pointer;
 }
-.ListaPropostas th {
+.ListaPropostas table th {
   color: black;
   /* background-color: #d1d0d0; */
   background-image: linear-gradient(#C1BFBF, #FFFFFF);
@@ -58,7 +62,7 @@
   font-size: 16px;
   font-weight: bolder;
 }
-.ListaPropostas td {
+.ListaPropostas table td {
   font-weight: bold;
   font-size: 0.7vw;
 }

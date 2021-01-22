@@ -34,6 +34,22 @@ export default class Propostas extends Component {
         .classList.add("active");
     }
   }
+  state = {
+    propostas: this.props.propostas,
+    clientes: this.props.clientes,
+    filtro: "",
+  };
+
+  filtrar = (filtro, nome) => {
+    // console.log(filtro);
+    if (this.state.filtro === nome) {
+      this.setState({ propostas: this.props.propostas, filtro: "" });
+    } else if (filtro.length === 0) {
+      this.setState({ propostas: [{}], filtro: nome });
+    } else {
+      this.setState({ propostas: filtro, filtro: nome });
+    }
+  };
 
   render() {
     return (
@@ -42,11 +58,51 @@ export default class Propostas extends Component {
           {[...this.props.children]}
         </BarraLocationPage>
         <div className="horizontal">
-          <Separador img={roxo} legenda="AGUAR. DIGITAÇÃO" contador={this.props.propostas.filter(prop => prop.esteira === "CADASTRADO").length} />
-          <Separador img={verde} legenda="EM ANÁLISE" contador={this.props.propostas.filter(prop => prop.esteira === "EM ANDAMENTO").length} />
-          <Separador img={laranja} legenda="COM PENDÊNCIAS" contador={this.props.propostas.filter(prop => prop.esteira === "COM PENDÊNCIA").length} />
-          <Separador img={azul} legenda="FINALIZADAS" contador={this.props.propostas.filter(prop => prop.esteira === "FINALIZADA").length} />
-          <Separador img={vermelho} legenda="CANCELADAS" contador={this.props.propostas.filter(prop => prop.esteira === "CANCELADA").length} />
+          <Separador
+            img={roxo}
+            legenda="AGUAR. DIGITAÇÃO"
+            border={this.state.filtro}
+            onClick={this.filtrar}
+            contador={this.props.propostas.filter(
+              (prop) => prop.esteira === "CADASTRADO"
+            )}
+          />
+          <Separador
+            border={this.state.filtro}
+            img={verde}
+            legenda="EM ANÁLISE"
+            contador={this.props.propostas.filter(
+              (prop) => prop.esteira === "EM ANDAMENTO"
+            )}
+            onClick={this.filtrar}
+          />
+          <Separador
+            border={this.state.filtro}
+            img={laranja}
+            legenda="COM PENDÊNCIAS"
+            contador={this.props.propostas.filter(
+              (prop) => prop.esteira === "COM PENDÊNCIA"
+            )}
+            onClick={this.filtrar}
+          />
+          <Separador
+            border={this.state.filtro}
+            img={azul}
+            legenda="FINALIZADAS"
+            contador={this.props.propostas.filter(
+              (prop) => prop.esteira === "FINALIZADA"
+            )}
+            onClick={this.filtrar}
+          />
+          <Separador
+            border={this.state.filtro}
+            img={vermelho}
+            legenda="CANCELADAS"
+            contador={this.props.propostas.filter(
+              (prop) => prop.esteira === "CANCELADA"
+            )}
+            onClick={this.filtrar}
+          />
         </div>
         <div className="linhaDoTempo horizontal">
           <div>
@@ -76,9 +132,9 @@ export default class Propostas extends Component {
           </div>
         </div>
         <ListaPropostas
-          propostas={this.props.propostas ? this.props.propostas : []}
+          propostas={this.state.propostas}
           history={this.props.history}
-          clientes={this.props.clientes}
+          clientes={this.state.clientes}
           toGo="/DetalhePropostas"
         />
       </div>

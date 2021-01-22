@@ -1,6 +1,11 @@
+.horizontal .Separador:first-child{
+  margin-left: 1vw;
+}
 .Separador {
   width: 15vw;
   margin: 1vw 0;
+  border-radius: 2vw;
+  cursor: pointer;
 }
 .Separador img {
   width: 15vw;
