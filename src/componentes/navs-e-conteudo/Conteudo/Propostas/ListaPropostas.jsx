@@ -5,6 +5,7 @@ import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
 import { Load } from "../../../../Services/Load";
 import listaDeBancos from "../../../../Services/listaDeBancos";
 import CampoPesquisaAnimado from "../../../CampoPesquisaAnimado/CampoPesquisaAnimado";
+import verificaCorStatusEsteira from "../../../../Services/verificaCorStatusEsteira";
 
 export default (props) => {
   const detalhe = (id, toGo) => {
@@ -50,7 +51,7 @@ export default (props) => {
           <td>{proposta.valorParcela}</td>
           <td>{proposta.valorProposta}</td>
           <td>{proposta.corretor}</td>
-          <td>{proposta.esteira}</td>
+          <td style={{background: verificaCorStatusEsteira(proposta.esteira)}}>{proposta.esteira}</td>
         </tr>
       ))
     ) : (
