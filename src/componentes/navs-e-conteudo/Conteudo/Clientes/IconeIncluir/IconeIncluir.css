@@ -1,6 +1,5 @@
 #IconeIncluir{
-    margin-right: 2%;
-    background-color: yellow;
+    margin-right: 1%;
     height: 26px;
     display: flex;
     align-items: center;
@@ -12,6 +11,11 @@
 }
 #IconeIncluir a{
     color: black;
+}
+#IconeIncluir a .material-icons{
+    color: #ffff00;
+    font-size: 40px;
+    margin-bottom: 2vh;
 }
 #IconeIncluir:hover{
     opacity: 0.8;

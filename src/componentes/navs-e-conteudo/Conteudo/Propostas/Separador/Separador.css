@@ -1,4 +1,4 @@
-.horizontal .Separador:first-child{
+.horizontal .Separador:first-child {
   margin-left: 1vw;
 }
 .Separador {
@@ -24,6 +24,13 @@
   font-size: 2rem;
   margin-left: 1.5vw;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.Separador div .contador span.material-icons{
+  margin-top: 1vh;
+  font-size: 28px;
 }
 .Separador div .legenda {
   font-size: 12px;

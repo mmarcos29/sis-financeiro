@@ -95,14 +95,16 @@ export default class Propostas extends Component {
   };
 
   render() {
-    return (
+    return (      
       <div id="Propostas">
+        {/* <BarraLocationPage incluir={<span class="material-icons">post_add</span>}> */}
         <BarraLocationPage incluir={<IconeIncluir rota="CadastroPropostas" />}>
           {[...this.props.children]}
         </BarraLocationPage>
         {/* <input type="text" name="" onChange={this.pesquisar} /> */}
         <div className="horizontal">
           <Separador
+            simbolo="queue_play_next"
             img={roxo}
             legenda="AGUAR. DIGITAÇÃO"
             border={this.state.filtro}
@@ -110,35 +112,39 @@ export default class Propostas extends Component {
             contador={this.props.propostas.filter(
               (prop) => prop.esteira === "CADASTRADO"
             )}
-          />
+            />
           <Separador
+            simbolo="image_search"
             border={this.state.filtro}
             img={verde}
             legenda="EM ANÁLISE"
             contador={this.props.propostas.filter(
               (prop) => prop.esteira === "EM ANDAMENTO"
-            )}
-            onClick={this.filtrar}
-          />
+              )}
+              onClick={this.filtrar}
+              />
           <Separador
-            border={this.state.filtro}
-            img={laranja}
-            legenda="COM PENDÊNCIAS"
-            contador={this.props.propostas.filter(
-              (prop) => prop.esteira === "COM PENDÊNCIA"
-            )}
-            onClick={this.filtrar}
-          />
+              simbolo="warning"
+              border={this.state.filtro}
+              img={laranja}
+              legenda="COM PENDÊNCIAS"
+              contador={this.props.propostas.filter(
+                (prop) => prop.esteira === "COM PENDÊNCIA"
+                )}
+                onClick={this.filtrar}
+                />
           <Separador
+            simbolo="playlist_add_check"
             border={this.state.filtro}
             img={azul}
             legenda="FINALIZADAS"
             contador={this.props.propostas.filter(
               (prop) => prop.esteira === "FINALIZADA"
-            )}
+              )}
             onClick={this.filtrar}
           />
           <Separador
+            simbolo="delete_forever"
             border={this.state.filtro}
             img={vermelho}
             legenda="CANCELADAS"
