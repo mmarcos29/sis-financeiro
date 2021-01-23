@@ -15,33 +15,28 @@ export default (props) => {
   };
   // const clientes = props.clientes || [];
   const [clientes, setClientes] = useState(props.clientes || []);
+  const [cpf, setCpf] = useState("");
 
   let tr =
-  // props.propostas.length > 0 && clientes.length > 0 ? (
+    // props.propostas.length > 0 && clientes.length > 0 ? (
     props.propostas.length > 0 && clientes.length > 0 ? (
       props.propostas.map((proposta) => (
         <tr onClick={() => detalhe(proposta.id, props.toGo)}>
           <td>{proposta.dtProposta}</td>
           <td className="nome">
-            {
-              proposta.clienteId?
-              clientes.find(
-                (cliente) => cliente.id === parseInt(proposta.clienteId)
-              ).nome
-              :
-              "Nenhuma proposta encontrada"
-            }
+            {proposta.clienteId
+              ? clientes.find(
+                  (cliente) => cliente.id === parseInt(proposta.clienteId)
+                ).nome
+              : "Nenhuma proposta encontrada"}
           </td>
           {/* {mascaraCpf(proposta.cpf)}*/}
           <td>
-            {
-              proposta.clienteId?
-              clientes.find(
-                (cliente) => cliente.id === parseInt(proposta.clienteId)
-              ).cpf
-              :
-              ""
-            }
+            {proposta.clienteId
+              ? clientes.find(
+                  (cliente) => cliente.id === parseInt(proposta.clienteId)
+                ).cpf
+              : ""}
           </td>
           <td>
             {proposta.banco
@@ -60,9 +55,54 @@ export default (props) => {
     ) : (
       <Load load />
     );
+    function onChange (e) {
+      setCpf(mascaraCpf(e.target.value))
+      props.pesquisar(e)
+    }
   return (
     <div className="ListaPropostas">
       <table>
+        <thead>
+          <tr>
+            <th className="espacamento filtros">
+              <input
+                type="text"
+                placeholder="Pesquisa Emissão"
+                name="emissao"
+                onChange={(e) => props.pesquisar(e)}
+              />
+            </th>
+            <th className="espacamento filtros">
+              <input
+                type="text"
+                placeholder="Pesquisa Nome"
+                name="nome"
+                onChange={(e) => props.pesquisar(e)}
+              />
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+            <th className="espacamento">
+              
+            </th>
+          </tr>
+        </thead>
         <thead>
           <tr>
             <th className="espacamento">

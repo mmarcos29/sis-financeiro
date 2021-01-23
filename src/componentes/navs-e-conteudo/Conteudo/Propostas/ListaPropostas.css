@@ -1,4 +1,4 @@
-#Esteira .ListaPropostas{
+#Esteira .ListaPropostas {
   height: 80%;
   margin-top: 2vh;
 }
@@ -6,7 +6,17 @@
   overflow: overlay;
   height: 90%;
 }
-.ListaPropostas table{
+.ListaPropostas table th.filtros {
+  padding: 1px;
+}
+.ListaPropostas table th input {
+  width: 90%;
+  height: 31%;
+  padding: 1vh;
+  border: solid 1px black;
+  text-align: center;
+}
+.ListaPropostas table {
   border-collapse: collapse;
   width: 98%;
   margin: 0 8px 16px 0;
@@ -21,14 +31,14 @@
 .ListaPropostas table td {
   letter-spacing: 1.1px;
   border: 1px solid black;
-  border-width: 0 0 1px 0;  
+  border-width: 0 0 1px 0;
   padding: 8px 0;
   background-color: transparent;
   color: inherit;
   text-align: center;
 }
 .ListaPropostas table tr:nth-child(even) {
-  background-color: #F3F3F3;
+  background-color: #f3f3f3;
 }
 .ListaPropostas table tr:nth-child(odd) {
   background-color: white;
@@ -46,7 +56,7 @@
 }
 .ListaPropostas table tr:hover {
   /* color: #fff212; */
-  background-color: #E3F7FE;
+  background-color: #e3f7fe;
   cursor: pointer;
 }
 .ListaPropostas table tr:active {
@@ -57,7 +67,7 @@
 .ListaPropostas table th {
   color: black;
   /* background-color: #d1d0d0; */
-  background-image: linear-gradient(#C1BFBF, #FFFFFF);
+  background-image: linear-gradient(#c1bfbf, #ffffff);
   cursor: auto;
   font-size: 16px;
   font-weight: bolder;

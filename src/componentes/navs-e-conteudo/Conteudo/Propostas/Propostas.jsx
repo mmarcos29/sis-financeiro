@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Propostas.css";
 import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPage";
 import IconeIncluir from "../Clientes/IconeIncluir/IconeIncluir";
-// import ListaClientes from "../Clientes/ListaClientes";
 import ListaPropostas from "./ListaPropostas";
 import Separador from "./Separador/Separador";
 import roxo from "../../../../img/botoesPropostas/roxo.png";
@@ -10,8 +9,16 @@ import verde from "../../../../img/botoesPropostas/verde.png";
 import laranja from "../../../../img/botoesPropostas/amarelo.png";
 import azul from "../../../../img/botoesPropostas/azul.png";
 import vermelho from "../../../../img/botoesPropostas/vermelho.png";
+import Select from "react-select";
+import mascaraCpf from "../../../mascaraCpf";
 
 export default class Propostas extends Component {
+  state = {
+    propostas: this.props.propostas,
+    clientes: this.props.clientes || [],
+    clientesF: [],
+    filtro: "",
+  };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
       document
@@ -34,11 +41,6 @@ export default class Propostas extends Component {
         .classList.add("active");
     }
   }
-  state = {
-    propostas: this.props.propostas,
-    clientes: this.props.clientes,
-    filtro: "",
-  };
 
   filtrar = (filtro, nome) => {
     // console.log(filtro);
@@ -51,12 +53,54 @@ export default class Propostas extends Component {
     }
   };
 
+  pesquisar = (e) => {
+    console.log(this.state.propostas);
+    let resultado = [];
+    switch (e.target.name) {
+      case "nome":
+        //****************** */
+        this.state.clientes
+          .filter((cliente) =>
+            cliente.nome.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+          .map(
+            (cliente) =>
+              (resultado = this.state.propostas.filter(
+                (p) => p.clienteId === cliente.id.toString()
+              ))
+          );
+        if (resultado.length > 0) {
+          this.setState({ ...this.state, propostas: resultado });
+        } else {
+          this.setState({ propostas: this.props.propostas, filtro: "" });
+        }
+        //****************** */
+        break;
+
+        case "emissao":
+          //****************** */
+        resultado = (this.props.propostas.filter(proposta => 
+          proposta.dtProposta.includes(e.target.value.toLowerCase())
+          ))
+        if (resultado.length > 0) {
+          this.setState({ ...this.state, propostas: resultado });
+        } else {
+          this.setState({ propostas: this.props.propostas, filtro: "" });
+        }
+        //****************** */        
+
+      default:
+        break;
+    }
+  };
+
   render() {
     return (
       <div id="Propostas">
         <BarraLocationPage incluir={<IconeIncluir rota="CadastroPropostas" />}>
           {[...this.props.children]}
         </BarraLocationPage>
+        {/* <input type="text" name="" onChange={this.pesquisar} /> */}
         <div className="horizontal">
           <Separador
             img={roxo}
@@ -132,6 +176,7 @@ export default class Propostas extends Component {
           </div>
         </div>
         <ListaPropostas
+          pesquisar={this.pesquisar}
           propostas={this.state.propostas}
           history={this.props.history}
           clientes={this.state.clientes}
