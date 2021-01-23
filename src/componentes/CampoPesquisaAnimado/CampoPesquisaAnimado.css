@@ -1,0 +1,29 @@
+.CampoPesquisaAnimado{
+    background-color: #3f8bb7; 
+    margin: 0 3px; 
+    display: flex; 
+    justify-content: flex-end;
+    padding: 1px; 
+    border-radius: 5px;
+}
+.CampoPesquisaAnimado .CaixaInput{
+    background-color: #3f8bb7; 
+    border-radius: 25px; 
+    border: solid 1px #044f76;
+}
+.CampoPesquisaAnimado .CaixaInput input{
+    border-radius: 25px; 
+    width: 2vw; 
+    background-color: transparent; 
+    outline: none; 
+    text-align: center; 
+    color: white; 
+    transition: 1s;
+}
+/* .CampoPesquisaAnimado .CaixaInput input:focus{
+    width: 10vw; 
+    transition: 1s; 
+} */
+.CampoPesquisaAnimado .CaixaInput .material-icons{
+    height: 22px;
+}

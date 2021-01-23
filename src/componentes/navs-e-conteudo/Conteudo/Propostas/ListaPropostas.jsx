@@ -4,6 +4,7 @@ import mascaraCpf from "../../../mascaraCpf";
 import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
 import { Load } from "../../../../Services/Load";
 import listaDeBancos from "../../../../Services/listaDeBancos";
+import CampoPesquisaAnimado from "../../../CampoPesquisaAnimado/CampoPesquisaAnimado";
 
 export default (props) => {
   const detalhe = (id, toGo) => {
@@ -65,20 +66,24 @@ export default (props) => {
         <thead>
           <tr>
             <th className="espacamento filtros">
+            <CampoPesquisaAnimado align={"center"} name={"emissao"} width={"3vw"} background={"transparent"} color={"black"} tamanho={"90%"} onChange={props.pesquisar}/>              
+            </th>
+            {/* <th className="espacamento filtros">
               <input
                 type="text"
                 placeholder="Pesquisa Emissão"
                 name="emissao"
                 onChange={(e) => props.pesquisar(e)}
               />
-            </th>
+            </th> */}
             <th className="espacamento filtros">
-              <input
+            <CampoPesquisaAnimado align={"center"} name={"nome"} width={"15vw"} background={"transparent"} color={"black"} tamanho={"100%"} onChange={props.pesquisar}/>              
+              {/* <input
                 type="text"
                 placeholder="Pesquisa Nome"
                 name="nome"
                 onChange={(e) => props.pesquisar(e)}
-              />
+              /> */}
             </th>
             <th className="espacamento">
               

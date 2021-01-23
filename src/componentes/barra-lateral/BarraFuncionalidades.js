@@ -3,6 +3,7 @@ import image from '../../img/logo-revolution.png'
 import Styles from "./Styles.css"
 import BtnReduzir from './btnReduzir/BtnReduzir'
 import { Link } from "react-router-dom";
+import CampoPesquisaAnimado from '../CampoPesquisaAnimado/CampoPesquisaAnimado';
 
 class BarraFuncionalidades extends React.Component {
   state = {
@@ -89,7 +90,8 @@ class BarraFuncionalidades extends React.Component {
           <Link to="/">
             <img src={image}></img>
           </Link>
-          <div id="azul"><div id="PesquisaFuncionalidades"><input id="inputPesquisaFuncionalidades" onBlur={() => this.limpaCampo("inputPesquisaFuncionalidades")} /><span id="pesquisaItens" class="material-icons">search</span></div></div>
+          <CampoPesquisaAnimado width={"10vw"}/>
+          {/* <div id="azul"><div id="PesquisaFuncionalidades"><input id="inputPesquisaFuncionalidades" onBlur={() => this.limpaCampo("inputPesquisaFuncionalidades")} /><span id="pesquisaItens" class="material-icons">search</span></div></div> */}
         </div>
         <ul>
           <BtnReduzir trocaMenu={this.states.bind(this)} />
