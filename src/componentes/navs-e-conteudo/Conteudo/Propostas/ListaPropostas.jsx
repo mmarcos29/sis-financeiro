@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ListaPropostas.css";
 import mascaraCpf from "../../../mascaraCpf";
 import IdadePorAnoNascimento from "../../../../Services/IdadePorAnoNascimento";
@@ -8,6 +8,9 @@ import CampoPesquisaAnimado from "../../../CampoPesquisaAnimado/CampoPesquisaAni
 import verificaCorStatusEsteira from "../../../../Services/verificaCorStatusEsteira";
 
 export default (props) => {
+  const ListaPropostasRef = useRef();
+  const ListaPropostasTableRef = useRef();
+
   const detalhe = (id, toGo) => {
     props.history.push({
       pathname: toGo,
@@ -16,8 +19,18 @@ export default (props) => {
     });
   };
   // const clientes = props.clientes || [];
-  const [clientes, setClientes] = useState(props.clientes || []);
+  const [clientes, setClientes] = useState(props.clientes);
   const [cpf, setCpf] = useState("");
+
+  useEffect(() => {
+    console.log(ListaPropostasRef.current.scrollHeight, ListaPropostasRef.current.clientHeight)
+    if(ListaPropostasRef.current.scrollHeight === ListaPropostasRef.current.clientHeight){
+      ListaPropostasTableRef.current.style.width = "100%"
+    }else if(ListaPropostasRef.current.scrollHeight !== ListaPropostasRef.current.clientHeight){
+      ListaPropostasTableRef.current.style.width = "98%"
+    }
+  }, [props]);
+  // }, [ListaPropostasRef.current?ListaPropostasRef.current.scrollHeight:ListaPropostasRef.current]);
 
   let tr =
     // props.propostas.length > 0 && clientes.length > 0 ? (
@@ -62,8 +75,9 @@ export default (props) => {
       props.pesquisar(e)
     }
   return (
-    <div className="ListaPropostas">
-      <table>
+    <div className="ListaPropostas" ref={ListaPropostasRef}>
+      {/* {document.querySelector(".ListaPropostas")?console.log(document.querySelector(".ListaPropostas").clientHeight === document.querySelector(".ListaPropostas").scrollHeight):""} */}
+      <table ref={ListaPropostasTableRef}>
         <thead>
           <tr>
             <th className="espacamento filtros">

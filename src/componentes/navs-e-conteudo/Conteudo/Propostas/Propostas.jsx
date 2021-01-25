@@ -54,7 +54,7 @@ export default class Propostas extends Component {
   };
 
   pesquisar = (e) => {
-    console.log(this.state.propostas);
+    // console.log(this.state.propostas);
     let resultado = [];
     switch (e.target.name) {
       case "nome":
