@@ -202,11 +202,12 @@
   border: solid 1px #a1c9d8;
   background: yellow;
 }
-.CadastroPropostas .atributoForm .ClientesActions .actions .material-icons:first-child{
+.CadastroPropostas .atributoForm .ClientesActions .actions .material-icons{
   border-right: solid 2px;
+  padding: 5px;
 }
 .CadastroPropostas .atributoForm .ClientesActions .actions{
-  width: 15%;
+  width: 21%;
   display: flex;
   justify-content: space-between;
 }
