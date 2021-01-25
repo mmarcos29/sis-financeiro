@@ -133,7 +133,7 @@ export default class CadastroPropostas extends React.Component {
   addCliente = (toDO) => {
     this.setState({...this.state, load: (<PopUp sair={this.addCliente} componente={<CadastroClientes />}/>), ocultarCampos:"none"})
     if(toDO === true){
-      this.setState({...this.state, load: ""})
+      this.setState({...this.state, load: "", ocultarCampos:""})
     }
   }
   render() {
