@@ -8,6 +8,8 @@ import listaConvenios from "../../../../../Services/listaConvenios";
 import listaTabela from "../../../../../Services/listaTabela";
 import listaDeBancos from "../../../../../Services/listaDeBancos";
 import formasDeContato from "../../../../../Services/formasDeContato";
+import PopUp from "../../../../../pages/PopUp/PopUp";
+import CadastroClientes from '../../Clientes/CadastroClientes/CadastroClientes'
 
 const tiposPropostas = [
   { label: "novo", value: "novo" },
@@ -15,18 +17,27 @@ const tiposPropostas = [
 ];
 const corretores = [{ label: "Magno Vieria", value: "Magno Vieria" }];
 
-const customStyles = {
-  option: (provided, state) => ({
-    ...provided,
-    borderBottom: "1px dotted pink",
-    color: state.isSelected ? "red" : "blue",
-    // width: "1px",
-    // padding: 20,
-  }),
-};
+// const customStyles = {
+//   option: (provided, state) => ({
+//     ...provided,
+//     borderBottom: "1px dotted pink",
+//     color: state.isSelected ? "red" : "blue",
+//     // width: "1px",
+//     // padding: 20,
+//   }),
+//   container: (provided, state) => ({
+//     ...provided,
+//     display:this.state.ocultarCampos
+//     // width: "1px",
+//     // padding: 20,
+//   }),
+  
+// };
 
 export default class CadastroPropostas extends React.Component {
   state = {
+    load: "",
+    ocultarCampos:false,
     proposta: {
       clienteId: "",
       corretor: "",
@@ -119,7 +130,29 @@ export default class CadastroPropostas extends React.Component {
         .classList.add("active");
     }
   }
+  addCliente = (toDO) => {
+    this.setState({...this.state, load: (<PopUp sair={this.addCliente} componente={<CadastroClientes />}/>), ocultarCampos:"none"})
+    if(toDO === true){
+      this.setState({...this.state, load: ""})
+    }
+  }
   render() {
+    const customStyles = {
+      option: (provided, state) => ({
+        ...provided,
+        borderBottom: "1px dotted pink",
+        color: state.isSelected ? "red" : "blue",
+        // width: "1px",
+        // padding: 20,
+      }),
+      container: (provided, state) => ({
+        ...provided,
+        display:this.state.ocultarCampos
+        // width: "1px",
+        // padding: 20,
+      }),
+      
+    };
     const opcoes = [
       {
         nome: "novo",
@@ -275,11 +308,12 @@ export default class CadastroPropostas extends React.Component {
         <div className="CadastroPropostas">
           <div className="camposPrincipais">
             <div className="full spaceBetween">
+              {this.state.load}
               <div className="atributoForm umTerco">
                 CLIENTE*
                 <div className="ClientesActions">
                   <div className="actions">
-                    <span class="material-icons">delete_forever</span>
+                    <span class="material-icons" onClick={this.addCliente}>person_add_alt_1</span>
                     <span class="material-icons">delete_forever</span>
                   </div>
                   <Select
