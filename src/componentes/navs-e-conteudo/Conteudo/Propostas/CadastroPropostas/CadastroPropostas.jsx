@@ -271,123 +271,141 @@ export default class CadastroPropostas extends React.Component {
     const refin = <div>variavel refin</div>;
 
     return (
-      <div className="CadastroPropostas">
-        <div className="camposPrincipais">
-          <div className="full spaceBetween">
-            <div className="atributoForm umTerco">
-              CLIENTE*
-              <Select
-                styles={customStyles}
-                onChange={this.onChange}
-                name="clienteId"
-                options={this.state.clientes.filter((option) => option.label)}
-                value={this.state.proposta.clienteId}
-                noOptionsMessage={() => "Nenhum cliente encontrado"}
-                placeholder="BUSQUE POR NOME"
-              />
-            </div>
-            <div className="atributoForm umTerco">
-              CORRETOR*
-              <Select
-                styles={customStyles}
-                onChange={this.onChange}
-                name="corretor"
-                options={corretores.filter((corretor) => corretor.label)}
-                value={this.state.proposta.corretor}
-                noOptionsMessage={() => "Nenhum corretor encontrado"}
-                placeholder="BUSQUE POR NOME"
-              />
-            </div>
-            <div className="atributoForm umTerco">
-              TIPO DE PROPOSTA*
-              <Select
-                styles={customStyles}
-                onChange={this.onChange}
-                name="tipo"
-                options={tiposPropostas.filter((tipo) => tipo.label)}
-                value={this.state.proposta.tipo}
-                noOptionsMessage={() => "Nenhum cliente encontrado"}
-                placeholder="BUSQUE POR NOME"
-              />
-            </div>
-          </div>
-          {opcoes.map((opcao) =>
-            opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
-          )}
-        </div>
-        <div className="observacoes">
-          <div className="full spaceBetween ultimo">
-            <div className="quaseMetade">
-              <div className="atributoForm tudoPossivel">
-                OBSERVAÇÕES*
-                <textarea
-                  name="observacoes"
-                  cols="60"
-                  rows="60"
-                  value={this.state.proposta.observacoes}
-                  onChange={this.onChange}
-                />
-              </div>
-            </div>
-            <div className="maisDaMetade flex">
-              <div className="full spaceBetween">
-                <div className="atributoForm quaseMetade">
-                  EMISSÃO*
-                  <InputMask
-                    className="dataEmissao"
-                    mask="99/99/9999"
-                    name="dtProposta"
-                    objeto="enderecoCliente"
-                    value={this.state.proposta.dtProposta}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="atributoForm metade">
-                  COMO CHEGOU ATÉ NÓS?
+      <>
+        <div className="CadastroPropostas">
+          <div className="camposPrincipais">
+            <div className="full spaceBetween">
+              <div className="atributoForm umTerco">
+                CLIENTE*
+                <div className="ClientesActions">
+                  <div className="actions">
+                    <span class="material-icons">delete_forever</span>
+                    <span class="material-icons">delete_forever</span>
+                  </div>
                   <Select
                     styles={customStyles}
                     onChange={this.onChange}
-                    name="formaContato"
-                    options={formasDeContato.filter((tipo) => tipo.label)}
-                    value={this.state.proposta.formaContato}
+                    name="clienteId"
+                    options={this.state.clientes.filter((option) => option.label)}
+                    value={this.state.proposta.clienteId}
                     noOptionsMessage={() => "Nenhum cliente encontrado"}
-                    placeholder="BUSQUE POR NOME"
+                    placeholder="NOME OU CPF"
                   />
                 </div>
               </div>
-              <div className="botaoesEStatus">
-                <div className="status">
-                  <div>
-                    Situação: <span className="situacao"> digitando...</span>
-                  </div>
-                  <div>
-                    Esteira:{" "}
-                    <span className="situacao">
-                      {" "}
-                      Verificando Informações...
-                    </span>
-                  </div>
+              <div className="atributoForm umTerco">
+                Agente de Crédito*
+              <Select
+                  styles={customStyles}
+                  onChange={this.onChange}
+                  name="corretor"
+                  options={corretores.filter((corretor) => corretor.label)}
+                  value={this.state.proposta.corretor}
+                  noOptionsMessage={() => "Nenhum corretor encontrado"}
+                  placeholder="BUSQUE POR NOME"
+                />
+              </div>
+              <div className="atributoForm umTerco">
+                TIPO DE PROPOSTA*
+              <Select
+                  styles={customStyles}
+                  onChange={this.onChange}
+                  name="tipo"
+                  options={tiposPropostas.filter((tipo) => tipo.label)}
+                  value={this.state.proposta.tipo}
+                  noOptionsMessage={() => "TIPO DE PROPOSTA NÃO ENCONTRADO"}
+                  placeholder="SELECIONE"
+                />
+              </div>
+            </div>
+            {opcoes.map((opcao) =>
+              opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
+            )}
+          </div>
+          <div className="observacoes">
+            <div className="full spaceBetween ultimo">
+              <div className="quaseMetade">
+                <div className="atributoForm tudoPossivel">
+                  OBSERVAÇÕES*
+                <textarea
+                    name="observacoes"
+                    cols="60"
+                    rows="60"
+                    value={this.state.proposta.observacoes}
+                    onChange={this.onChange}
+                  />
                 </div>
-                <div className="butoons">
-                  <button onClick={() => this.props.history.push("/propostas")}>
-                    Cancelar
-                  </button>
-                  <button
-                    type="submit"
-                    // disabled={false}
-                    className="gravar"
-                    onClick={this.onSubmit}
-                  >
-                    Gravar
-                  </button>
-                  {/* <form onSubmit={this.onSubmit}>
-                  </form> */}
+              </div>
+              <div className="maisDaMetade flex">
+                <div className="full spaceBetween">
+                  <div className="atributoForm quaseMetade">
+                    EMISSÃO*
+                  <InputMask
+                      className="dataEmissao"
+                      mask="99/99/9999"
+                      name="dtProposta"
+                      objeto="enderecoCliente"
+                      value={this.state.proposta.dtProposta}
+                      onChange={this.onChange}
+                    />
+                  </div>
+                  <div className="atributoForm metade">
+                    COMO CHEGOU ATÉ NÓS?
+                  <Select
+                      styles={customStyles}
+                      onChange={this.onChange}
+                      name="formaContato"
+                      options={formasDeContato.filter((tipo) => tipo.label)}
+                      value={this.state.proposta.formaContato}
+                      noOptionsMessage={() => "Nenhum cliente encontrado"}
+                      placeholder="BUSQUE POR NOME"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div className="botaoesEStatus">
+          <div className="status">
+            <div>
+              Situação: <span className="situacao"> digitando...</span>
+            </div>
+            <div>
+              Esteira:{" "}
+              <span className="situacao">
+                {" "}
+            Verificando Informações...
+          </span>
+            </div>
+          </div>
+          <div className="butoons">
+            <div className="underButton">
+              <button
+                type="submit"
+                // disabled={false}
+                className="gravar"
+                onClick={this.onSubmit}
+              >
+                Gravar
+        </button>
+              <span class="material-icons verde">
+                add_task
+</span>
+            </div>
+            <div className="underButton">
+              <button className="cancelar" onClick={() => this.props.history.push("/propostas")}>
+                Cancelar
+        </button>
+              <span class="material-icons vermelho">
+                delete_forever
+</span>
+            </div>
+            {/* <form onSubmit={this.onSubmit}>
+        </form> */}
+          </div>
+        </div>
+      </>
     );
   }
 }

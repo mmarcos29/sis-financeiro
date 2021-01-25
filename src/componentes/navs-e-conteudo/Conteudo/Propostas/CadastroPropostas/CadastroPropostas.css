@@ -5,12 +5,13 @@
   max-height: 75vh;
   display: flex;
   flex-direction: column;
-  background: #054f75;
-  border-radius: 1vw;
-  color: #ffffff;
+  background: #ffffff;
+  /* border-radius: 1vw; */
+  color: #6E6E6E;
   font-weight: bold;
   font-style: italic;
   justify-content: space-between;
+  border: solid 1px #707070;
 }
 .camposPrincipais {
   width: 100%;
@@ -35,6 +36,21 @@
 .CadastroPropostas .atributoForm .css-2b097c-container {
   margin-top: 3px;
 }
+.CadastroPropostas .atributoForm .css-yk16xz-control {
+  border-color: #a1c9d8;
+}
+.CadastroPropostas .atributoForm .css-1wa3eu0-placeholder {
+  color: #C2C2C2;
+}
+.CadastroPropostas .atributoForm .css-tlfecz-indicatorContainer {
+  background: #F3F3F3;
+}
+.CadastroPropostas .atributoForm .css-6q0nyr-Svg {
+  color: #a1c9d8;
+}
+.CadastroPropostas .atributoForm .css-1okebmr-indicatorSeparator {
+  margin: 0;
+}
 .CadastroPropostas .atributoForm select {
   border: solid 1px #00000054;
   height: 100%;
@@ -58,6 +74,9 @@
   font-style: normal;
   outline: none;
   padding: 5px;
+}
+.CadastroPropostas .atributoForm textarea, .CadastroPropostas .atributoForm .dataEmissao {
+  border: solid 1px #a1c9d8;
 }
 .CadastroPropostas .quaseMetade {
   width: 40%;
@@ -96,50 +115,112 @@
   display: flex;
   flex-wrap: wrap;
 }
-.situacao {
+/* .situacao {
   color: #ffff00d4;
-}
+} */
 .status {
   display: flex;
-  flex-direction: column;
-  height: 8vh;
-  justify-content: space-between;
-  margin: 1vh 0;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
 }
 .CadastroPropostas .infoEmprestador {
   margin-right: 2.3%;
 }
 .botaoesEStatus {
+  padding: 1vh 3vh;
   display: flex;
   justify-content: space-between;
-  width: 98%;
+  width: 100%;
+  background-image: linear-gradient(#c1bfbf, #ffffff);
 }
 .butoons {
   display: flex;
-  width: 51%;
-  /* justify-content: center; */
+    width: 50%;
+    justify-content: flex-end;
+}
+.butoons:last-child{
+  margin-right: 2vw;  
 }
 .butoons button {
-  background: #ffffffcc;
-  width: 7vw;
-  padding: 2vh;
-  margin: 1vw 2vw;
+  color: white;  
+  width: 9vw;
+  padding: 1vh;
   border-radius: 1vh;
   font-style: italic;
   font-weight: bold;
   font-size: 1.2vw;
   outline: none;
   border: none;
+  transition: 1s;
 }
 .butoons button:hover {
   background: white;
   cursor: pointer;
+  width: 70%;
 }
 .butoons button.gravar {
-  background: #fff212cc;
-  color: #054f75cc;
+  background: #22D13A;
+  margin: 0;
 }
-.butoons button.gravar:hover {
-  background: #fff212;
-  color: #054f75;
+.butoons button.cancelar {
+  background: #F63737;
+  margin: 0;
 }
+.butoons .underButton {
+  width: 9vw;
+    background: white;
+    margin-right: 1vw;
+    border-radius: 1vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.butoons .underButton:hover {  
+    border-radius: 0;
+    border-top-left-radius: 1vw;
+}
+.butoons .underButton .material-icons.verde {      
+    color: #22D13A;
+}
+.butoons .underButton .material-icons.vermelho {      
+    color: #F63737;
+}
+.butoons .underButton .material-icons {  
+    /* display: none; */
+    font-size: 0;
+    margin-right: 2px;
+    transition: 550ms;
+}
+.butoons .underButton:hover .material-icons {  
+    /* display: block; */
+    font-size: 27px;
+}
+.CadastroPropostas .atributoForm .ClientesActions{
+  display: flex;
+  align-items: center;
+  border: solid 1px #a1c9d8;
+  background: yellow;
+}
+.CadastroPropostas .atributoForm .ClientesActions .actions .material-icons:first-child{
+  border-right: solid 2px;
+}
+.CadastroPropostas .atributoForm .ClientesActions .actions{
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+.CadastroPropostas .atributoForm .ClientesActions .css-2b097c-container, .CadastroPropostas .atributoForm .ClientesActions .css-2b097c-container{
+  margin: 0;
+}
+.CadastroPropostas .atributoForm .ClientesActions div.css-2b097c-container{
+  width: 90% !important;
+}
+.CadastroPropostas .atributoForm .ClientesActions .css-yk16xz-control{
+  border: none;
+  border-radius: 0;
+}
+/* .CadastroPropostas .atributoForm .ClientesActions .actions .material-icons{
+  background: #FFF212;
+} */
+
