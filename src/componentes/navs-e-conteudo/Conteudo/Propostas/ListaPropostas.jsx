@@ -8,6 +8,7 @@ import CampoPesquisaAnimado from "../../../CampoPesquisaAnimado/CampoPesquisaAni
 import verificaCorStatusEsteira from "../../../../Services/verificaCorStatusEsteira";
 
 export default (props) => {
+  
   const detalhe = (id, toGo) => {
     props.history.push({
       pathname: toGo,
@@ -62,8 +63,10 @@ export default (props) => {
       props.pesquisar(e)
     }
   return (
-    <div className="ListaPropostas">
-      <table>
+    <div className="ListaPropostas" >
+      <table >
+        {/* {console.log(document.querySelector(".ListaPropostas")?document.querySelector(".ListaPropostas").scrollHeight + "tamanho do componente":"")} */}
+        {/* {document.querySelector(".ListaPropostas")?document.querySelector(".ListaPropostas").clientHeight === document.querySelector(".ListaPropostas").scrollHeight?alert("em scroll"):"":""} */}
         <thead>
           <tr>
             <th className="espacamento filtros">
