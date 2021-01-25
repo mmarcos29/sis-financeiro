@@ -1,1 +1,7 @@
-#NavsEConteudo{display: flex; flex-direction: column; flex: 1; margin: 0 1px 0 0;}
+#NavsEConteudo{
+    display: flex; 
+    flex-direction: column; 
+    flex: 1; 
+    margin: 0 1px 0 0;
+    background: #E3F7FE;
+}
