@@ -16,8 +16,11 @@ export default class DetalheClientes extends React.Component {
   constructor(props) {
     super(props);
     // const idCliente = parseInt(window.location.search.replace(/\D/g, ""));
-    const idCliente = parseInt(window.location.hash.replace(/\D/g, ""));
+    let idCliente = parseInt(window.location.hash.replace(/\D/g, ""));
     let cliente;
+    if(props.ClienteEditarCadastro){
+      idCliente = props.ClienteEditarCadastro;
+    }
     if (props.clientes) {
       cliente = props.clientes.find((clientes) => clientes.id === idCliente);
     }
@@ -186,9 +189,11 @@ export default class DetalheClientes extends React.Component {
           },
         },
       };
-      props.mudaNomeClienteDetalhe(
-        `CLIENTE 0${cliente.id}    -     ${cliente.nome}`
-      );
+      if(props.mudaNomeClienteDetalhe){
+        props.mudaNomeClienteDetalhe(
+          `CLIENTE 0${cliente.id}    -     ${cliente.nome}`
+        );
+      }
     }
     // console.log(cliente);
     // if(!this.state.clienteAtual){
@@ -275,7 +280,7 @@ export default class DetalheClientes extends React.Component {
     const dadosValidados = SalvarInformacoesCliente(dadosForm);
 
     if (dadosValidados) {
-      EditaNoBanco(dadosValidados, this.props.history);
+      EditaNoBanco(dadosValidados, this.props);
     }
   };
   edita = () => {

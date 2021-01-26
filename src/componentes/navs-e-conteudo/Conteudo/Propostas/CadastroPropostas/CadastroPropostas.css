@@ -206,6 +206,10 @@
   border-right: solid 2px;
   padding: 5px;
 }
+.CadastroPropostas .atributoForm .ClientesActions .actions .material-icons:hover{
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.274);
+}
 .CadastroPropostas .atributoForm .ClientesActions .actions{
   width: 21%;
   display: flex;
@@ -217,9 +221,15 @@
 .CadastroPropostas .atributoForm .ClientesActions div.css-2b097c-container{
   width: 90% !important;
 }
+.CadastroPropostas .atributoForm .ClientesActions .css-sw16in-container{
+  width: 90% !important;
+}
 .CadastroPropostas .atributoForm .ClientesActions .css-yk16xz-control{
   border: none;
   border-radius: 0;
+}
+.CadastroPropostas .atributoForm textarea{
+  margin-bottom: 2vh;
 }
 /* .CadastroPropostas .atributoForm .ClientesActions .actions .material-icons{
   background: #FFF212;

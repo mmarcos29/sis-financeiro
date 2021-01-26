@@ -10,6 +10,7 @@ import listaDeBancos from "../../../../../Services/listaDeBancos";
 import formasDeContato from "../../../../../Services/formasDeContato";
 import PopUp from "../../../../../pages/PopUp/PopUp";
 import CadastroClientes from '../../Clientes/CadastroClientes/CadastroClientes'
+import DetalheClientes from "../../Clientes/DetalheClientes/DetalheClientes";
 
 const tiposPropostas = [
   { label: "novo", value: "novo" },
@@ -57,7 +58,7 @@ export default class CadastroPropostas extends React.Component {
       observacoes: "",
       dtProposta: new Date().toLocaleDateString(),
       formaContato: "",
-      esteira: "CADASTRADO",
+      esteira: "AGUAR. DIGITAÇÃO",
     },
     clientes: [],
   };
@@ -131,7 +132,13 @@ export default class CadastroPropostas extends React.Component {
     }
   }
   addCliente = (toDO) => {
-    this.setState({...this.state, load: (<PopUp sair={this.addCliente} componente={<CadastroClientes />}/>), ocultarCampos:"none"})
+    this.setState({...this.state, load: (<PopUp sair={this.addCliente} componente={<CadastroClientes sair={this.addCliente} getClientes={this.props.getClientes} />}/>), ocultarCampos:"none"})
+    if(toDO === true){
+      this.setState({...this.state, load: "", ocultarCampos:""})
+    }
+  }
+  editaCliente = (toDO) => {
+    this.setState({...this.state, load: (<PopUp sair={this.editaCliente} componente={<DetalheClientes ClienteEditarCadastro={this.state.proposta.clienteId.id} sair={this.editaCliente} getClientes={this.props.getClientes} clientes={this.props.clientes} />}/>), ocultarCampos:"none"})    
     if(toDO === true){
       this.setState({...this.state, load: "", ocultarCampos:""})
     }
@@ -314,7 +321,7 @@ export default class CadastroPropostas extends React.Component {
                 <div className="ClientesActions">
                   <div className="actions">
                     <span class="material-icons" onClick={this.addCliente}>person_add_alt_1</span>
-                    <span class="material-icons">delete_forever</span>
+                    <span class="material-icons" onClick={this.editaCliente}>border_color</span>
                   </div>
                   <Select
                     styles={customStyles}

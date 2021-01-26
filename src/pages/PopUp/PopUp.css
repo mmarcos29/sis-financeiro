@@ -14,8 +14,31 @@
     z-index: 1000;
     position: absolute;
 }
-.PopUpConteudo .dIdentificacao div{
-    width: 48%;
-    margin: 2px;
-    padding: 0
+.PopUpConteudo .atributoForm{
+    margin: 8px 0 0 !important;
+    height: 8.5vh;
 }
+.PopUpConteudo .atributoForm .metade{
+    width: 47%;
+}
+.PopUpConteudo .atributoForm textarea{
+    margin-bottom: 0;
+    border-radius: 0;
+}
+/* #Conteudo .PopUpConteudo .css-sw16in-container{
+    width: 80%;    
+} */
+/* .PopUpConteudo .dIdentificacao div{
+    padding: 0;
+    margin: 6px 2px;
+}
+.PopUpConteudo .CadastroPropostas .atributoForm{
+    height: 8vh;  
+}
+.PopUpConteudo input, .PopUpConteudo select{
+    margin-top: 0 !important; 
+    height: 5vh !important;
+}
+.PopUpConteudo .CadastroPropostas .atributoForm{
+    height: fit-content;
+} */

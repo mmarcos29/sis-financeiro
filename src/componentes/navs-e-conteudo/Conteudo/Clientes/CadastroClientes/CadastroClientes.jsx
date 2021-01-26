@@ -168,7 +168,7 @@ export default class CadastroClientes extends React.Component {
     const dadosValidados = SalvarInformacoesCliente(dadosForm);
 
     if (dadosValidados) {
-      SalvaNoBanco(dadosValidados, this.props.history);
+      SalvaNoBanco(dadosValidados, this.props);
     }
   };
 
