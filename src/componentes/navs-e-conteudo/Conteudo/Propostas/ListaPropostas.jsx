@@ -11,12 +11,16 @@ export default (props) => {
   const ListaPropostasRef = useRef();
   const ListaPropostasTableRef = useRef();
 
-  const detalhe = (id, toGo) => {
-    props.history.push({
-      pathname: toGo,
-      search: `${id}`,
-      // state:{msg:'usuário não autenticado'}
-    });
+  const detalhe = (id, toGo, proposta) => {
+    if(props.dispatch){
+      props.dispatch(proposta)
+    }else{
+      props.history.push({
+        pathname: toGo,
+        search: `${id}`,
+        // state:{msg:'usuário não autenticado'}
+      });
+    }
   };
   // const clientes = props.clientes || [];
   const [clientes, setClientes] = useState(props.clientes);
@@ -36,7 +40,7 @@ export default (props) => {
     // props.propostas.length > 0 && clientes.length > 0 ? (
     props.propostas.length > 0 && clientes.length > 0 ? (
       props.propostas.map((proposta) => (
-        <tr onClick={() => detalhe(proposta.id, props.toGo)}>
+        <tr onClick={() => detalhe(proposta.id, props.toGo, proposta)}>
           <td>{proposta.dtProposta}</td>
           <td className="nome">
             {proposta.clienteId

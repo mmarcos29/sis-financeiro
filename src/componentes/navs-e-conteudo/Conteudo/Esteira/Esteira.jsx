@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import "./Esteira.css";
 import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPage";
 import ListaPropostas from "../Propostas/ListaPropostas";
+import HistoricoEsteira from "./HistoricoEsteira/HistoricoEsteira";
 
 export default class Esteira extends Component {
   state = {
     propostas: this.props.propostas,
     clientes: this.props.clientes || [],
+    ocorrencias: null
     // clientesF: [],
     // filtro: "",
   };
@@ -73,17 +75,24 @@ export default class Esteira extends Component {
         break;
     }
   };
+  dispatch = (proposta) =>{
+    this.setState({...this.state, ocorrencias: proposta})
+  }
   render() {
     return (
       <div id="Esteira">
         <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
+        <div className="contentEsteira">
         <ListaPropostas
         pesquisar={this.pesquisar}
         propostas={this.state.propostas}
         history={this.props.history}
         clientes={this.state.clientes}
         toGo="DetalheEsteira"
+        dispatch={this.dispatch}
         />
+        <HistoricoEsteira item={this.state.ocorrencias}/>
+        </div>
       </div>
     );
   }
