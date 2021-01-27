@@ -1,6 +1,6 @@
 import api from './api'
 
-export default function EditaNoBanco(dados, history, rota, load) {
+export default function EditaNoBanco(dados, history, rota, load, observacoes) {
     // alert("DADOS SALVOS COM SUCESSO! EM INSTANTES VOCÊ SERÁ REDIRECIONADO!")
     let prontoEnviar = false
 
@@ -26,6 +26,20 @@ export default function EditaNoBanco(dados, history, rota, load) {
         })
     } else if (rota === "esteira") {
         load(true)
+        const ocorrencia = {
+            propostaId: dados.id,
+            editor: "ADMINISTRADOR",
+            data: new Date().toLocaleDateString(),
+            esteira: dados.esteira,
+            situacao: dados.situacao,
+            observacoes: observacoes
+        }
+        api.post(`Ocorrencias/`, ocorrencia).then(response => {
+            console.log(response)
+            // window.location.hash = rota
+            // load(false)
+            // window.location.reload()
+        })
         setTimeout(() => {
             api.put("Propostas", dados).then(response => {
                 console.log(response)

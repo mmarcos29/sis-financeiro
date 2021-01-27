@@ -10,6 +10,7 @@ export default (props) => {
   const idProposta = parseInt(window.location.hash.replace(/\D/g, ""));
   const [esteira, setEsteira] = useState(props.propostas || "");
   const [situacaoProposta, setSituacaoProposta] = useState();
+  const [observacoes, setObservacoes] = useState();
   const [clientes] = useState(props.clientes || null);
   const [load, setLoad] = useState(true);
   const [proposta, setProposta] = useState(null);
@@ -131,19 +132,25 @@ export default (props) => {
   }, [proposta]);
 
   function onSubmit(event) {
+    let objec = proposta
+    objec.esteira = objec.esteira.value
+    if(!situacaoProposta){
+      objec.situacao = objec.esteira
+    }
     const dadosProposta = validaCamposFoms(proposta, "esteira");
 
     if (dadosProposta) {
-      console.log(dadosProposta);
+      // console.log(dadosProposta, observacoes);
       // dadosProposta.id = this.state.id;
       // console.log(dadosProposta)
+      EditaNoBanco(dadosProposta, props.history, "esteira", setLoad, observacoes);
       // EditaNoBanco(dadosProposta, this.props.history, "esteira", this.setLoad);
     }
   }
 
   function onChange(option, action) {
     if (!action) {
-      setProposta({ ...proposta, observacoes: option.target.value });
+      setObservacoes( option.target.value );
     } else {
       switch (action.name) {
         case "esteira":
@@ -184,7 +191,7 @@ export default (props) => {
           {situacao()}
           <div className="ComponenteDescricao">
             Observações ao consultor de crédito
-            <textarea name="observacoes" onChange={onChange} />
+            <textarea name="observacoes" onChange={onChange} value={observacoes}/>
           </div>
         </div>
         <div className="det butoons">

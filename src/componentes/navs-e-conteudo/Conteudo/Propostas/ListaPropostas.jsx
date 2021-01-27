@@ -13,6 +13,7 @@ export default (props) => {
 
   const detalhe = (id, toGo, proposta) => {
     if(props.dispatch){
+      // console.log(proposta)
       props.dispatch(proposta)
     }else{
       props.history.push({

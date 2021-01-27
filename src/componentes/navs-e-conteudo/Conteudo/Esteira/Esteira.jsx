@@ -76,6 +76,7 @@ export default class Esteira extends Component {
     }
   };
   dispatch = (proposta) =>{
+    // alert("vai")
     this.setState({...this.state, ocorrencias: proposta})
   }
   render() {

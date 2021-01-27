@@ -1,6 +1,58 @@
-.HistoricoEsteira{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40%;
+.HistoricoEsteira {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+}
+.HistoricoEsteira table {
+  border-collapse: collapse;
+  width: 98%;
+  margin: 0 8px 16px 0;
+}
+.HistoricoEsteira table th,
+.HistoricoEsteira table td {
+  letter-spacing: 1.1px;
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+  padding: 8px 0;
+  background-color: transparent;
+  color: inherit;
+  text-align: center;
+}
+.HistoricoEsteira table tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.HistoricoEsteira table tr:nth-child(odd) {
+  background-color: white;
+}
+.HistoricoEsteira table tr {
+  background-color: white;
+  color: black;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.HistoricoEsteira table tr:hover {
+  background-color: #e3f7fe;
+  cursor: pointer;
+}
+.HistoricoEsteira table tr:active {
+  color: black;
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+.HistoricoEsteira table th {
+  color: black;
+  background-image: linear-gradient(#c1bfbf, #ffffff);
+  cursor: auto;
+  font-size: 16px;
+  font-weight: bolder;
+}
+.HistoricoEsteira table td {
+  font-weight: bold;
+  font-size: 0.7vw;
 }
