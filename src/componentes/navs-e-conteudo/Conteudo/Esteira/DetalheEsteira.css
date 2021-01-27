@@ -1,24 +1,64 @@
 .DetalheEsteira {
-    display: flex;
-    background: #054f75;
-    border-radius: 1vw;
-    flex-wrap: wrap;
+  padding: 8px;
+  display: flex;
+  background: #ffffff;
+  color: #6e6e6e;
+  font-weight: bold;
+  font-style: italic;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border: solid 1px #f0efef;
 }
-.DetalheEsteira .Componente{
-    margin: 2%;
-    color: white;
-    display: flex;
-    flex-direction: column;
+.det.butoons {
+  /* background: #ffffff; */
+  background-image: linear-gradient(#c1bfbf, #ffffff);
+  width: 100%;
+  padding: 2vh 0;
 }
-.metade{
-    width: 45%;
+.DetalheEsteira .Componente {
+  margin: 2%;
+  color: #6e6e6e;
+  display: flex;
+  flex-direction: column;
 }
-.full{
-    width: 100%;
+.DetalheEsteira .ComponenteDescricao {
+  margin: 2%;
+  color: #6e6e6e;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
-.DetalheEsteira .butoons{
-    justify-content: center;
+.DetalheEsteira textarea {
+  width: 100%;
+  border: solid 2px;
+  padding: 1vw;
+  text-align: center;
+  font-weight: bolder;
+  outline: none;
+  margin-top: 1vh;
 }
-.css-2b097c-container{
-    margin-top: 3px;
+.metade {
+  width: 45%;
+}
+.full {
+  width: 100%;
+}
+.DetalheEsteira .butoons {
+  justify-content: center;
+}
+.css-2b097c-container {
+  margin-top: 3px;
+}
+
+.DetalheEsteira .css-yk16xz-control {
+  border-color: #a1c9d8;
+}
+.DetalheEsteira .css-1wa3eu0-placeholder {
+  color: #c2c2c2;
+}
+.CadastroPropostas .css-tlfecz-indicatorContainer {
+  background: #f3f3f3;
+}
+.CadastroPropostas .css-6q0nyr-Svg {
+  color: #a1c9d8;
 }

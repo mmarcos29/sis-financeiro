@@ -1,29 +1,85 @@
-.ListaClientes {
+.ListaClientes{
   overflow: overlay;
   height: 90%;
 }
-/* .alunos {
+.ListaClientes table {
   border-collapse: collapse;
   width: 98%;
   margin: 0 8px 16px 0;
-} */
+}
+.ListaClientes table th,
+.ListaClientes table td {
+  letter-spacing: 1.1px;
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+  padding: 8px 0;
+  background-color: transparent;
+  color: inherit;
+  text-align: center;
+}
+.ListaClientes table tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.ListaClientes table tr:nth-child(odd) {
+  background-color: white;
+}
+.ListaClientes table tr {
+  background-color: white;
+  color: black;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.ListaClientes table tr:hover {
+  background-color: #e3f7fe;
+  cursor: pointer;
+}
+.ListaClientes table tr:active {
+  color: black;
+  background-color: yellowgreen;
+  cursor: pointer;
+}
+.ListaClientes table th {
+  color: black;
+  background-image: linear-gradient(#c1bfbf, #ffffff);
+  cursor: auto;
+  font-size: 16px;
+  font-weight: bolder;
+}
+.ListaClientes table td {
+  font-weight: bold;
+  font-size: 0.7vw;
+}
+
+
+
+
+
+/* .ListaClientes {
+  overflow: overlay;
+  height: 90%;
+}
 #acoes {
   width: 118px;
 }
 #acoes button {
   margin-left: 5px;
 }
-/* .alunos th,
+.alunos th,
 .alunos td {
   letter-spacing: 1.1px;
   border: 1px solid black;
   padding: 8px;
   text-align: center;
-} */
-/* .alunos tr:nth-child(odd) {
+}
+.alunos tr:nth-child(odd) {
   background-color: #054f75cc;
-} */
-/* .alunos tr {
+}
+.alunos tr {
   background-color: #054f75;
   color: white;
 

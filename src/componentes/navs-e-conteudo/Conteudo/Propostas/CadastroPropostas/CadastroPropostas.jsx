@@ -9,7 +9,7 @@ import listaTabela from "../../../../../Services/listaTabela";
 import listaDeBancos from "../../../../../Services/listaDeBancos";
 import formasDeContato from "../../../../../Services/formasDeContato";
 import PopUp from "../../../../../pages/PopUp/PopUp";
-import CadastroClientes from '../../Clientes/CadastroClientes/CadastroClientes'
+import CadastroClientes from "../../Clientes/CadastroClientes/CadastroClientes";
 import DetalheClientes from "../../Clientes/DetalheClientes/DetalheClientes";
 
 const tiposPropostas = [
@@ -32,13 +32,13 @@ const corretores = [{ label: "Magno Vieria", value: "Magno Vieria" }];
 //     // width: "1px",
 //     // padding: 20,
 //   }),
-  
+
 // };
 
 export default class CadastroPropostas extends React.Component {
   state = {
     load: "",
-    ocultarCampos:false,
+    ocultarCampos: false,
     proposta: {
       clienteId: "",
       corretor: "",
@@ -95,7 +95,7 @@ export default class CadastroPropostas extends React.Component {
   onSubmit = (event) => {
     // console.log(event.target);
 
-    this.props.enviarProposta(this.state.proposta)
+    this.props.enviarProposta(this.state.proposta);
   };
   componentWillMount() {
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -132,17 +132,51 @@ export default class CadastroPropostas extends React.Component {
     }
   }
   addCliente = (toDO) => {
-    this.setState({...this.state, load: (<PopUp sair={this.addCliente} componente={<CadastroClientes sair={this.addCliente} getClientes={this.props.getClientes} />}/>), ocultarCampos:"none"})
-    if(toDO === true){
-      this.setState({...this.state, load: "", ocultarCampos:""})
+    this.setState({
+      ...this.state,
+      load: (
+        <PopUp
+          sair={this.addCliente}
+          componente={
+            <CadastroClientes
+              sair={this.addCliente}
+              getClientes={this.props.getClientes}
+            />
+          }
+        />
+      ),
+      ocultarCampos: "none",
+    });
+    if (toDO === true) {
+      this.setState({ ...this.state, load: "", ocultarCampos: "" });
     }
-  }
+  };
   editaCliente = (toDO) => {
-    this.setState({...this.state, load: (<PopUp sair={this.editaCliente} componente={<DetalheClientes ClienteEditarCadastro={this.state.proposta.clienteId.id} sair={this.editaCliente} getClientes={this.props.getClientes} clientes={this.props.clientes} />}/>), ocultarCampos:"none"})    
-    if(toDO === true){
-      this.setState({...this.state, load: "", ocultarCampos:""})
+    if (this.state.proposta.clienteId.id) {
+      this.setState({
+        ...this.state,
+        load: (
+          <PopUp
+            sair={this.editaCliente}
+            componente={
+              <DetalheClientes
+                ClienteEditarCadastro={this.state.proposta.clienteId.id}
+                sair={this.editaCliente}
+                getClientes={this.props.getClientes}
+                clientes={this.props.clientes}
+              />
+            }
+          />
+        ),
+        ocultarCampos: "none",
+      });
+      if (toDO === true) {
+        this.setState({ ...this.state, load: "", ocultarCampos: "" });
+      }
+    } else {
+      alert("Antes de editar, selecione um cliente!");
     }
-  }
+  };
   render() {
     const customStyles = {
       option: (provided, state) => ({
@@ -154,11 +188,10 @@ export default class CadastroPropostas extends React.Component {
       }),
       container: (provided, state) => ({
         ...provided,
-        display:this.state.ocultarCampos
+        display: this.state.ocultarCampos,
         // width: "1px",
         // padding: 20,
       }),
-      
     };
     const opcoes = [
       {
@@ -320,14 +353,20 @@ export default class CadastroPropostas extends React.Component {
                 CLIENTE*
                 <div className="ClientesActions">
                   <div className="actions">
-                    <span class="material-icons" onClick={this.addCliente}>person_add_alt_1</span>
-                    <span class="material-icons" onClick={this.editaCliente}>border_color</span>
+                    <span class="material-icons" onClick={this.addCliente}>
+                      person_add_alt_1
+                    </span>
+                    <span class="material-icons" onClick={this.editaCliente}>
+                      border_color
+                    </span>
                   </div>
                   <Select
                     styles={customStyles}
                     onChange={this.onChange}
                     name="clienteId"
-                    options={this.state.clientes.filter((option) => option.label)}
+                    options={this.state.clientes.filter(
+                      (option) => option.label
+                    )}
                     value={this.state.proposta.clienteId}
                     noOptionsMessage={() => "Nenhum cliente encontrado"}
                     placeholder="NOME OU CPF"
@@ -336,7 +375,7 @@ export default class CadastroPropostas extends React.Component {
               </div>
               <div className="atributoForm umTerco">
                 Agente de Crédito*
-              <Select
+                <Select
                   styles={customStyles}
                   onChange={this.onChange}
                   name="corretor"
@@ -348,7 +387,7 @@ export default class CadastroPropostas extends React.Component {
               </div>
               <div className="atributoForm umTerco">
                 TIPO DE PROPOSTA*
-              <Select
+                <Select
                   styles={customStyles}
                   onChange={this.onChange}
                   name="tipo"
@@ -360,7 +399,9 @@ export default class CadastroPropostas extends React.Component {
               </div>
             </div>
             {opcoes.map((opcao) =>
-              opcao.nome === this.state.proposta.tipo.value ? opcao.conteudo : ""
+              opcao.nome === this.state.proposta.tipo.value
+                ? opcao.conteudo
+                : ""
             )}
           </div>
           <div className="observacoes">
@@ -368,7 +409,7 @@ export default class CadastroPropostas extends React.Component {
               <div className="quaseMetade">
                 <div className="atributoForm tudoPossivel">
                   OBSERVAÇÕES*
-                <textarea
+                  <textarea
                     name="observacoes"
                     cols="60"
                     rows="60"
@@ -381,7 +422,7 @@ export default class CadastroPropostas extends React.Component {
                 <div className="full spaceBetween">
                   <div className="atributoForm quaseMetade">
                     EMISSÃO*
-                  <InputMask
+                    <InputMask
                       className="dataEmissao"
                       mask="99/99/9999"
                       name="dtProposta"
@@ -392,7 +433,7 @@ export default class CadastroPropostas extends React.Component {
                   </div>
                   <div className="atributoForm metade">
                     COMO CHEGOU ATÉ NÓS?
-                  <Select
+                    <Select
                       styles={customStyles}
                       onChange={this.onChange}
                       name="formaContato"
@@ -414,10 +455,7 @@ export default class CadastroPropostas extends React.Component {
             </div>
             <div>
               Esteira:{" "}
-              <span className="situacao">
-                {" "}
-            Verificando Informações...
-          </span>
+              <span className="situacao"> Verificando Informações...</span>
             </div>
           </div>
           <div className="butoons">
@@ -429,21 +467,18 @@ export default class CadastroPropostas extends React.Component {
                 onClick={this.onSubmit}
               >
                 Gravar
-        </button>
-              <span class="material-icons verde">
-                add_task
-</span>
+              </button>
+              <span class="material-icons verde">add_task</span>
             </div>
             <div className="underButton">
-              <button className="cancelar" onClick={() => this.props.history.push("/propostas")}>
+              <button
+                className="cancelar"
+                onClick={() => this.props.history.push("/propostas")}
+              >
                 Cancelar
-        </button>
-              <span class="material-icons vermelho">
-                delete_forever
-</span>
+              </button>
+              <span class="material-icons vermelho">delete_forever</span>
             </div>
-            {/* <form onSubmit={this.onSubmit}>
-        </form> */}
           </div>
         </div>
       </>

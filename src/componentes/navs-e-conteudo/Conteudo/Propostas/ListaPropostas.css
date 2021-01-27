@@ -9,13 +9,6 @@
 .ListaPropostas table th.filtros {
   padding: 1px;
 }
-/* .ListaPropostas table th input {
-  width: 90%;
-  height: 31%;
-  padding: 1vh;
-  border: solid 1px black;
-  text-align: center;
-} */
 .ListaPropostas table {
   border-collapse: collapse;
   width: 98%;
@@ -55,7 +48,6 @@
   user-select: none;
 }
 .ListaPropostas table tr:hover {
-  /* color: #fff212; */
   background-color: #e3f7fe;
   cursor: pointer;
 }
@@ -66,7 +58,6 @@
 }
 .ListaPropostas table th {
   color: black;
-  /* background-color: #d1d0d0; */
   background-image: linear-gradient(#c1bfbf, #ffffff);
   cursor: auto;
   font-size: 16px;

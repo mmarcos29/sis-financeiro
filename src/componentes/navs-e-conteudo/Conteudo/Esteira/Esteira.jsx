@@ -4,6 +4,12 @@ import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPa
 import ListaPropostas from "../Propostas/ListaPropostas";
 
 export default class Esteira extends Component {
+  state = {
+    propostas: this.props.propostas,
+    clientes: this.props.clientes || [],
+    // clientesF: [],
+    // filtro: "",
+  };
   componentWillMount() {
     // alert("primeiro")
     if (document.querySelectorAll("#operacional li.active")[0]) {
@@ -27,14 +33,55 @@ export default class Esteira extends Component {
         document.getElementsByClassName("li-esteira")[0].classList.add("active")
     }
   }
+  pesquisar = (e) => {
+    // console.log(this.state.propostas);
+    let resultado = [];
+    switch (e.target.name) {
+      case "nome":
+        //****************** */
+        this.state.clientes
+          .filter((cliente) =>
+            cliente.nome.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+          .map(
+            (cliente) =>
+              (resultado = this.state.propostas.filter(
+                (p) => p.clienteId === cliente.id.toString()
+              ))
+          );
+        if (resultado.length > 0) {
+          this.setState({ ...this.state, propostas: resultado });
+        } else {
+          this.setState({ propostas: this.props.propostas, filtro: "" });
+        }
+        //****************** */
+        break;
+
+        case "emissao":
+          //****************** */
+        resultado = (this.props.propostas.filter(proposta => 
+          proposta.dtProposta.includes(e.target.value.toLowerCase())
+          ))
+        if (resultado.length > 0) {
+          this.setState({ ...this.state, propostas: resultado });
+        } else {
+          this.setState({ propostas: this.props.propostas, filtro: "" });
+        }
+        //****************** */        
+
+      default:
+        break;
+    }
+  };
   render() {
     return (
       <div id="Esteira">
         <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
-        <ListaPropostas 
-        propostas={this.props.propostas? this.props.propostas : []} 
+        <ListaPropostas
+        pesquisar={this.pesquisar}
+        propostas={this.state.propostas}
         history={this.props.history}
-        clientes={this.props.clientes}
+        clientes={this.state.clientes}
         toGo="DetalheEsteira"
         />
       </div>
