@@ -63,14 +63,14 @@ export default (dadosProposta, rota) => {
     }
     if (rota === "esteira") {
         retorno = dadosProposta
-        if (retorno.esteira.value) {
-            retorno.esteira = retorno.esteira.value
-            if (retorno.situacao) {
-                if (retorno.situacao.value) {
-                    retorno.situacao = retorno.situacao.value
-                }
-            }
-        }
+        // if (retorno.esteira.value) {
+        //     retorno.esteira = retorno.esteira.value
+        //     if (retorno.situacao) {
+        //         if (retorno.situacao.value) {
+        //             retorno.situacao = retorno.situacao.value
+        //         }
+        //     }
+        // }
     }
 
     return retorno

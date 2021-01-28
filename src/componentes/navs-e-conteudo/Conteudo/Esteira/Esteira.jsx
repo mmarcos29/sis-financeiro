@@ -3,6 +3,7 @@ import "./Esteira.css";
 import BarraLocationPage from "../PesquisaInss/BarraLocationPage/BarraLocationPage";
 import ListaPropostas from "../Propostas/ListaPropostas";
 import HistoricoEsteira from "./HistoricoEsteira/HistoricoEsteira";
+import PropostasNaEsteira from "./PropostasNaEsteira/PropostasNaEsteira";
 
 export default class Esteira extends Component {
   state = {
@@ -83,14 +84,12 @@ export default class Esteira extends Component {
     return (
       <div id="Esteira">
         <BarraLocationPage>{[...this.props.children]}</BarraLocationPage>
-        <div className="contentEsteira">
-        <ListaPropostas
-        pesquisar={this.pesquisar}
+        <div className="contentEsteira">        
+        <PropostasNaEsteira
         propostas={this.state.propostas}
-        history={this.props.history}
         clientes={this.state.clientes}
-        toGo="DetalheEsteira"
         dispatch={this.dispatch}
+        history={this.props.history}
         />
         <HistoricoEsteira item={this.state.ocorrencias}/>
         </div>

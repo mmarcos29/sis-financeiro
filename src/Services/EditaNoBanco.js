@@ -1,6 +1,7 @@
 import api from './api'
+let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-export default function EditaNoBanco(dados, history, rota, load, observacoes) {
+export default function EditaNoBanco(dados, history, rota, load, observacoes, situacaoProposta) {
     // alert("DADOS SALVOS COM SUCESSO! EM INSTANTES VOCÊ SERÁ REDIRECIONADO!")
     let prontoEnviar = false
 
@@ -29,11 +30,12 @@ export default function EditaNoBanco(dados, history, rota, load, observacoes) {
         const ocorrencia = {
             propostaId: dados.id,
             editor: "ADMINISTRADOR",
-            data: new Date().toLocaleDateString(),
+            data: `${new Date().toLocaleDateString()} - ${new Date().getHours() < 10 ? '0' + new Date().getHours() : '' + new Date().getHours()}:${ new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : '' + new Date().getMinutes()}`,
             esteira: dados.esteira,
             situacao: dados.situacao,
             observacoes: observacoes
         }
+        // console.log(ocorrencia)
         api.post(`Ocorrencias/`, ocorrencia).then(response => {
             console.log(response)
             // window.location.hash = rota
@@ -45,7 +47,7 @@ export default function EditaNoBanco(dados, history, rota, load, observacoes) {
                 console.log(response)
                 window.location.hash = rota
                 load(false)
-                // window.location.reload()
+                window.location.reload()
             })
         }, 2000);
     }

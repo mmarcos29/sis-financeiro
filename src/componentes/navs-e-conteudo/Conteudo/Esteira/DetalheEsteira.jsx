@@ -96,8 +96,8 @@ export default (props) => {
         ...proposta,
         esteira: x,
       });
-      // console.log(x.situacao)
-      if (x) {
+      // console.log(x)
+      if (x.situacao) {
         setSituacaoProposta(
           x.situacao.find((sit) => sit.value === proposta.situacao)
         );
@@ -112,6 +112,8 @@ export default (props) => {
   useEffect(() => {
     if (props.propostas && proposta) {
       if (typeof proposta.esteira === "string") {
+        console.log("**************props esteira*************")
+        console.log(proposta.esteira)
         organizaSelects("esteira");
       }
     }
@@ -120,37 +122,39 @@ export default (props) => {
         (propostas) => propostas.id === idProposta
       );
       if (proposta_) {
+        setProposta(proposta_);
+        // setEsteira(proposta_.esteira);
         setTimeout(() => {
           setLoad(false);
         }, 3000);
-        setProposta(proposta_);
-        setEsteira(proposta_.esteira);
       }
     } else {
+      //coloca as informações da proposta e do cliente lá em cima
       setInformaçõesCliente();
     }
   }, [proposta]);
 
   function onSubmit(event) {
-    let objec = proposta
-    objec.esteira = objec.esteira.value
-    if(!situacaoProposta){
-      objec.situacao = objec.esteira
+    let objec = proposta;
+    objec.esteira = objec.esteira.value;
+    if (situacaoProposta) {
+      // objec.situacao = situacaoProposta.value;
+      objec.situacao = situacaoProposta.value;
     }
-    const dadosProposta = validaCamposFoms(proposta, "esteira");
+    const dadosProposta = validaCamposFoms(objec, "esteira");
 
     if (dadosProposta) {
       // console.log(dadosProposta, observacoes);
       // dadosProposta.id = this.state.id;
       // console.log(dadosProposta)
-      EditaNoBanco(dadosProposta, props.history, "esteira", setLoad, observacoes);
+      EditaNoBanco(dadosProposta, props.history, "esteira", setLoad, observacoes );
       // EditaNoBanco(dadosProposta, this.props.history, "esteira", this.setLoad);
     }
   }
 
   function onChange(option, action) {
     if (!action) {
-      setObservacoes( option.target.value );
+      setObservacoes(option.target.value);
     } else {
       switch (action.name) {
         case "esteira":
@@ -172,7 +176,6 @@ export default (props) => {
       <>
         <div className="DetalheEsteira">
           <div className="Componente metade">
-            {/* {console.log(propostaL)} */}
             Estado Esteira*
             <Select
               // styles={customStyles}
@@ -191,7 +194,11 @@ export default (props) => {
           {situacao()}
           <div className="ComponenteDescricao">
             Observações ao consultor de crédito
-            <textarea name="observacoes" onChange={onChange} value={observacoes}/>
+            <textarea
+              name="observacoes"
+              onChange={onChange}
+              value={observacoes}
+            />
           </div>
         </div>
         <div className="det butoons">

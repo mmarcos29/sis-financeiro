@@ -1,0 +1,67 @@
+#Esteira .PropostasNaEsteira {
+  height: 50%;
+  margin-top: 2vh;
+  overflow: overlay;
+
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+.PropostasNaEsteira td .material-icons{
+    color: #6E6E6E;
+}
+.PropostasNaEsteira td .material-icons:hover{
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.274)
+}
+.PropostasNaEsteira table {
+  border-collapse: collapse;
+  width: 98%;
+  margin: 0 8px 16px 0;
+}
+.PropostasNaEsteira table tr {
+  background-color: white;
+  color: black;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.PropostasNaEsteira table tr:hover {
+  background-color: #e3f7fe;
+  cursor: -webkit-grabbing;
+}
+.PropostasNaEsteira table tr:active {
+  color: white !important;
+  background-color: yellowgreen !important;
+}
+.PropostasNaEsteira table tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.PropostasNaEsteira table tr:nth-child(odd) {
+  background-color: white;
+}
+.PropostasNaEsteira table th {
+  color: black;
+  background-image: linear-gradient(#c1bfbf, #ffffff);
+  cursor: auto;
+  font-size: 16px;
+  font-weight: bolder;
+}
+.PropostasNaEsteira table th,
+.PropostasNaEsteira table td {
+  letter-spacing: 1.1px;
+  border: 1px solid black;
+  border-width: 0 0 1px 0;
+  padding: 8px 0;
+  background-color: transparent;
+  color: inherit;
+  text-align: center;
+}
+.PropostasNaEsteira table td {
+  font-weight: bold;
+  font-size: 0.7vw;
+}

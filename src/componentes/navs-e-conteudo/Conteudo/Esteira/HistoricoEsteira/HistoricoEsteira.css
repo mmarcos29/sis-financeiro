@@ -1,8 +1,9 @@
 .HistoricoEsteira {
-  display: flex;
   justify-content: center;
   align-items: center;
-  height: 40%;
+  height: 25vh;
+  overflow: overlay;
+  padding-top: 1vh;
 }
 .HistoricoEsteira table {
   border-collapse: collapse;
@@ -24,6 +25,9 @@
 }
 .HistoricoEsteira table tr:nth-child(odd) {
   background-color: white;
+}
+.HistoricoEsteira table tr:last-child {
+  margin-bottom: 5px;
 }
 .HistoricoEsteira table tr {
   background-color: white;

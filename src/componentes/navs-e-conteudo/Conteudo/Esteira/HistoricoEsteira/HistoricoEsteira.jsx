@@ -36,7 +36,7 @@ export default (props) => {
           <table>
             <thead>
               <tr>
-                <th>Data da alteração</th>
+                <th>Data e hora da alteração</th>
                 <th>responsável pela alteração</th>
                 <th></th>
                 <th>Comentário do editor</th>
@@ -62,14 +62,14 @@ export default (props) => {
     } else {
       if (load) {
         return (
-          <div className="HistoricoEsteira">
+          <div className="HistoricoEsteira" style={{display: "flex"}}>
             {/* {getOcorrencia()} */}
             <Spinner size={30} color="blue" speed={0.5} />
           </div>
         );
       } else {
         return (
-          <div className="HistoricoEsteira">
+          <div className="HistoricoEsteira" style={{display: "flex"}}>
             Nenhuma ocorrencia registrada nessa proposta
           </div>
         );
