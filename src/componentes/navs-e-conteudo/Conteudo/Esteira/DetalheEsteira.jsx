@@ -45,7 +45,7 @@ export default (props) => {
   function situacao() {
     if (proposta.esteira) {
       switch (proposta.esteira.value) {
-        case "EM ANDAMENTO":
+        case "EM ANÁLISE":
           return (
             <div className="Componente metade">
               Situação Esteira*
@@ -63,7 +63,7 @@ export default (props) => {
             </div>
           );
           break;
-        case "COM PENDÊNCIA":
+        case "COM PENDÊNCIAS":
           return (
             <div className="Componente metade">
               Situação Esteira*
@@ -97,10 +97,12 @@ export default (props) => {
         esteira: x,
       });
       // console.log(x)
-      if (x.situacao) {
-        setSituacaoProposta(
-          x.situacao.find((sit) => sit.value === proposta.situacao)
-        );
+      if (x) {
+        if (x.situacao) {
+          setSituacaoProposta(
+            x.situacao.find((sit) => sit.value === proposta.situacao)
+          );
+        }
       }
     }
   }
@@ -112,8 +114,8 @@ export default (props) => {
   useEffect(() => {
     if (props.propostas && proposta) {
       if (typeof proposta.esteira === "string") {
-        console.log("**************props esteira*************")
-        console.log(proposta.esteira)
+        // console.log("**************props esteira*************")
+        // console.log(proposta.esteira)
         organizaSelects("esteira");
       }
     }
@@ -138,7 +140,6 @@ export default (props) => {
     let objec = proposta;
     objec.esteira = objec.esteira.value;
     if (situacaoProposta) {
-      // objec.situacao = situacaoProposta.value;
       objec.situacao = situacaoProposta.value;
     }
     const dadosProposta = validaCamposFoms(objec, "esteira");
@@ -147,7 +148,13 @@ export default (props) => {
       // console.log(dadosProposta, observacoes);
       // dadosProposta.id = this.state.id;
       // console.log(dadosProposta)
-      EditaNoBanco(dadosProposta, props.history, "esteira", setLoad, observacoes );
+      EditaNoBanco(
+        dadosProposta,
+        props.history,
+        "esteira",
+        setLoad,
+        observacoes
+      );
       // EditaNoBanco(dadosProposta, this.props.history, "esteira", this.setLoad);
     }
   }
@@ -159,7 +166,11 @@ export default (props) => {
       switch (action.name) {
         case "esteira":
           setSituacaoProposta(null);
-          setProposta({ ...proposta, esteira: option });
+          setProposta({ ...proposta, esteira: option, situacao: null });
+          if (option.value === "CANCELADAS" || option.value === "FINALIZADAS") {
+            setProposta({ ...proposta, esteira: option, situacao: null });
+            setSituacaoProposta(option);
+          }
           break;
         case "situacao":
           setSituacaoProposta(option);

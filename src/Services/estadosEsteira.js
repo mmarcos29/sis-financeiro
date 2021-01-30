@@ -1,8 +1,8 @@
 export default [
     [
         { 
-            label: "EM ANDAMENTO", 
-            value: "EM ANDAMENTO", 
+            label: "EM ANÁLISE", 
+            value: "EM ANÁLISE", 
             situacao:  [
                 { label: "SOLICITADA", value: "SOLICITADA" },
                 { label: "ANÁLISE OPERACIONAL", value: "ANÁLISE OPERACIONAL" },
@@ -16,8 +16,8 @@ export default [
             ]
         },
         { 
-            label: "COM PENDÊNCIA", 
-            value: "COM PENDÊNCIA",
+            label: "COM PENDÊNCIAS", 
+            value: "COM PENDÊNCIAS",
             situacao: [
                 { label: "ANEXAR DOC", value: "ANEXAR DOC" },
                 { label: "ASSINATURA DIVERGENTE", value: "ASSINATURA DIVERGENTE" },
@@ -33,7 +33,7 @@ export default [
                 { label: "EM ESTORNO", value: "EM ESTORNO" }
             ] 
         },
-        { label: "CANCELADA", value: "CANCELADA" },
+        { label: "CANCELADAS", value: "CANCELADAS" },
         { label: "FINALIZADAS", value: "FINALIZADAS" }
     ]
     

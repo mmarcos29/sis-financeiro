@@ -2,7 +2,7 @@
   margin-left: 1vw;
 }
 .Separador {
-  width: 15vw;
+  width: 14.6vw;
   margin: 1vw 0;
   border-radius: 2vw;
   cursor: pointer;
@@ -22,13 +22,13 @@
 }
 .Separador div .contador {
   font-size: 2rem;
-  margin-left: 1.5vw;
+  margin-left: 1vw;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 12.6vw;
 }
-.Separador div .contador span.material-icons{
+.Separador div .contador span.material-icons {
   margin-top: 1vh;
   font-size: 28px;
 }

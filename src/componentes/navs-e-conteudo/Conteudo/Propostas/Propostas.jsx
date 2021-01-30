@@ -43,7 +43,7 @@ export default class Propostas extends Component {
   }
 
   filtrar = (filtro, nome) => {
-    // console.log(filtro);
+    console.log(filtro, nome);
     if (this.state.filtro === nome) {
       this.setState({ propostas: this.props.propostas, filtro: "" });
     } else if (filtro.length === 0) {
@@ -106,20 +106,24 @@ export default class Propostas extends Component {
           <Separador
             simbolo="queue_play_next"
             img={roxo}
+            color={"#593359"}
+            sombra={"#593359"}
             legenda="AGUAR. DIGITAÇÃO"
             border={this.state.filtro}
             onClick={this.filtrar}
             contador={this.props.propostas.filter(
-              (prop) => prop.esteira === "CADASTRADO"
-            )}
-            />
+              (prop) => prop.esteira === "AGUAR. DIGITAÇÃO"
+              )}
+              />
           <Separador
             simbolo="image_search"
             border={this.state.filtro}
             img={verde}
+            color={"#237a15"}
+            sombra={"#237a15"}
             legenda="EM ANÁLISE"
             contador={this.props.propostas.filter(
-              (prop) => prop.esteira === "EM ANDAMENTO"
+              (prop) => prop.esteira === "EM ANÁLISE"
               )}
               onClick={this.filtrar}
               />
@@ -127,9 +131,11 @@ export default class Propostas extends Component {
               simbolo="warning"
               border={this.state.filtro}
               img={laranja}
+              color={"#fd8e00"}
+              sombra={"#fd8e00"}
               legenda="COM PENDÊNCIAS"
               contador={this.props.propostas.filter(
-                (prop) => prop.esteira === "COM PENDÊNCIA"
+                (prop) => prop.esteira === "COM PENDÊNCIAS"
                 )}
                 onClick={this.filtrar}
                 />
@@ -137,47 +143,51 @@ export default class Propostas extends Component {
             simbolo="playlist_add_check"
             border={this.state.filtro}
             img={azul}
+            color={"#0086cd"}
+            sombra={"#0086cd"}
             legenda="FINALIZADAS"
             contador={this.props.propostas.filter(
-              (prop) => prop.esteira === "FINALIZADA"
+              (prop) => prop.esteira === "FINALIZADAS"
               )}
-            onClick={this.filtrar}
-          />
+              onClick={this.filtrar}
+              />
           <Separador
             simbolo="delete_forever"
             border={this.state.filtro}
             img={vermelho}
+            color={"#f63737"}
+            sombra={"#f63737"}
             legenda="CANCELADAS"
             contador={this.props.propostas.filter(
-              (prop) => prop.esteira === "CANCELADA"
+              (prop) => prop.esteira === "CANCELADAS"
             )}
             onClick={this.filtrar}
           />
         </div>
         <div className="linhaDoTempo horizontal">
           <div>
-            <div className="indicador" style={{ backgroundColor: "#C09AC0" }}>
-              <div />
+            <div className="indicador" style={{ backgroundColor: "#C09AC0", borderColor: "#593359" }}>
+            <div style={{background:"#593359"}}/>
             </div>
           </div>
           <div>
-            <div className="indicador" style={{ backgroundColor: "#8DFF7B" }}>
-              <div />
+            <div className="indicador" style={{ backgroundColor: "#8DFF7B", borderColor: "#237a15" }}>
+              <div style={{background:"#237a15"}}/>
             </div>
           </div>
           <div>
-            <div className="indicador" style={{ backgroundColor: "#FFCC4B" }}>
-              <div />
+            <div className="indicador" style={{ backgroundColor: "#FFCC4B", borderColor: "#fd8e00" }}>
+              <div style={{background:"#fd8e00"}}/>
             </div>
           </div>
           <div>
-            <div className="indicador" style={{ backgroundColor: "#72CBF5" }}>
-              <div />
+            <div className="indicador" style={{ backgroundColor: "#72CBF5", borderColor: "#0086cd" }}>
+              <div style={{background:"#0086cd"}}/>
             </div>
           </div>
           <div>
-            <div className="indicador" style={{ backgroundColor: "#FF9292" }}>
-              <div />
+            <div className="indicador" style={{ backgroundColor: "#FF9292", borderColor: "#f63737" }}>
+              <div style={{background:"#f63737"}}/>
             </div>
           </div>
         </div>
